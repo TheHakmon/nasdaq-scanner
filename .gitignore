@@ -1,0 +1,18 @@
+# Local-only files — don't push to the public repo
+__pycache__/
+*.pyc
+scan.log
+launchd.out.log
+launchd.err.log
+com.yossi.nasdaq-scan.plist
+install_local.sh
+run_scan.sh
+.trade_settings.json
+.DS_Store
+_preview_*.png
+test_chart.png
+trade_journal.json
+trade_journal.html
+README_setup.md
+GITHUB_SETUP.md
+email_config_template.json

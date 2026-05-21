@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head>
+<meta charset="utf-8"><title>ניתוח ביצועי הסקנר</title>
+
+<script>
+  (function() {
+    const saved = (function(){ try { return localStorage.getItem("nasdaq_theme"); } catch(e) { return null; } })();
+    const theme = saved || "dark";
+    if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+  })();
+</script>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b1220; --bg-card: #131c2f; --bg-elevated: #1a2236;
+    --text: #e2e8f0; --text-muted: #94a3b8; --text-subtle: #64748b;
+    --border: #2a3450; --border-strong: #3a4664; --hover: #1e293b;
+    --accent: #818cf8; --accent-text: #c7d2fe; --accent-bg: rgba(129,140,248,0.15);
+    --success: #10b981; --success-text: #6ee7b7;
+    --danger: #ef4444; --danger-text: #fca5a5;
+    --warning: #f59e0b; --warning-text: #fcd34d;
+    --table-head-bg: #1a2236;
+  }
+  [data-theme="light"] {
+    color-scheme: light;
+    --bg: #fafafa; --bg-card: #ffffff; --bg-elevated: #ffffff;
+    --text: #111; --text-muted: #6b7280; --text-subtle: #9ca3af;
+    --border: #e5e7eb; --border-strong: #d1d5db; --hover: #f9fafb;
+    --accent: #4f46e5; --accent-text: #3730a3; --accent-bg: #eef2ff;
+    --success: #059669; --success-text: #065f46;
+    --danger: #dc2626; --danger-text: #991b1b;
+    --warning: #d97706; --warning-text: #92400e;
+    --table-head-bg: #f9fafb;
+  }
+  body { background: var(--bg); color: var(--text); }
+  .nav-btn, .theme-toggle {
+    background: var(--bg-card); color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .nav-btn:hover, .theme-toggle:hover { background: var(--hover); }
+  .theme-toggle {
+    border-radius: 8px; padding: 8px 12px; font-size: 14px; cursor: pointer;
+  }
+  table { background: var(--bg-card); }
+  th { background: var(--table-head-bg); color: var(--text-muted); }
+  th, td { border-bottom: 1px solid var(--border); }
+  tr:hover { background: var(--hover); }
+  .stat, .empty, .help, .note {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .help, .note {
+    background: var(--accent-bg); border-color: var(--accent);
+    color: var(--accent-text);
+  }
+  a { color: var(--accent); }
+  code { background: var(--bg-elevated); color: var(--text); }
+</style>
+
+<style>
+  body { font-family:-apple-system,'Segoe UI','Heebo',sans-serif; margin:0; padding:24px; }
+  .wrap { max-width:1000px; margin:0 auto; }
+  .top-nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; gap:8px; flex-wrap:wrap; }
+  .nav-links { display:flex; gap:8px; align-items:center; }
+  .nav-btn { display:inline-flex; gap:6px; padding:8px 14px; border-radius:8px; font-size:13px; text-decoration:none; font-weight:500; }
+  h1 { margin:0 0 4px; }
+  .sub { color:var(--text-muted); font-size:14px; margin-bottom:24px; }
+  h2 { margin-top:32px; font-size:18px; }
+  table { width:100%; border-collapse:collapse; border-radius:8px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,0.1); margin-top:12px; }
+  th, td { padding:10px 14px; text-align:start; font-size:14px; }
+  .stat { border-radius:10px; padding:14px 16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-bottom:16px; }
+  .label { font-size:12px; color:var(--text-muted); }
+  .value { font-size:24px; font-weight:700; margin-top:4px; }
+  .note { padding:12px 14px; border-radius:8px; font-size:13px; margin-top:16px; }
+</style></head>
+<body><div class="wrap">
+<div class="top-nav">
+  <h1>📊 ניתוח ביצועי הסקנר</h1>
+  <div class="nav-links">
+    <a class="nav-btn" href="dashboard_standalone.html">← חזרה לדשבורד</a>
+    <button class="theme-toggle" id="theme-toggle" title="החלף בין כהה לבהיר">🌙</button>
+  </div>
+</div>
+<div class="sub">סטטיסטיקה אמיתית: מה קרה למניות שהסקנר זיהה, בפועל</div>
+<div class="grid">
+  <div class="stat"><div class="label">סך כל ההמלצות</div><div class="value">603</div></div>
+  <div class="stat"><div class="label">% מנצחות (20 יום)</div><div class="value" style="color:var(--danger)">49.1%</div></div>
+  <div class="stat"><div class="label">תשואה ממוצעת (20 יום)</div><div class="value" style="color:var(--success)">1.12%</div></div>
+</div>
+<h2>ביצועים לפי מסגרת זמן</h2>
+<table><thead><tr><th>אופק</th><th>% מנצחות</th><th>תשואה ממוצעת</th><th>חציון</th><th>טובה</th><th>גרועה</th><th>n</th></tr></thead><tbody><tr><td><strong>1d</strong></td><td style="color:var(--success);font-weight:600">51.6%</td><td style="color:var(--success);font-weight:600">+0.21%</td><td>+0.14%</td><td>+25.55%</td><td>-25.50%</td><td>580</td></tr><tr><td><strong>5d</strong></td><td style="color:var(--success);font-weight:600">52.5%</td><td style="color:var(--success);font-weight:600">+0.92%</td><td>+0.26%</td><td>+41.48%</td><td>-31.69%</td><td>512</td></tr><tr><td><strong>20d</strong></td><td style="color:var(--danger);font-weight:600">49.1%</td><td style="color:var(--success);font-weight:600">+1.12%</td><td>-0.18%</td><td>+91.70%</td><td>-38.42%</td><td>403</td></tr><tr><td><strong>60d</strong></td><td style="color:var(--success);font-weight:600">62.7%</td><td style="color:var(--success);font-weight:600">+6.10%</td><td>+7.12%</td><td>+69.28%</td><td>-52.06%</td><td>268</td></tr></tbody></table>
+<h2>ביצועים לפי ציון הסקנר (אופק 20 יום)</h2>
+<table><thead><tr><th>ציון</th><th>% רווח</th><th>% רווח>5%</th><th>תשואה ממוצעת</th><th>n</th></tr></thead><tbody><tr><td><strong>50-59</strong></td><td style="color:var(--danger);font-weight:600">44.4%</td><td>33.3%</td><td>-1.73%</td><td>27</td></tr><tr><td><strong>60-69</strong></td><td style="color:var(--danger);font-weight:600">49.7%</td><td>37.1%</td><td>+1.70%</td><td>175</td></tr><tr><td><strong>70-79</strong></td><td style="color:var(--danger);font-weight:600">49.7%</td><td>36.3%</td><td>+1.45%</td><td>179</td></tr><tr><td><strong>80+</strong></td><td style="color:var(--danger);font-weight:600">45.5%</td><td>40.9%</td><td>-2.72%</td><td>22</td></tr></tbody></table>
+<div class="note">אם מניות עם ציון 70+ יש להן win-rate גבוה יותר - שווה להתמקד בפריצות עם ציון גבוה.</div>
+<h2>🏆 הטובות ביותר (20 יום)</h2>
+<table><thead><tr><th>תאריך</th><th>טיקר</th><th>ציון</th><th>מחיר</th><th>תשואה</th></tr></thead><tbody><tr><td>2026-04-08</td><td><strong>INTC</strong></td><td>70</td><td>$58.95</td><td style="color:var(--success);font-weight:600">+91.70%</td></tr><tr><td>2026-04-09</td><td><strong>INTC</strong></td><td>70</td><td>$61.72</td><td style="color:var(--success);font-weight:600">+77.61%</td></tr><tr><td>2026-04-16</td><td><strong>RKLB</strong></td><td>60</td><td>$82.93</td><td style="color:var(--success);font-weight:600">+59.83%</td></tr><tr><td>2026-03-31</td><td><strong>MRVL</strong></td><td>70</td><td>$99.0</td><td style="color:var(--success);font-weight:600">+58.15%</td></tr><tr><td>2026-04-01</td><td><strong>MRVL</strong></td><td>70</td><td>$106.66</td><td style="color:var(--success);font-weight:600">+54.84%</td></tr><tr><td>2026-04-08</td><td><strong>MRVL</strong></td><td>70</td><td>$114.39</td><td style="color:var(--success);font-weight:600">+50.49%</td></tr><tr><td>2026-03-27</td><td><strong>ARM</strong></td><td>65</td><td>$144.13</td><td style="color:var(--success);font-weight:600">+49.78%</td></tr><tr><td>2026-04-16</td><td><strong>ON</strong></td><td>60</td><td>$79.93</td><td style="color:var(--success);font-weight:600">+48.09%</td></tr><tr><td>2026-03-12</td><td><strong>MRVL</strong></td><td>55</td><td>$87.63</td><td style="color:var(--success);font-weight:600">+46.63%</td></tr><tr><td>2026-03-30</td><td><strong>ARM</strong></td><td>65</td><td>$136.96</td><td style="color:var(--success);font-weight:600">+45.04%</td></tr></tbody></table>
+<h2>📉 הגרועות ביותר (20 יום)</h2>
+<table><thead><tr><th>תאריך</th><th>טיקר</th><th>ציון</th><th>מחיר</th><th>תשואה</th></tr></thead><tbody><tr><td>2026-01-14</td><td><strong>AVAV</strong></td><td>75</td><td>$381.8</td><td style="color:var(--danger);font-weight:600">-38.42%</td></tr><tr><td>2026-01-15</td><td><strong>AVAV</strong></td><td>60</td><td>$378.57</td><td style="color:var(--danger);font-weight:600">-35.58%</td></tr><tr><td>2026-01-13</td><td><strong>AVAV</strong></td><td>70</td><td>$363.86</td><td style="color:var(--danger);font-weight:600">-33.10%</td></tr><tr><td>2026-01-13</td><td><strong>JOBY</strong></td><td>55</td><td>$14.81</td><td style="color:var(--danger);font-weight:600">-31.80%</td></tr><tr><td>2026-01-08</td><td><strong>JOBY</strong></td><td>70</td><td>$15.25</td><td style="color:var(--danger);font-weight:600">-31.02%</td></tr><tr><td>2026-01-09</td><td><strong>JOBY</strong></td><td>70</td><td>$15.39</td><td style="color:var(--danger);font-weight:600">-30.54%</td></tr><tr><td>2026-01-12</td><td><strong>AVAV</strong></td><td>60</td><td>$370.68</td><td style="color:var(--danger);font-weight:600">-28.98%</td></tr><tr><td>2026-01-16</td><td><strong>ASTS</strong></td><td>70</td><td>$115.77</td><td style="color:var(--danger);font-weight:600">-28.28%</td></tr><tr><td>2026-01-15</td><td><strong>ETSY</strong></td><td>55</td><td>$63.63</td><td style="color:var(--danger);font-weight:600">-28.13%</td></tr><tr><td>2026-01-14</td><td><strong>INFY</strong></td><td>60</td><td>$19.35</td><td style="color:var(--danger);font-weight:600">-26.56%</td></tr></tbody></table>
+</div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    const updateIcon = () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      btn.textContent = isLight ? "☀️" : "🌙";
+    };
+    updateIcon();
+    btn.addEventListener("click", () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      if (isLight) {
+        document.documentElement.removeAttribute("data-theme");
+        try { localStorage.setItem("nasdaq_theme", "dark"); } catch(e){}
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        try { localStorage.setItem("nasdaq_theme", "light"); } catch(e){}
+      }
+      updateIcon();
+    });
+  });
+</script>
+
+</body></html>

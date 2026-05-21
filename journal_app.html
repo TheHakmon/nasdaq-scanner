@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>יומן מסחר</title>
+<script>
+  (function() {
+    const saved = (function(){ try { return localStorage.getItem("nasdaq_theme"); } catch(e) { return null; } })();
+    if ((saved || "dark") === "light") document.documentElement.setAttribute("data-theme", "light");
+  })();
+</script>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg:#0b1220; --bg-card:#131c2f; --bg-elevated:#1a2236; --bg-input:#1e293b;
+    --text:#e2e8f0; --text-muted:#94a3b8; --text-subtle:#64748b;
+    --border:#2a3450; --border-strong:#3a4664; --hover:#1e293b;
+    --accent:#818cf8; --accent-bg:rgba(129,140,248,0.15);
+    --success:#10b981; --success-bg:rgba(16,185,129,0.15);
+    --danger:#ef4444; --danger-bg:rgba(239,68,68,0.15);
+    --warning:#f59e0b;
+    --overlay:rgba(0,0,0,0.6);
+  }
+  [data-theme="light"] {
+    color-scheme: light;
+    --bg:#fafafa; --bg-card:#fff; --bg-elevated:#fff; --bg-input:#fff;
+    --text:#111; --text-muted:#6b7280; --text-subtle:#9ca3af;
+    --border:#e5e7eb; --border-strong:#d1d5db; --hover:#f9fafb;
+    --accent:#4f46e5; --accent-bg:#eef2ff;
+    --success:#059669; --success-bg:#d1fae5;
+    --danger:#dc2626; --danger-bg:#fef2f2;
+    --warning:#d97706;
+    --overlay:rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Heebo",sans-serif;
+         background:var(--bg); color:var(--text); line-height:1.5; }
+  .wrap { max-width:1200px; margin:0 auto; padding:24px 20px 60px; }
+  .top-nav { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .nav-links { display:flex; gap:8px; align-items:center; }
+  .nav-btn, .theme-toggle, .btn {
+    display:inline-flex; align-items:center; gap:6px; padding:8px 14px; border-radius:8px;
+    font-size:13px; background:var(--bg-card); color:var(--text); text-decoration:none;
+    border:1px solid var(--border); font-weight:600; cursor:pointer; font-family:inherit;
+  }
+  .nav-btn:hover, .theme-toggle:hover, .btn:hover { background:var(--hover); }
+  .btn.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .btn.primary:hover { opacity:0.9; }
+  .btn.danger { color:var(--danger); border-color:var(--danger); }
+  .btn.success { color:var(--success); border-color:var(--success); }
+  h1 { margin:0; font-size:22px; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:24px; }
+  .stat { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:14px 16px; }
+  .stat .label { font-size:12px; color:var(--text-muted); }
+  .stat .value { font-size:22px; font-weight:700; margin-top:4px; }
+  h2 { font-size:17px; margin:28px 0 10px; }
+  .toolbar { display:flex; gap:10px; align-items:center; margin-bottom:6px; flex-wrap:wrap; }
+  table { width:100%; border-collapse:collapse; background:var(--bg-card); border-radius:10px; overflow:hidden; font-size:14px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+  th,td { padding:10px 12px; text-align:start; border-bottom:1px solid var(--border); }
+  th { background:var(--bg-elevated); color:var(--text-muted); font-weight:600; font-size:12px; }
+  tr:hover { background:var(--hover); }
+  .pos { color:var(--success); font-weight:600; }
+  .neg { color:var(--danger); font-weight:600; }
+  .muted { color:var(--text-muted); }
+  .pill { font-size:11px; padding:2px 8px; border-radius:999px; background:var(--accent-bg); color:var(--accent); }
+  .empty { background:var(--bg-card); border:1px dashed var(--border-strong); border-radius:10px; padding:28px; text-align:center; color:var(--text-muted); }
+  .row-actions { display:flex; gap:6px; }
+  .mini-btn { padding:4px 10px; font-size:12px; border-radius:6px; border:1px solid var(--border); background:var(--bg-elevated); color:var(--text); cursor:pointer; font-family:inherit; }
+  .mini-btn:hover { background:var(--hover); }
+  .mini-btn.sell { color:var(--success); border-color:var(--success); }
+  .mini-btn.del { color:var(--danger); border-color:var(--danger); }
+  /* Modal */
+  .overlay { position:fixed; inset:0; background:var(--overlay); display:none; align-items:center; justify-content:center; z-index:100; padding:16px; }
+  .overlay.open { display:flex; }
+  .modal { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:22px; width:100%; max-width:440px; box-shadow:0 20px 50px rgba(0,0,0,0.4); }
+  .modal h3 { margin:0 0 16px; font-size:18px; }
+  .field { margin-bottom:12px; }
+  .field label { display:block; font-size:12px; color:var(--text-muted); margin-bottom:4px; }
+  .field input, .field textarea {
+    width:100%; padding:9px 12px; border:1px solid var(--border-strong); border-radius:8px;
+    font-size:14px; background:var(--bg-input); color:var(--text); font-family:inherit;
+  }
+  .field input:focus, .field textarea:focus { outline:none; border-color:var(--accent); }
+  .field-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .modal-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:18px; }
+  .hint { font-size:11px; color:var(--text-subtle); margin-top:4px; }
+  .price-live { font-size:11px; color:var(--success); margin-top:4px; }
+  .by-ticker { margin-top:8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top-nav">
+    <h1>📓 יומן מסחר</h1>
+    <div class="nav-links">
+      <a class="nav-btn" href="dashboard_standalone.html">← דשבורד</a>
+      <button class="theme-toggle" id="theme-toggle" title="כהה/בהיר">🌙</button>
+    </div>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="toolbar">
+    <button class="btn primary" id="add-btn">➕ הוסף פוזיציה</button>
+    <button class="btn" id="sync-btn">☁️ סנכרון</button>
+    <button class="btn" id="export-btn">⬇️ ייצוא</button>
+    <button class="btn" id="import-btn">⬆️ ייבוא</button>
+    <input type="file" id="import-file" accept="application/json" style="display:none">
+    <span id="sync-status" class="muted" style="font-size:12px;"></span>
+  </div>
+
+  <h2>📂 פוזיציות פתוחות</h2>
+  <div id="open-area"></div>
+
+  <h2>📜 פוזיציות סגורות</h2>
+  <div id="closed-area"></div>
+
+  <h2>📊 סיכום לפי מניה</h2>
+  <div id="byticker-area"></div>
+</div>
+
+<!-- Add/Edit position modal -->
+<div class="overlay" id="add-overlay">
+  <div class="modal">
+    <h3 id="add-title">➕ הוסף פוזיציה</h3>
+    <div class="field">
+      <label>טיקר</label>
+      <input id="f-ticker" list="ticker-list" placeholder="לדוגמה ENPH" autocomplete="off">
+      <datalist id="ticker-list"></datalist>
+      <div class="price-live" id="f-price-live"></div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>מחיר קנייה ($)</label>
+        <input id="f-buyprice" type="number" step="0.01" placeholder="89.58">
+        <div class="hint">ניתן לעדכן למחיר שקנית בפועל</div>
+      </div>
+      <div class="field">
+        <label>כמות מניות</label>
+        <input id="f-shares" type="number" step="1" placeholder="62">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>תאריך קנייה</label>
+        <input id="f-buydate" type="date">
+      </div>
+      <div class="field">
+        <label>Stop-Loss ($) — אופציונלי</label>
+        <input id="f-stop" type="number" step="0.01">
+      </div>
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>יעד 1 ($) — אופציונלי</label>
+        <input id="f-t1" type="number" step="0.01">
+      </div>
+      <div class="field">
+        <label>יעד 2 ($) — אופציונלי</label>
+        <input id="f-t2" type="number" step="0.01">
+      </div>
+    </div>
+    <div class="field">
+      <label>הערות</label>
+      <input id="f-notes" placeholder="למשל: פריצת Stage 2">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" id="add-cancel">ביטול</button>
+      <button class="btn primary" id="add-save">שמור פוזיציה</button>
+    </div>
+  </div>
+</div>
+
+<!-- Cloud sync settings modal -->
+<div class="overlay" id="sync-overlay">
+  <div class="modal">
+    <h3>☁️ סנכרון בענן (בין מכשירים)</h3>
+    <div class="muted" style="font-size:13px; margin-bottom:14px; line-height:1.6;">
+      כדי לראות את היומן מכל מכשיר, צור חשבון חינמי ב-<strong>jsonbin.io</strong>:<br>
+      1. הירשם ב-jsonbin.io → Create Bin (תוכן התחלתי: <code>[]</code>)<br>
+      2. העתק את ה-<strong>BIN ID</strong> (מה-URL של ה-bin)<br>
+      3. ב-API Keys העתק את ה-<strong>X-Master-Key</strong><br>
+      הדבק כאן - העסקאות יסתנכרנו אוטומטית בכל המכשירים שתגדיר בהם את אותם פרטים.
+    </div>
+    <div class="field">
+      <label>BIN ID</label>
+      <input id="sync-bin" placeholder="לדוגמה 65a1b2c3...">
+    </div>
+    <div class="field">
+      <label>X-Master-Key</label>
+      <input id="sync-key" placeholder="$2a$10$...">
+    </div>
+    <div class="modal-actions">
+      <button class="btn danger" id="sync-disconnect">נתק</button>
+      <button class="btn" id="sync-cancel">ביטול</button>
+      <button class="btn primary" id="sync-save">חבר וסנכרן</button>
+    </div>
+  </div>
+</div>
+
+<!-- Sell modal -->
+<div class="overlay" id="sell-overlay">
+  <div class="modal">
+    <h3 id="sell-title">💵 מכירת פוזיציה</h3>
+    <div id="sell-info" class="muted" style="margin-bottom:14px;font-size:13px;"></div>
+    <div class="field-row">
+      <div class="field">
+        <label>מחיר מכירה ($)</label>
+        <input id="s-price" type="number" step="0.01">
+        <div class="price-live" id="s-price-live"></div>
+      </div>
+      <div class="field">
+        <label>כמות למכירה</label>
+        <input id="s-shares" type="number" step="1">
+        <div class="hint" id="s-shares-hint"></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>תאריך מכירה</label>
+      <input id="s-date" type="date">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" id="sell-cancel">ביטול</button>
+      <button class="btn success" id="sell-save">רשום מכירה</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ---- Latest prices injected by the scan (ticker -> price). ----
+const PRICE_MAP = /*__PRICE_MAP__*/ {"ENPH": 53.15, "ASTS": 89.58, "AFRM": 67.12, "TTWO": 236.62, "ARM": 256.73, "ADI": 398.05, "KEYS": 342.08, "NXPI": 310.15, "MRVL": 186.8, "TXN": 304.88, "SIRI": 27.05, "GOOGL": 388.91, "INTC": 118.96, "ZM": 99.42, "CSCO": 114.35, "ABNB": 135.55, "COST": 1074.01, "MAR": 369.75, "FROG": 73.43, "DXCM": 71.44, "GH": 114.97, "SNPS": 498.93, "KDP": 28.69, "SMMT": 17.89, "ZTO": 23.22, "ROST": 217.79, "HAS": 88.6, "AEP": 128.87, "FAST": 43.68, "AAPL": 302.25, "AMD": 447.58, "HPE": 33.8, "AMAT": 426.85, "BKR": 66.79, "FANG": 204.33, "LRCX": 292.09, "AMZN": 265.01, "AVGO": 417.76, "NVDA": 223.47, "ROKU": 124.16, "FTNT": 130.0, "ETSY": 60.89, "CSX": 45.94, "DELL": 242.93, "GFS": 70.79, "GOOG": 384.9, "KLAC": 1829.47, "MU": 731.99, "ON": 110.21, "RKLB": 134.28, "RPRX": 53.06, "SBUX": 106.5, "ASML": 1550.13, "MNST": 86.88, "ILMN": 141.92, "LUNR": 33.67, "ODFL": 209.83, "CINF": 168.53, "NET": 210.13, "FFIV": 382.42, "CDNS": 350.89, "IONQ": 52.47, "QCOM": 202.51, "SMCI": 33.46, "CRWD": 650.11, "DDOG": 212.24, "PANW": 246.66, "CART": 41.3, "JD": 32.46, "MTCH": 35.99, "WBD": 27.42, "S": 17.97, "KHC": 23.53, "MDLZ": 61.84, "BIIB": 187.8, "NWS": 29.7, "CRWV": 101.28, "OKTA": 89.04, "PSTG": 76.03, "BIDU": 135.22, "NWSA": 25.77, "XEL": 79.86, "HON": 217.39, "MRNA": 48.12, "DOCU": 49.73, "MSTR": 165.81, "INTU": 383.93, "FOX": 57.38, "FOXA": 64.13, "NIO": 5.59, "TSLA": 417.26, "ADBE": 253.37, "ADP": 220.69, "EA": 201.59, "INFY": 12.77, "MSFT": 421.06, "TEAM": 86.23, "BILI": 18.3, "ADSK": 243.63, "ESTC": 55.28, "MDB": 329.14, "PATH": 10.77, "SNOW": 166.97, "WDAY": 126.61, "ZS": 174.45, "BROS": 55.11, "COIN": 191.29, "CPRT": 33.04, "DKNG": 25.01, "FUTU": 124.72, "INCY": 97.08, "JOBY": 10.07, "LI": 16.18, "NFLX": 88.09, "NTRA": 204.92, "NVO": 45.07, "PINS": 18.81, "TCOM": 48.56, "CDW": 106.21, "CTSH": 51.3, "JKHY": 139.82, "PEP": 149.29, "PLTR": 137.15, "QBTS": 19.3, "RGTI": 16.88, "ROP": 323.12, "SHOP": 105.01, "TOST": 23.32, "TRMB": 55.97, "WIT": 1.97, "NTES": 116.82, "DLTR": 93.48, "ALGN": 163.38, "AMGN": 331.57, "AVAV": 163.87, "BABA": 134.47, "BKNG": 156.95, "BNTX": 90.36, "CEG": 281.26, "CHTR": 144.61, "CHWY": 20.17, "CMCSA": 24.88, "CSGP": 34.01, "CTAS": 171.36, "DASH": 160.73, "EXC": 44.87, "FLUT": 96.75, "GILD": 130.69, "HOOD": 75.76, "IDXX": 553.58, "INSM": 107.91, "ISRG": 449.03, "KTOS": 55.82, "LULU": 125.19, "MELI": 1651.2, "META": 605.06, "ORLY": 92.22, "PCAR": 111.64, "PYPL": 44.38, "RBLX": 45.79, "REGN": 649.76, "RIVN": 13.73, "SPOT": 433.32, "TME": 9.15, "TMUS": 190.16, "TTD": 21.02, "ULTA": 493.12, "VRSK": 170.66, "VRTX": 430.44, "WTW": 254.05, "WYNN": 98.06, "Z": 36.47, "ZG": 36.92, "PDD": 98.15, "XPEV": 15.14};
+const PRICE_MAP_DATE = /*__PRICE_MAP_DATE__*/ "2026-05-20";
+
+const LS_KEY = "nasdaq_journal_trades_v2";
+const SYNC_KEY = "nasdaq_journal_sync";   // {bin, key}
+
+function getSyncCfg() {
+  try { return JSON.parse(localStorage.getItem(SYNC_KEY)) || null; } catch(e) { return null; }
+}
+function setSyncCfg(cfg) {
+  try {
+    if (cfg) localStorage.setItem(SYNC_KEY, JSON.stringify(cfg));
+    else localStorage.removeItem(SYNC_KEY);
+  } catch(e) {}
+}
+
+function loadTrades() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY)) || []; } catch(e) { return []; }
+}
+function saveTrades(t) {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(t)); } catch(e) { alert("שגיאה בשמירה"); }
+  cloudPush(t);   // also push to cloud if configured
+}
+let trades = loadTrades();
+
+// ---- Cloud sync (JSONBin) ----
+function setSyncStatus(msg, color) {
+  const el = document.getElementById("sync-status");
+  if (el) { el.textContent = msg; el.style.color = color || "var(--text-muted)"; }
+}
+async function cloudPull() {
+  const cfg = getSyncCfg();
+  if (!cfg) return null;
+  try {
+    setSyncStatus("☁️ טוען מהענן…");
+    const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.bin}/latest`, {
+      headers: { "X-Master-Key": cfg.key }
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const json = await res.json();
+    const record = json.record;
+    const arr = Array.isArray(record) ? record : (record && Array.isArray(record.trades) ? record.trades : []);
+    setSyncStatus("☁️ מסונכרן", "var(--success)");
+    return arr;
+  } catch (e) {
+    setSyncStatus("⚠️ שגיאת סנכרון: " + e.message, "var(--danger)");
+    return null;
+  }
+}
+let _pushTimer = null;
+function cloudPush(t) {
+  const cfg = getSyncCfg();
+  if (!cfg) return;
+  clearTimeout(_pushTimer);
+  _pushTimer = setTimeout(async () => {
+    try {
+      setSyncStatus("☁️ שומר בענן…");
+      const res = await fetch(`https://api.jsonbin.io/v3/b/${cfg.bin}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json", "X-Master-Key": cfg.key },
+        body: JSON.stringify(t)
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      setSyncStatus("☁️ מסונכרן", "var(--success)");
+    } catch (e) {
+      setSyncStatus("⚠️ שמירה בענן נכשלה: " + e.message, "var(--danger)");
+    }
+  }, 800);
+}
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+function todayStr() { return new Date().toISOString().slice(0,10); }
+function fmt(n) { return (n==null||isNaN(n)) ? "—" : "$" + Number(n).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmt0(n) { return (n==null||isNaN(n)) ? "—" : "$" + Number(n).toLocaleString("en-US",{maximumFractionDigits:0}); }
+function curPrice(ticker) { return PRICE_MAP[ticker] != null ? PRICE_MAP[ticker] : null; }
+
+// ---- Rendering ----
+function render() {
+  const open = trades.filter(t => t.status === "open");
+  const closed = trades.filter(t => t.status === "closed");
+  renderStats(open, closed);
+  renderOpen(open);
+  renderClosed(closed);
+  renderByTicker();
+}
+
+function renderStats(open, closed) {
+  let invested = 0, unreal = 0, real = 0, wins = 0;
+  for (const t of open) {
+    invested += t.buy_price * t.shares;
+    const cp = curPrice(t.ticker);
+    if (cp != null) unreal += (cp - t.buy_price) * t.shares;
+  }
+  for (const t of closed) {
+    real += (t.sell_price - t.buy_price) * t.shares;
+    if ((t.sell_price - t.buy_price) > 0) wins++;
+  }
+  const winRate = closed.length ? Math.round(wins/closed.length*100) : null;
+  const totalPnl = real + unreal;
+  const c = (v) => v > 0 ? "pos" : v < 0 ? "neg" : "muted";
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><div class="label">פוזיציות פתוחות</div><div class="value">${open.length}</div></div>
+    <div class="stat"><div class="label">הון מושקע (פתוח)</div><div class="value">${fmt0(invested)}</div></div>
+    <div class="stat"><div class="label">P&L לא ממומש</div><div class="value ${c(unreal)}">${unreal>=0?'+':''}${fmt0(unreal)}</div></div>
+    <div class="stat"><div class="label">P&L ממומש</div><div class="value ${c(real)}">${real>=0?'+':''}${fmt0(real)}</div></div>
+    <div class="stat"><div class="label">P&L כולל</div><div class="value ${c(totalPnl)}">${totalPnl>=0?'+':''}${fmt0(totalPnl)}</div></div>
+    <div class="stat"><div class="label">% הצלחה (סגורות)</div><div class="value">${winRate==null?'—':winRate+'%'}</div></div>
+  `;
+}
+
+function renderOpen(open) {
+  const area = document.getElementById("open-area");
+  if (!open.length) { area.innerHTML = `<div class="empty">אין פוזיציות פתוחות. לחץ "➕ הוסף פוזיציה".</div>`; return; }
+  let rows = "";
+  for (const t of open) {
+    const cp = curPrice(t.ticker);
+    const pnl = cp != null ? (cp - t.buy_price) * t.shares : null;
+    const pnlPct = cp != null ? (cp / t.buy_price - 1) * 100 : null;
+    const cls = pnl == null ? "muted" : pnl >= 0 ? "pos" : "neg";
+    rows += `
+      <tr>
+        <td><strong>${t.ticker}</strong></td>
+        <td>${t.buy_date}</td>
+        <td>${fmt(t.buy_price)}</td>
+        <td>${t.shares}</td>
+        <td>${cp != null ? fmt(cp) : '<span class="muted">—</span>'}</td>
+        <td class="${cls}">${pnl==null?'—':(pnl>=0?'+':'')+fmt0(pnl)}</td>
+        <td class="${cls}">${pnlPct==null?'—':(pnlPct>=0?'+':'')+pnlPct.toFixed(1)+'%'}</td>
+        <td><div class="row-actions">
+          <button class="mini-btn sell" onclick="openSell('${t.id}')">מכור</button>
+          <button class="mini-btn" onclick="openEdit('${t.id}')">ערוך</button>
+          <button class="mini-btn del" onclick="delTrade('${t.id}')">מחק</button>
+        </div></td>
+      </tr>`;
+  }
+  area.innerHTML = `<table><thead><tr>
+    <th>טיקר</th><th>תאריך קנייה</th><th>מחיר קנייה</th><th>כמות</th>
+    <th>מחיר נוכחי</th><th>P&L</th><th>%</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function renderClosed(closed) {
+  const area = document.getElementById("closed-area");
+  if (!closed.length) { area.innerHTML = `<div class="empty">אין פוזיציות סגורות עדיין.</div>`; return; }
+  let rows = "";
+  const sorted = [...closed].sort((a,b)=> (b.sell_date||"").localeCompare(a.sell_date||""));
+  for (const t of sorted) {
+    const pnl = (t.sell_price - t.buy_price) * t.shares;
+    const pnlPct = (t.sell_price / t.buy_price - 1) * 100;
+    const cls = pnl >= 0 ? "pos" : "neg";
+    rows += `
+      <tr>
+        <td><strong>${t.ticker}</strong></td>
+        <td class="muted">${t.buy_date} → ${t.sell_date}</td>
+        <td>${fmt(t.buy_price)} → ${fmt(t.sell_price)}</td>
+        <td>${t.shares}</td>
+        <td class="${cls}">${pnl>=0?'+':''}${fmt0(pnl)}</td>
+        <td class="${cls}">${pnlPct>=0?'+':''}${pnlPct.toFixed(1)}%</td>
+        <td><button class="mini-btn del" onclick="delTrade('${t.id}')">מחק</button></td>
+      </tr>`;
+  }
+  area.innerHTML = `<table><thead><tr>
+    <th>טיקר</th><th>תקופה</th><th>מחיר</th><th>כמות</th><th>P&L</th><th>%</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function renderByTicker() {
+  const area = document.getElementById("byticker-area");
+  const map = {};
+  for (const t of trades) {
+    if (!map[t.ticker]) map[t.ticker] = { realized:0, unreal:0, open:0, closed:0, invested:0 };
+    const m = map[t.ticker];
+    if (t.status === "closed") { m.realized += (t.sell_price-t.buy_price)*t.shares; m.closed++; }
+    else {
+      m.open++; m.invested += t.buy_price*t.shares;
+      const cp = curPrice(t.ticker);
+      if (cp != null) m.unreal += (cp-t.buy_price)*t.shares;
+    }
+  }
+  const keys = Object.keys(map);
+  if (!keys.length) { area.innerHTML = `<div class="empty">אין נתונים עדיין.</div>`; return; }
+  let rows = "";
+  for (const k of keys.sort()) {
+    const m = map[k];
+    const total = m.realized + m.unreal;
+    const cls = total>=0?"pos":"neg";
+    rows += `<tr>
+      <td><strong>${k}</strong></td>
+      <td>${m.open}</td><td>${m.closed}</td>
+      <td class="${m.realized>=0?'pos':'neg'}">${m.realized>=0?'+':''}${fmt0(m.realized)}</td>
+      <td class="${m.unreal>=0?'pos':'neg'}">${m.unreal>=0?'+':''}${fmt0(m.unreal)}</td>
+      <td class="${cls}">${total>=0?'+':''}${fmt0(total)}</td>
+    </tr>`;
+  }
+  area.innerHTML = `<table class="by-ticker"><thead><tr>
+    <th>טיקר</th><th>פתוחות</th><th>סגורות</th><th>P&L ממומש</th><th>P&L לא ממומש</th><th>סה"כ</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// ---- Add / Edit ----
+let editingId = null;
+function openAdd(prefillTicker) {
+  editingId = null;
+  document.getElementById("add-title").textContent = "➕ הוסף פוזיציה";
+  document.getElementById("f-ticker").value = prefillTicker || "";
+  document.getElementById("f-buydate").value = todayStr();
+  document.getElementById("f-shares").value = "";
+  document.getElementById("f-stop").value = "";
+  document.getElementById("f-t1").value = "";
+  document.getElementById("f-t2").value = "";
+  document.getElementById("f-notes").value = "";
+  document.getElementById("f-buyprice").value = "";
+  if (prefillTicker) fillFromScan(prefillTicker);
+  document.getElementById("add-overlay").classList.add("open");
+  document.getElementById("f-ticker").focus();
+}
+function openEdit(id) {
+  const t = trades.find(x=>x.id===id); if(!t) return;
+  editingId = id;
+  document.getElementById("add-title").textContent = "✏️ ערוך פוזיציה";
+  document.getElementById("f-ticker").value = t.ticker;
+  document.getElementById("f-buyprice").value = t.buy_price;
+  document.getElementById("f-shares").value = t.shares;
+  document.getElementById("f-buydate").value = t.buy_date;
+  document.getElementById("f-stop").value = t.stop ?? "";
+  document.getElementById("f-t1").value = t.t1 ?? "";
+  document.getElementById("f-t2").value = t.t2 ?? "";
+  document.getElementById("f-notes").value = t.notes ?? "";
+  document.getElementById("f-price-live").textContent = "";
+  document.getElementById("add-overlay").classList.add("open");
+}
+function fillFromScan(ticker) {
+  const cp = curPrice(ticker);
+  const live = document.getElementById("f-price-live");
+  if (cp != null) {
+    if (!document.getElementById("f-buyprice").value) document.getElementById("f-buyprice").value = cp;
+    live.textContent = `מחיר אחרון מהסריקה (${PRICE_MAP_DATE}): $${cp}`;
+  } else {
+    live.textContent = "המניה לא בסריקה האחרונה — הזן מחיר ידנית";
+  }
+}
+document.getElementById("f-ticker").addEventListener("input", e => {
+  const v = e.target.value.toUpperCase().trim();
+  if (v && !editingId) fillFromScan(v);
+});
+document.getElementById("add-btn").addEventListener("click", () => openAdd());
+document.getElementById("add-cancel").addEventListener("click", () => document.getElementById("add-overlay").classList.remove("open"));
+document.getElementById("add-save").addEventListener("click", () => {
+  const ticker = document.getElementById("f-ticker").value.toUpperCase().trim();
+  const buy_price = parseFloat(document.getElementById("f-buyprice").value);
+  const shares = parseInt(document.getElementById("f-shares").value);
+  if (!ticker || !buy_price || !shares || shares<=0) { alert("נא למלא טיקר, מחיר קנייה וכמות תקינים."); return; }
+  const payload = {
+    ticker, buy_price, shares,
+    buy_date: document.getElementById("f-buydate").value || todayStr(),
+    stop: parseFloat(document.getElementById("f-stop").value) || null,
+    t1: parseFloat(document.getElementById("f-t1").value) || null,
+    t2: parseFloat(document.getElementById("f-t2").value) || null,
+    notes: document.getElementById("f-notes").value || "",
+  };
+  if (editingId) {
+    const t = trades.find(x=>x.id===editingId);
+    Object.assign(t, payload);
+  } else {
+    trades.push({ id: uid(), status:"open", ...payload });
+  }
+  saveTrades(trades);
+  document.getElementById("add-overlay").classList.remove("open");
+  render();
+});
+
+// ---- Sell ----
+let sellingId = null;
+function openSell(id) {
+  const t = trades.find(x=>x.id===id); if(!t) return;
+  sellingId = id;
+  const cp = curPrice(t.ticker);
+  document.getElementById("sell-info").innerHTML =
+    `<strong>${t.ticker}</strong> — מחזיק ${t.shares} מניות במחיר ${fmt(t.buy_price)} (מ-${t.buy_date})`;
+  document.getElementById("s-price").value = cp != null ? cp : "";
+  document.getElementById("s-price-live").textContent = cp != null ? `מחיר אחרון: $${cp}` : "אין מחיר עדכני — הזן ידנית";
+  document.getElementById("s-shares").value = t.shares;
+  document.getElementById("s-shares").max = t.shares;
+  document.getElementById("s-shares-hint").textContent = `עד ${t.shares} מניות (פחות = מכירה חלקית)`;
+  document.getElementById("s-date").value = todayStr();
+  document.getElementById("sell-overlay").classList.add("open");
+}
+document.getElementById("sell-cancel").addEventListener("click", () => document.getElementById("sell-overlay").classList.remove("open"));
+document.getElementById("sell-save").addEventListener("click", () => {
+  const t = trades.find(x=>x.id===sellingId); if(!t) return;
+  const sell_price = parseFloat(document.getElementById("s-price").value);
+  let sellShares = parseInt(document.getElementById("s-shares").value);
+  const sell_date = document.getElementById("s-date").value || todayStr();
+  if (!sell_price || !sellShares || sellShares<=0) { alert("נא להזין מחיר וכמות מכירה תקינים."); return; }
+  if (sellShares > t.shares) { alert("כמות המכירה גדולה מהכמות שמוחזקת."); return; }
+
+  if (sellShares === t.shares) {
+    // Full close
+    t.status = "closed"; t.sell_price = sell_price; t.sell_date = sell_date;
+  } else {
+    // Partial: reduce open position, create a closed record for the sold part
+    t.shares -= sellShares;
+    trades.push({
+      id: uid(), ticker: t.ticker, status:"closed",
+      buy_date: t.buy_date, buy_price: t.buy_price, shares: sellShares,
+      sell_date, sell_price, stop:t.stop, t1:t.t1, t2:t.t2,
+      notes: (t.notes? t.notes+" · " : "") + "מכירה חלקית",
+    });
+  }
+  saveTrades(trades);
+  document.getElementById("sell-overlay").classList.remove("open");
+  render();
+});
+
+function delTrade(id) {
+  if (!confirm("למחוק את הרשומה?")) return;
+  trades = trades.filter(t=>t.id!==id);
+  saveTrades(trades);
+  render();
+}
+
+// ---- Export / Import ----
+document.getElementById("export-btn").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(trades, null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "trade_journal_export.json";
+  a.click();
+});
+document.getElementById("import-btn").addEventListener("click", () => document.getElementById("import-file").click());
+document.getElementById("import-file").addEventListener("change", (e) => {
+  const file = e.target.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const arr = JSON.parse(reader.result);
+      if (Array.isArray(arr)) { trades = arr; saveTrades(trades); render(); alert("יובאו "+arr.length+" רשומות."); }
+    } catch(err) { alert("קובץ לא תקין."); }
+  };
+  reader.readAsText(file);
+});
+
+// ---- Theme toggle ----
+window.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("theme-toggle");
+  const updateIcon = () => { btn.textContent = document.documentElement.getAttribute("data-theme")==="light" ? "☀️" : "🌙"; };
+  updateIcon();
+  btn.addEventListener("click", () => {
+    const isLight = document.documentElement.getAttribute("data-theme")==="light";
+    if (isLight) { document.documentElement.removeAttribute("data-theme"); try{localStorage.setItem("nasdaq_theme","dark");}catch(e){} }
+    else { document.documentElement.setAttribute("data-theme","light"); try{localStorage.setItem("nasdaq_theme","light");}catch(e){} }
+    updateIcon();
+  });
+
+  // Populate ticker datalist from PRICE_MAP
+  const dl = document.getElementById("ticker-list");
+  dl.innerHTML = Object.keys(PRICE_MAP).sort().map(t=>`<option value="${t}">`).join("");
+
+  // Sync modal wiring
+  const syncOverlay = document.getElementById("sync-overlay");
+  document.getElementById("sync-btn").addEventListener("click", () => {
+    const cfg = getSyncCfg();
+    document.getElementById("sync-bin").value = cfg?.bin || "";
+    document.getElementById("sync-key").value = cfg?.key || "";
+    syncOverlay.classList.add("open");
+  });
+  document.getElementById("sync-cancel").addEventListener("click", () => syncOverlay.classList.remove("open"));
+  document.getElementById("sync-disconnect").addEventListener("click", () => {
+    setSyncCfg(null);
+    setSyncStatus("סנכרון מנותק");
+    syncOverlay.classList.remove("open");
+  });
+  document.getElementById("sync-save").addEventListener("click", async () => {
+    const bin = document.getElementById("sync-bin").value.trim();
+    const key = document.getElementById("sync-key").value.trim();
+    if (!bin || !key) { alert("נא למלא BIN ID ו-Master Key."); return; }
+    setSyncCfg({ bin, key });
+    syncOverlay.classList.remove("open");
+    // Pull cloud data; if cloud is empty, push local trades up.
+    const cloud = await cloudPull();
+    if (cloud && cloud.length > 0) {
+      if (confirm(`נמצאו ${cloud.length} עסקאות בענן. לטעון אותן? (יחליף את הנתונים המקומיים)`)) {
+        trades = cloud; saveTrades(trades); render();
+      }
+    } else {
+      // Cloud empty → push current local trades
+      cloudPush(trades);
+    }
+  });
+
+  // Deep-link: ?add=TICKER opens the add modal pre-filled
+  const params = new URLSearchParams(location.search);
+  const addTicker = params.get("add");
+  if (addTicker) openAdd(addTicker.toUpperCase());
+
+  render();
+
+  // If cloud sync is configured, pull latest on load.
+  if (getSyncCfg()) {
+    cloudPull().then(cloud => {
+      if (cloud) { trades = cloud; try{localStorage.setItem(LS_KEY, JSON.stringify(trades));}catch(e){} render(); }
+    });
+  } else {
+    setSyncStatus("מקומי בלבד — לחץ ☁️ סנכרון לחיבור בין מכשירים");
+  }
+});
+</script>
+</body>
+</html>

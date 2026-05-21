@@ -1,0 +1,103 @@
+name: Daily NASDAQ Scan
+
+on:
+  # Run weekdays at 20:35 UTC (≈ 30 min after NASDAQ close, 16:00 ET in summer).
+  # Cron is in UTC. Adjust if you want a different time.
+  schedule:
+    - cron: "35 20 * * 1-5"
+  # Allow manual runs from the Actions tab.
+  workflow_dispatch:
+
+# Permissions needed to publish to GitHub Pages.
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  scan-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Write notification configs from secrets (optional)
+        run: |
+          # Email config (only if the EMAIL_* secrets are set)
+          if [ -n "${{ secrets.EMAIL_APP_PASSWORD }}" ]; then
+            cat > "$HOME/.nasdaq_scanner_email.json" <<EOF
+          {
+            "smtp_host": "smtp.gmail.com",
+            "smtp_port": 587,
+            "username": "${{ secrets.EMAIL_USERNAME }}",
+            "app_password": "${{ secrets.EMAIL_APP_PASSWORD }}",
+            "to": "${{ secrets.EMAIL_TO }}",
+            "from_name": "NASDAQ Scanner"
+          }
+          EOF
+          fi
+          # Telegram config (only if the TELEGRAM_* secrets are set)
+          if [ -n "${{ secrets.TELEGRAM_BOT_TOKEN }}" ]; then
+            cat > "$HOME/.nasdaq_scanner_telegram.json" <<EOF
+          {
+            "bot_token": "${{ secrets.TELEGRAM_BOT_TOKEN }}",
+            "chat_id": "${{ secrets.TELEGRAM_CHAT_ID }}"
+          }
+          EOF
+          fi
+
+      - name: Run daily scan
+        run: python3 scan_nasdaq.py
+
+      - name: Update performance stats
+        run: python3 track_performance.py || true
+
+      - name: Refresh archive index (keeps existing dated entries)
+        run: |
+          python3 - <<'PY'
+          import sys; sys.path.insert(0, ".")
+          from pathlib import Path
+          import scan_nasdaq as sc
+          sc._rebuild_archive_index(Path("archive"))
+          PY
+
+      - name: Commit refreshed data back to the repo
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Daily scan $(date -u +%Y-%m-%d)" || echo "nothing to commit"
+          git push || echo "nothing to push"
+
+      - name: Assemble the published site
+        run: |
+          mkdir -p _site/archive
+          cp dashboard_standalone.html _site/index.html
+          cp journal_app.html _site/journal_app.html 2>/dev/null || true
+          cp performance_summary.html _site/performance_summary.html 2>/dev/null || true
+          cp trade_journal.html _site/trade_journal.html 2>/dev/null || true
+          cp -r archive/* _site/archive/ 2>/dev/null || true
+          # The dashboard links to dashboard_standalone.html; add an alias.
+          cp dashboard_standalone.html _site/dashboard_standalone.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

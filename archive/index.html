@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head>
+<meta charset="utf-8"><title>NASDAQ Archive</title>
+
+<script>
+  (function() {
+    const saved = (function(){ try { return localStorage.getItem("nasdaq_theme"); } catch(e) { return null; } })();
+    const theme = saved || "dark";
+    if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+  })();
+</script>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b1220; --bg-card: #131c2f; --bg-elevated: #1a2236;
+    --text: #e2e8f0; --text-muted: #94a3b8; --text-subtle: #64748b;
+    --border: #2a3450; --border-strong: #3a4664; --hover: #1e293b;
+    --accent: #818cf8; --accent-text: #c7d2fe; --accent-bg: rgba(129,140,248,0.15);
+    --success: #10b981; --success-text: #6ee7b7;
+    --danger: #ef4444; --danger-text: #fca5a5;
+    --warning: #f59e0b; --warning-text: #fcd34d;
+    --table-head-bg: #1a2236;
+  }
+  [data-theme="light"] {
+    color-scheme: light;
+    --bg: #fafafa; --bg-card: #ffffff; --bg-elevated: #ffffff;
+    --text: #111; --text-muted: #6b7280; --text-subtle: #9ca3af;
+    --border: #e5e7eb; --border-strong: #d1d5db; --hover: #f9fafb;
+    --accent: #4f46e5; --accent-text: #3730a3; --accent-bg: #eef2ff;
+    --success: #059669; --success-text: #065f46;
+    --danger: #dc2626; --danger-text: #991b1b;
+    --warning: #d97706; --warning-text: #92400e;
+    --table-head-bg: #f9fafb;
+  }
+  body { background: var(--bg); color: var(--text); }
+  .nav-btn, .theme-toggle {
+    background: var(--bg-card); color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .nav-btn:hover, .theme-toggle:hover { background: var(--hover); }
+  .theme-toggle {
+    border-radius: 8px; padding: 8px 12px; font-size: 14px; cursor: pointer;
+  }
+  table { background: var(--bg-card); }
+  th { background: var(--table-head-bg); color: var(--text-muted); }
+  th, td { border-bottom: 1px solid var(--border); }
+  tr:hover { background: var(--hover); }
+  .stat, .empty, .help, .note {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .help, .note {
+    background: var(--accent-bg); border-color: var(--accent);
+    color: var(--accent-text);
+  }
+  a { color: var(--accent); }
+  code { background: var(--bg-elevated); color: var(--text); }
+</style>
+
+<style>
+  body { font-family:-apple-system,'Segoe UI','Heebo',sans-serif; margin:0; padding:24px; }
+  .wrap { max-width:900px; margin:0 auto; }
+  .top-nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; gap:8px; flex-wrap:wrap; }
+  .nav-links { display:flex; gap:8px; align-items:center; }
+  .nav-btn { display:inline-flex; gap:6px; padding:8px 14px; border-radius:8px;
+              font-size:13px; text-decoration:none; font-weight:500; }
+  h1 { margin:0 0 4px; }
+  .sub { color:var(--text-muted); font-size:14px; margin-bottom:24px; }
+  table { width:100%; border-collapse:collapse; border-radius:8px; overflow:hidden;
+            box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+  th, td { padding:10px 14px; text-align:start; font-size:14px; }
+  th { font-weight:600; }
+  a { text-decoration:none; }
+</style></head><body><div class="wrap">
+<div class="top-nav">
+  <h1>📚 ארכיון סריקות NASDAQ</h1>
+  <div class="nav-links">
+    <a class="nav-btn" href="../dashboard_standalone.html">← חזרה לדשבורד</a>
+    <button class="theme-toggle" id="theme-toggle" title="החלף בין כהה לבהיר">🌙</button>
+  </div>
+</div>
+<div class="sub">93 סריקות יומיות. לחץ על שורה לפתיחת הסריקה של אותו יום.</div>
+<table><thead><tr><th>תאריך</th><th style="text-align:center">🚀 פריצות</th><th style="text-align:center">👀 מעקב</th><th>טיקרים מובילים</th><th></th></tr></thead><tbody>
+        <tr onclick="location.href='dashboard_2026-05-20.html'" style="cursor:pointer">
+          <td><strong>2026-05-20</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">4</td>
+          <td style="text-align:center;color:var(--warning);">14</td>
+          <td style="font-size:12px;color:var(--text-muted);">ENPH, ASTS, AFRM, TTWO</td>
+          <td><a href="dashboard_2026-05-20.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-19.html'" style="cursor:pointer">
+          <td><strong>2026-05-19</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">18</td>
+          <td style="font-size:12px;color:var(--text-muted);">ENPH</td>
+          <td><a href="dashboard_2026-05-19.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-18.html'" style="cursor:pointer">
+          <td><strong>2026-05-18</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">12</td>
+          <td style="font-size:12px;color:var(--text-muted);">ENPH, BIDU, HON</td>
+          <td><a href="dashboard_2026-05-18.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-16.html'" style="cursor:pointer">
+          <td><strong>2026-05-16</strong> <span style="color:var(--text-muted);font-size:11px;">(Sat)</span></td>
+          <td style="text-align:center;color:var(--success);">5</td>
+          <td style="text-align:center;color:var(--warning);">12</td>
+          <td style="font-size:12px;color:var(--text-muted);">ENPH, CINF, LI, BIDU, MSTR</td>
+          <td><a href="dashboard_2026-05-16.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-15.html'" style="cursor:pointer">
+          <td><strong>2026-05-15</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">5</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">ENPH, BIDU, CINF, LI, MSTR</td>
+          <td><a href="dashboard_2026-05-15.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-14.html'" style="cursor:pointer">
+          <td><strong>2026-05-14</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">ENPH, BIDU</td>
+          <td><a href="dashboard_2026-05-14.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-13.html'" style="cursor:pointer">
+          <td><strong>2026-05-13</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">BIDU, FROG</td>
+          <td><a href="dashboard_2026-05-13.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-12.html'" style="cursor:pointer">
+          <td><strong>2026-05-12</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">8</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">ILMN, IONQ, NWSA, PSTG, BIDU</td>
+          <td><a href="dashboard_2026-05-12.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-11.html'" style="cursor:pointer">
+          <td><strong>2026-05-11</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">6</td>
+          <td style="text-align:center;color:var(--warning);">7</td>
+          <td style="font-size:12px;color:var(--text-muted);">ILMN, IONQ, AFRM, S, FROG</td>
+          <td><a href="dashboard_2026-05-11.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-08.html'" style="cursor:pointer">
+          <td><strong>2026-05-08</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">5</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">AFRM, PANW, CRWD, S, GILD</td>
+          <td><a href="dashboard_2026-05-08.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-07.html'" style="cursor:pointer">
+          <td><strong>2026-05-07</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">7</td>
+          <td style="font-size:12px;color:var(--text-muted);">AFRM</td>
+          <td><a href="dashboard_2026-05-07.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-06.html'" style="cursor:pointer">
+          <td><strong>2026-05-06</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">BROS, AFRM, GILD</td>
+          <td><a href="dashboard_2026-05-06.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-05.html'" style="cursor:pointer">
+          <td><strong>2026-05-05</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">QCOM</td>
+          <td><a href="dashboard_2026-05-05.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-04.html'" style="cursor:pointer">
+          <td><strong>2026-05-04</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">4</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-05-04.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-05-01.html'" style="cursor:pointer">
+          <td><strong>2026-05-01</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-05-01.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-30.html'" style="cursor:pointer">
+          <td><strong>2026-04-30</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">MDLZ</td>
+          <td><a href="dashboard_2026-04-30.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-29.html'" style="cursor:pointer">
+          <td><strong>2026-04-29</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">MDLZ, KDP, CDNS</td>
+          <td><a href="dashboard_2026-04-29.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-28.html'" style="cursor:pointer">
+          <td><strong>2026-04-28</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">4</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">ETSY, CDNS, NXPI, NWSA</td>
+          <td><a href="dashboard_2026-04-28.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-27.html'" style="cursor:pointer">
+          <td><strong>2026-04-27</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">CDNS, NXPI, SNPS</td>
+          <td><a href="dashboard_2026-04-27.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-24.html'" style="cursor:pointer">
+          <td><strong>2026-04-24</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">CDNS, SNPS</td>
+          <td><a href="dashboard_2026-04-24.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-23.html'" style="cursor:pointer">
+          <td><strong>2026-04-23</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">4</td>
+          <td style="text-align:center;color:var(--warning);">4</td>
+          <td style="font-size:12px;color:var(--text-muted);">CHTR, NXPI, CMCSA, NWS</td>
+          <td><a href="dashboard_2026-04-23.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-22.html'" style="cursor:pointer">
+          <td><strong>2026-04-22</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">AAPL, CRWV, BNTX</td>
+          <td><a href="dashboard_2026-04-22.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-21.html'" style="cursor:pointer">
+          <td><strong>2026-04-21</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">AAPL, CMCSA, ZM</td>
+          <td><a href="dashboard_2026-04-21.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-20.html'" style="cursor:pointer">
+          <td><strong>2026-04-20</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">CRWV</td>
+          <td><a href="dashboard_2026-04-20.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-17.html'" style="cursor:pointer">
+          <td><strong>2026-04-17</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">CMCSA, RIVN</td>
+          <td><a href="dashboard_2026-04-17.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-16.html'" style="cursor:pointer">
+          <td><strong>2026-04-16</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">CRWV, NFLX</td>
+          <td><a href="dashboard_2026-04-16.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-15.html'" style="cursor:pointer">
+          <td><strong>2026-04-15</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">NVDA, AVGO</td>
+          <td><a href="dashboard_2026-04-15.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-14.html'" style="cursor:pointer">
+          <td><strong>2026-04-14</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-04-14.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-13.html'" style="cursor:pointer">
+          <td><strong>2026-04-13</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">HPE</td>
+          <td><a href="dashboard_2026-04-13.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-10.html'" style="cursor:pointer">
+          <td><strong>2026-04-10</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">NIO, SMMT</td>
+          <td><a href="dashboard_2026-04-10.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-09.html'" style="cursor:pointer">
+          <td><strong>2026-04-09</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">FFIV, NIO</td>
+          <td><a href="dashboard_2026-04-09.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-08.html'" style="cursor:pointer">
+          <td><strong>2026-04-08</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">FFIV, HPE, RKLB</td>
+          <td><a href="dashboard_2026-04-08.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-07.html'" style="cursor:pointer">
+          <td><strong>2026-04-07</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="font-size:12px;color:var(--text-muted);">GH</td>
+          <td><a href="dashboard_2026-04-07.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-06.html'" style="cursor:pointer">
+          <td><strong>2026-04-06</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-04-06.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-02.html'" style="cursor:pointer">
+          <td><strong>2026-04-02</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">ARM</td>
+          <td><a href="dashboard_2026-04-02.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-04-01.html'" style="cursor:pointer">
+          <td><strong>2026-04-01</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">ARM</td>
+          <td><a href="dashboard_2026-04-01.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-31.html'" style="cursor:pointer">
+          <td><strong>2026-03-31</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">FAST, ARM</td>
+          <td><a href="dashboard_2026-03-31.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-30.html'" style="cursor:pointer">
+          <td><strong>2026-03-30</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="font-size:12px;color:var(--text-muted);">ARM</td>
+          <td><a href="dashboard_2026-03-30.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-27.html'" style="cursor:pointer">
+          <td><strong>2026-03-27</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">ARM</td>
+          <td><a href="dashboard_2026-03-27.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-26.html'" style="cursor:pointer">
+          <td><strong>2026-03-26</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-26.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-25.html'" style="cursor:pointer">
+          <td><strong>2026-03-25</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-25.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-24.html'" style="cursor:pointer">
+          <td><strong>2026-03-24</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-24.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-23.html'" style="cursor:pointer">
+          <td><strong>2026-03-23</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-23.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-20.html'" style="cursor:pointer">
+          <td><strong>2026-03-20</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">11</td>
+          <td style="font-size:12px;color:var(--text-muted);">ABNB</td>
+          <td><a href="dashboard_2026-03-20.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-19.html'" style="cursor:pointer">
+          <td><strong>2026-03-19</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-19.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-18.html'" style="cursor:pointer">
+          <td><strong>2026-03-18</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">NET, VKTX</td>
+          <td><a href="dashboard_2026-03-18.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-17.html'" style="cursor:pointer">
+          <td><strong>2026-03-17</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-17.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-16.html'" style="cursor:pointer">
+          <td><strong>2026-03-16</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-16.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-13.html'" style="cursor:pointer">
+          <td><strong>2026-03-13</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-13.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-12.html'" style="cursor:pointer">
+          <td><strong>2026-03-12</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">MRVL</td>
+          <td><a href="dashboard_2026-03-12.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-11.html'" style="cursor:pointer">
+          <td><strong>2026-03-11</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-11.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-10.html'" style="cursor:pointer">
+          <td><strong>2026-03-10</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">JKHY</td>
+          <td><a href="dashboard_2026-03-10.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-09.html'" style="cursor:pointer">
+          <td><strong>2026-03-09</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">SIRI, JKHY</td>
+          <td><a href="dashboard_2026-03-09.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-06.html'" style="cursor:pointer">
+          <td><strong>2026-03-06</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">4</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-03-06.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-05.html'" style="cursor:pointer">
+          <td><strong>2026-03-05</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">ABNB</td>
+          <td><a href="dashboard_2026-03-05.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-04.html'" style="cursor:pointer">
+          <td><strong>2026-03-04</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">NTLA, SIRI</td>
+          <td><a href="dashboard_2026-03-04.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-03.html'" style="cursor:pointer">
+          <td><strong>2026-03-03</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">NTLA</td>
+          <td><a href="dashboard_2026-03-03.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-03-02.html'" style="cursor:pointer">
+          <td><strong>2026-03-02</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">NTLA</td>
+          <td><a href="dashboard_2026-03-02.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-27.html'" style="cursor:pointer">
+          <td><strong>2026-02-27</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">8</td>
+          <td style="font-size:12px;color:var(--text-muted);">CTAS, DXCM, MDLZ</td>
+          <td><a href="dashboard_2026-02-27.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-26.html'" style="cursor:pointer">
+          <td><strong>2026-02-26</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">CTAS, ILMN</td>
+          <td><a href="dashboard_2026-02-26.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-25.html'" style="cursor:pointer">
+          <td><strong>2026-02-25</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">CTAS</td>
+          <td><a href="dashboard_2026-02-25.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-24.html'" style="cursor:pointer">
+          <td><strong>2026-02-24</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-02-24.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-23.html'" style="cursor:pointer">
+          <td><strong>2026-02-23</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">KDP</td>
+          <td><a href="dashboard_2026-02-23.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-20.html'" style="cursor:pointer">
+          <td><strong>2026-02-20</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">EXC</td>
+          <td><a href="dashboard_2026-02-20.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-19.html'" style="cursor:pointer">
+          <td><strong>2026-02-19</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">1</td>
+          <td style="font-size:12px;color:var(--text-muted);">EXC</td>
+          <td><a href="dashboard_2026-02-19.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-18.html'" style="cursor:pointer">
+          <td><strong>2026-02-18</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">2</td>
+          <td style="font-size:12px;color:var(--text-muted);">EXC</td>
+          <td><a href="dashboard_2026-02-18.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-17.html'" style="cursor:pointer">
+          <td><strong>2026-02-17</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="font-size:12px;color:var(--text-muted);">EXC</td>
+          <td><a href="dashboard_2026-02-17.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-13.html'" style="cursor:pointer">
+          <td><strong>2026-02-13</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">FTNT</td>
+          <td><a href="dashboard_2026-02-13.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-12.html'" style="cursor:pointer">
+          <td><strong>2026-02-12</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">7</td>
+          <td style="font-size:12px;color:var(--text-muted);">NVDA, FAST, MDLZ</td>
+          <td><a href="dashboard_2026-02-12.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-11.html'" style="cursor:pointer">
+          <td><strong>2026-02-11</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">9</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-02-11.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-10.html'" style="cursor:pointer">
+          <td><strong>2026-02-10</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">JKHY, XEL</td>
+          <td><a href="dashboard_2026-02-10.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-09.html'" style="cursor:pointer">
+          <td><strong>2026-02-09</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">FAST</td>
+          <td><a href="dashboard_2026-02-09.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-06.html'" style="cursor:pointer">
+          <td><strong>2026-02-06</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">8</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-02-06.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-05.html'" style="cursor:pointer">
+          <td><strong>2026-02-05</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">11</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-02-05.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-04.html'" style="cursor:pointer">
+          <td><strong>2026-02-04</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">19</td>
+          <td style="font-size:12px;color:var(--text-muted);">CMCSA</td>
+          <td><a href="dashboard_2026-02-04.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-03.html'" style="cursor:pointer">
+          <td><strong>2026-02-03</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-02-03.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-02-02.html'" style="cursor:pointer">
+          <td><strong>2026-02-02</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">7</td>
+          <td style="font-size:12px;color:var(--text-muted);">ENPH</td>
+          <td><a href="dashboard_2026-02-02.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-30.html'" style="cursor:pointer">
+          <td><strong>2026-01-30</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">7</td>
+          <td style="font-size:12px;color:var(--text-muted);">ZM, NVDA, NTLA</td>
+          <td><a href="dashboard_2026-01-30.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-29.html'" style="cursor:pointer">
+          <td><strong>2026-01-29</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">4</td>
+          <td style="font-size:12px;color:var(--text-muted);">ZM, ENPH</td>
+          <td><a href="dashboard_2026-01-29.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-28.html'" style="cursor:pointer">
+          <td><strong>2026-01-28</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">ZM, ORLY, NTLA</td>
+          <td><a href="dashboard_2026-01-28.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-27.html'" style="cursor:pointer">
+          <td><strong>2026-01-27</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">ZM, NTLA, CMCSA</td>
+          <td><a href="dashboard_2026-01-27.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-26.html'" style="cursor:pointer">
+          <td><strong>2026-01-26</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">4</td>
+          <td style="font-size:12px;color:var(--text-muted);">ZM, NTLA</td>
+          <td><a href="dashboard_2026-01-26.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-23.html'" style="cursor:pointer">
+          <td><strong>2026-01-23</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--text-subtle);">0</td>
+          <td style="text-align:center;color:var(--warning);">6</td>
+          <td style="font-size:12px;color:var(--text-muted);">—</td>
+          <td><a href="dashboard_2026-01-23.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-22.html'" style="cursor:pointer">
+          <td><strong>2026-01-22</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">1</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">BNTX</td>
+          <td><a href="dashboard_2026-01-22.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-21.html'" style="cursor:pointer">
+          <td><strong>2026-01-21</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">7</td>
+          <td style="text-align:center;color:var(--warning);">16</td>
+          <td style="font-size:12px;color:var(--text-muted);">XEL, BNTX, FANG, NVO, SBUX</td>
+          <td><a href="dashboard_2026-01-21.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-20.html'" style="cursor:pointer">
+          <td><strong>2026-01-20</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">7</td>
+          <td style="text-align:center;color:var(--warning);">10</td>
+          <td style="font-size:12px;color:var(--text-muted);">HON, PEP, COST, NVO, SBUX</td>
+          <td><a href="dashboard_2026-01-20.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-16.html'" style="cursor:pointer">
+          <td><strong>2026-01-16</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">5</td>
+          <td style="text-align:center;color:var(--warning);">11</td>
+          <td style="font-size:12px;color:var(--text-muted);">FANG, NVO, HON, COST, XEL</td>
+          <td><a href="dashboard_2026-01-16.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-15.html'" style="cursor:pointer">
+          <td><strong>2026-01-15</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">8</td>
+          <td style="text-align:center;color:var(--warning);">8</td>
+          <td style="font-size:12px;color:var(--text-muted);">FANG, HON, SBUX, AVAV, ETSY</td>
+          <td><a href="dashboard_2026-01-15.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-14.html'" style="cursor:pointer">
+          <td><strong>2026-01-14</strong> <span style="color:var(--text-muted);font-size:11px;">(Wed)</span></td>
+          <td style="text-align:center;color:var(--success);">6</td>
+          <td style="text-align:center;color:var(--warning);">10</td>
+          <td style="font-size:12px;color:var(--text-muted);">GFS, FANG, AVAV, HON, TXN</td>
+          <td><a href="dashboard_2026-01-14.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-13.html'" style="cursor:pointer">
+          <td><strong>2026-01-13</strong> <span style="color:var(--text-muted);font-size:11px;">(Tue)</span></td>
+          <td style="text-align:center;color:var(--success);">4</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">BILI, AVAV, OKTA, JOBY</td>
+          <td><a href="dashboard_2026-01-13.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-12.html'" style="cursor:pointer">
+          <td><strong>2026-01-12</strong> <span style="color:var(--text-muted);font-size:11px;">(Mon)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">3</td>
+          <td style="font-size:12px;color:var(--text-muted);">BILI, AVAV, SNPS</td>
+          <td><a href="dashboard_2026-01-12.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-09.html'" style="cursor:pointer">
+          <td><strong>2026-01-09</strong> <span style="color:var(--text-muted);font-size:11px;">(Fri)</span></td>
+          <td style="text-align:center;color:var(--success);">3</td>
+          <td style="text-align:center;color:var(--warning);">5</td>
+          <td style="font-size:12px;color:var(--text-muted);">BILI, AVAV, JOBY</td>
+          <td><a href="dashboard_2026-01-09.html" style="color:var(--accent);">פתח →</a></td>
+        </tr>
+        <tr onclick="location.href='dashboard_2026-01-08.html'" style="cursor:pointer">
+          <td><strong>2026-01-08</strong> <span style="color:var(--text-muted);font-size:11px;">(Thu)</span></td>
+          <td style="text-align:center;color:var(--success);">2</td>
+          <td style="text-align:center;color:var(--warning);">4</td>
+          <td style="font-size:12px;color:var(--text-muted);">BILI, JOBY</td>
+          <td><a href="dashboard_2026-01-08.html" style="color:var(--accent);">פתח →</a></td>
+        </tr></tbody></table>
+</div>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    const updateIcon = () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      btn.textContent = isLight ? "☀️" : "🌙";
+    };
+    updateIcon();
+    btn.addEventListener("click", () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      if (isLight) {
+        document.documentElement.removeAttribute("data-theme");
+        try { localStorage.setItem("nasdaq_theme", "dark"); } catch(e){}
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        try { localStorage.setItem("nasdaq_theme", "light"); } catch(e){}
+      }
+      updateIcon();
+    });
+  });
+</script>
+
+</body></html>

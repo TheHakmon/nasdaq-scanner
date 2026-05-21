@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<title>NASDAQ Scan — 2026-05-15</title>
+<script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Heebo", sans-serif;
+    background: #fafafa;
+    color: #1a1a1a;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 24px 20px 48px; }
+  h1 { margin: 0 0 4px; font-size: 22px; font-weight: 700; }
+  .sub { color: #666; font-size: 13px; margin-bottom: 24px; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #eef2ff;
+    color: #3730a3;
+    margin-inline-start: 6px;
+    vertical-align: middle;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .stat {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stat .label { font-size: 12px; color: #6b7280; }
+  .stat .value { font-size: 24px; font-weight: 700; margin-top: 4px; }
+  .stat.alert .value { color: #059669; }
+  .stat.warn .value { color: #d97706; }
+
+  .section { margin-top: 28px; }
+  .section h2 {
+    font-size: 16px; margin: 0 0 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 16px;
+  }
+  .chart {
+    width: 100%; display: block; margin-top: 10px; border-radius: 6px;
+    border: 1px solid #e5e7eb;
+  }
+  .tv-chart {
+    width: 100%; height: 320px; margin-top: 10px;
+    border-radius: 6px; border: 1px solid #e5e7eb; position: relative;
+    background: white;
+  }
+  .tv-legend {
+    position: absolute; top: 8px; right: 8px; z-index: 5;
+    background: rgba(255,255,255,0.92); padding: 6px 10px;
+    border-radius: 6px; font-size: 11px; border: 1px solid #e5e7eb;
+    pointer-events: none;
+  }
+  .tv-legend .ln { display: inline-block; width: 12px; height: 2px; vertical-align: middle; margin-inline-end: 4px; }
+  .ext-link {
+    display: inline-block; margin-top: 8px; padding: 6px 12px;
+    background: #1e293b; color: white; border-radius: 6px;
+    font-size: 12px; text-decoration: none; font-weight: 600;
+  }
+  .ext-link:hover { background: #334155; }
+  .copy-btn {
+    display: inline-block; margin-top: 8px; margin-inline-start: 6px;
+    padding: 6px 12px; background: #f5f3ff; color: #6d28d9;
+    border: 1px solid #c4b5fd; border-radius: 6px;
+    font-size: 12px; cursor: pointer; font-weight: 600;
+  }
+  .copy-btn:hover { background: #ede9fe; }
+  .trade-levels {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+    margin-top: 10px;
+  }
+  .lvl {
+    padding: 6px 8px; border-radius: 6px; font-size: 11px; text-align: center;
+    border: 1px solid #e5e7eb;
+  }
+  .lvl .lvl-label { color: #6b7280; font-size: 10px; }
+  .lvl .lvl-val { font-weight: 700; font-size: 13px; margin-top: 2px; }
+  .lvl.stop { background: #fef2f2; border-color: #fecaca; }
+  .lvl.stop .lvl-val { color: #dc2626; }
+  .lvl.tgt1 { background: #ecfdf5; border-color: #a7f3d0; }
+  .lvl.tgt1 .lvl-val { color: #059669; }
+  .lvl.tgt2 { background: #d1fae5; border-color: #6ee7b7; }
+  .lvl.tgt2 .lvl-val { color: #065f46; }
+  .sector-pill {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; background: #f3f4f6; color: #374151; margin-inline-start: 6px;
+  }
+  .earnings-warn {
+    background: #fef3c7; border: 1px solid #fde68a; color: #92400e;
+    padding: 6px 10px; border-radius: 6px; font-size: 12px; margin-top: 8px;
+    font-weight: 600;
+  }
+  .star { color: #f59e0b; }
+  .track-record {
+    padding: 10px 12px; border-radius: 8px; margin-top: 10px;
+    font-size: 12px; border-inline-start: 4px solid;
+  }
+  .track-record .tr-head { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .track-record .tr-stats { color: #4b5563; line-height: 1.5; }
+  .track-record .tr-history { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .track-record .tr-hist-item {
+    background: white; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; border: 1px solid #e5e7eb;
+  }
+  .track-record .tr-pos { color: #059669; font-weight: 600; }
+  .track-record .tr-neg { color: #dc2626; font-weight: 600; }
+  .sector-strength {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: 999px; font-size: 11px;
+    margin-inline-start: 6px; font-weight: 600;
+  }
+  .high52-pill {
+    background: #fef3c7; color: #92400e; border: 1px solid #fde68a;
+    padding: 2px 8px; border-radius: 999px; font-size: 11px;
+    margin-inline-start: 6px; font-weight: 600;
+  }
+  .news-list {
+    margin-top: 10px; padding: 10px 12px; background: #f9fafb;
+    border-radius: 8px; border: 1px solid #e5e7eb;
+  }
+  .news-list .nh { font-size: 11px; color: #6b7280; font-weight: 700;
+                   margin-bottom: 4px; letter-spacing: 0.5px; }
+  .news-item {
+    display: block; padding: 4px 0; font-size: 12px;
+    color: #1f2937; text-decoration: none; border-bottom: 1px solid #f3f4f6;
+    line-height: 1.4;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-item:hover { color: #4f46e5; }
+  .news-item .np { color: #9ca3af; font-size: 10px; }
+  .position-calc {
+    background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+    border: 1px solid #c4b5fd; border-radius: 10px;
+    padding: 14px 18px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .position-calc h3 { margin: 0; font-size: 14px; color: #4c1d95; }
+  .position-calc label { font-size: 12px; color: #5b21b6; display: flex; gap: 6px; align-items: center; }
+  .position-calc input {
+    width: 110px; padding: 6px 10px; border: 1px solid #c4b5fd;
+    border-radius: 6px; font-size: 13px; background: white;
+  }
+  .position-calc input:focus { outline: none; border-color: #7c3aed; }
+  .position-calc .pc-hint { font-size: 11px; color: #6d28d9; }
+  .position-block {
+    margin-top: 10px; padding: 10px 12px; border-radius: 8px;
+    background: #eef2ff; border: 1px solid #c7d2fe; font-size: 13px;
+  }
+  .position-block .pb-row { display: flex; justify-content: space-between; padding: 2px 0; }
+  .position-block .pb-label { color: #4338ca; }
+  .position-block .pb-val { font-weight: 700; color: #1e1b4b; font-variant-numeric: tabular-nums; }
+  .card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .card .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .card .ticker { font-size: 18px; font-weight: 700; color: #111; }
+  .card .price { font-size: 16px; color: #374151; }
+  .card .reasons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: #374151;
+  }
+  .chip.green { background: #d1fae5; color: #065f46; }
+  .chip.blue  { background: #dbeafe; color: #1e40af; }
+  .chip.amber { background: #fef3c7; color: #92400e; }
+  .meta { font-size: 12px; color: #6b7280; margin-top: 6px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .summary { font-size: 13px; color: #1f2937; margin-top: 10px; line-height: 1.55;
+             background: #f9fafb; padding: 10px 12px; border-radius: 8px;
+             border-inline-start: 3px solid #4f46e5; }
+  .score-pill {
+    background: #4f46e5; color: white; border-radius: 999px;
+    padding: 2px 10px; font-size: 12px; font-weight: 700;
+  }
+  .empty {
+    text-align: center; padding: 32px; color: #6b7280;
+    background: white; border: 1px dashed #d1d5db; border-radius: 10px;
+  }
+  .error {
+    background: #fef2f2; border: 1px solid #fecaca; color: #991b1b;
+    padding: 12px 14px; border-radius: 10px; margin-bottom: 16px;
+    font-size: 13px;
+  }
+  .table-wrap {
+    background: white; border: 1px solid #e5e7eb; border-radius: 10px;
+    padding: 12px; overflow: auto;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 8px 10px; text-align: start; border-bottom: 1px solid #f3f4f6; }
+  th { font-weight: 600; color: #6b7280; background: #fafafa; position: sticky; top: 0; }
+  tr:hover { background: #fafbfc; }
+  .num { font-variant-numeric: tabular-nums; text-align: end; }
+  .pos { color: #059669; }
+  .neg { color: #dc2626; }
+  .footer { margin-top: 32px; color: #9ca3af; font-size: 11px; text-align: center; }
+  .skeleton {
+    background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite;
+    border-radius: 6px;
+    height: 14px;
+  }
+  @keyframes shimmer { 0%{background-position:-200% 0;} 100%{background-position:200% 0;} }
+  .top-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 4px; flex-wrap: wrap; gap: 8px;
+  }
+  .nav-links { display: flex; gap: 8px; }
+  .nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 8px; font-size: 13px;
+    background: white; color: #374151; text-decoration: none;
+    border: 1px solid #e5e7eb; font-weight: 500;
+  }
+  .nav-btn:hover { background: #f9fafb; border-color: #d1d5db; }
+  .nav-btn.primary { background: #4f46e5; color: white; border-color: #4f46e5; }
+  .nav-btn.primary:hover { background: #4338ca; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top-nav">
+      <h1 style="margin:0">NASDAQ Breakout Scanner <span id="status-badge" class="badge">טוען…</span></h1>
+      <div class="nav-links">
+        <a class="nav-btn" href="archive/index.html" title="ארכיון יומי של כל הסריקות">📚 ארכיון</a>
+        <a class="nav-btn" href="performance_summary.html" title="סטטיסטיקת ביצועי הסקנר">📊 ביצועים</a>
+        <a class="nav-btn" href="trade_journal.html" title="יומן מסחר ו-Paper Trading">📓 יומן</a>
+      </div>
+    </div>
+    <div class="sub" id="sub">סורק מניות מעל $5B לפריצות מעל ממוצע 150 בנפח מוגבר</div>
+
+    <div id="error-area"></div>
+
+    <div class="position-calc">
+      <h3>💰 מחשבון גודל פוזיציה</h3>
+      <label>גודל חשבון: $
+        <input type="number" id="pc-account" min="100" step="100" value="10000">
+      </label>
+      <label>סיכון לעסקה:
+        <input type="number" id="pc-risk" min="0.1" max="10" step="0.1" value="1">%
+      </label>
+      <span class="pc-hint">כל כרטיס יציג כמה מניות לקנות כך שהפסד מקסימלי = הסיכון שהגדרת</span>
+    </div>
+
+    <div class="grid" id="stats">
+      <div class="stat"><div class="label">פריצות היום</div><div class="value skeleton"></div></div>
+      <div class="stat"><div class="label">רשימת מעקב</div><div class="value skeleton"></div></div>
+      <div class="stat"><div class="label">נסרקו</div><div class="value skeleton"></div></div>
+      <div class="stat"><div class="label">סריקה אחרונה</div><div class="value skeleton"></div></div>
+    </div>
+
+    <div class="section" id="breakouts-section">
+      <h2>🚀 פריצות מעניינות <span class="badge" id="b-count">—</span></h2>
+      <div id="breakouts" class="card-grid"></div>
+    </div>
+
+    <div class="section" id="watchlist-section">
+      <h2>👀 רשימת מעקב <span class="badge" id="w-count">—</span></h2>
+      <div id="watchlist" class="card-grid"></div>
+    </div>
+
+    <div class="section" id="personal-section" style="display:none">
+      <h2>⭐ הרשימה האישית שלך <span class="badge" id="p-count">—</span></h2>
+      <div id="personal" class="card-grid"></div>
+    </div>
+
+    <div class="section" id="all-section" style="display:none">
+      <h2>כל המניות שנסרקו</h2>
+      <div class="table-wrap">
+        <table id="all-table">
+          <thead>
+            <tr>
+              <th>טיקר</th>
+              <th class="num">מחיר</th>
+              <th class="num">% מעל MA150</th>
+              <th class="num">% מעל MA50</th>
+              <th class="num">RSI</th>
+              <th class="num">נפח ×</th>
+              <th class="num">RS vs SPY</th>
+              <th class="num">ציון</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      קריטריונים: שווי שוק > $5B · פריצה מעל MA150 ב-5 ימים אחרונים · נפח > 1.5× ממוצע 50 ימים · RSI 50-75 · Stage 2 alignment · RS מעל S&P
+    </div>
+  </div>
+
+<script>
+const __INLINE_DATA__ = {"generated_at": "2026-05-15T00:00:00-04:00", "as_of_date": "2026-05-15", "universe_size": 198, "scanned": 192, "errors": 0, "criteria": {"min_market_cap_usd": 5000000000, "breakout_lookback_days": 5, "min_volume_multiplier": 1.5, "rsi_band": [50, 75]}, "breakouts": [{"ticker": "ENPH", "passed": 1.0, "score": 85, "summary": "חצתה את MA150 לאחרונה (כעת +44.8% מעליו). נפח ×3.0 מהממוצע — אישור חזק. Stage 2: מחיר>MA50>MA150>MA200. ⚠️ RSI 80 - קניית יתר. חוזק יחסי 1.10 מעל S&P. ✅ מועמדת לכניסה.", "chart_b64": null, "price": 52.89, "ma150": 36.52, "ma50": 37.67, "ma200": 36.44, "pct_above_ma150": 44.81, "pct_above_ma50": 40.4, "rsi": 79.8, "vol_ratio": 3.03, "rs_vs_spy": 1.1, "is_recent_breakout": true, "stage2": true, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "נפח גבוה (×3.0)", "Stage 2 alignment", "RSI גבוה (80)", "RS=1.10 מעל S&P"]}, {"ticker": "BIDU", "passed": 1.0, "score": 70, "summary": "חצתה את MA150 לאחרונה (כעת +5.4% מעליו). נפח ×2.0 מהממוצע — אישור חזק. RSI 54 בריא. ✅ מועמדת לכניסה.", "chart_b64": null, "price": 135.33, "ma150": 128.41, "ma50": 122.7, "ma200": 123.56, "pct_above_ma150": 5.39, "pct_above_ma50": 10.29, "rsi": 53.6, "vol_ratio": 2.04, "rs_vs_spy": 0.9, "is_recent_breakout": true, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "נפח גבוה (×2.0)", "RSI=54"]}, {"ticker": "CINF", "passed": 1.0, "score": 70, "summary": "חצתה את MA150 לאחרונה (כעת +3.1% מעליו). Stage 2: מחיר>MA50>MA150>MA200. RSI 60 בריא. ✅ מועמדת לכניסה.", "chart_b64": null, "price": 166.42, "ma150": 161.44, "ma50": 162.05, "ma200": 159.18, "pct_above_ma150": 3.09, "pct_above_ma50": 2.7, "rsi": 59.7, "vol_ratio": 1.1, "rs_vs_spy": 0.93, "is_recent_breakout": true, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "Stage 2 alignment", "RSI=60"]}, {"ticker": "LI", "passed": 1.0, "score": 70, "summary": "חצתה את MA150 לאחרונה (כעת +1.0% מעליו). נפח ×1.6 מהממוצע — אישור חזק. RSI 52 בריא. ✅ מועמדת לכניסה.", "chart_b64": null, "price": 18.51, "ma150": 18.33, "ma50": 18.1, "ma200": 19.9, "pct_above_ma150": 1.0, "pct_above_ma50": 2.27, "rsi": 51.6, "vol_ratio": 1.63, "rs_vs_spy": 0.9, "is_recent_breakout": true, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "נפח גבוה (×1.6)", "RSI=52"]}, {"ticker": "MSTR", "passed": 1.0, "score": 65, "summary": "חצתה את MA150 לאחרונה (כעת +1.5% מעליו). RSI 54 בריא. חוזק יחסי 1.33 מעל S&P. 🔶 על הגבול.", "chart_b64": null, "price": 177.42, "ma150": 174.82, "ma50": 152.14, "ma200": 218.01, "pct_above_ma150": 1.49, "pct_above_ma50": 16.62, "rsi": 54.4, "vol_ratio": 1.05, "rs_vs_spy": 1.33, "is_recent_breakout": true, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "RSI=54", "RS=1.33 מעל S&P"]}], "watchlist": [{"ticker": "AMAT", "passed": 1.0, "score": 70, "summary": "מעל MA150 ב-+39.1%. נפח ×1.9 מהממוצע — אישור חזק. Stage 2: מחיר>MA50>MA150>MA200. RSI 62 בריא. חוזק יחסי 1.22 מעל S&P. ✅ מועמדת לכניסה.", "chart_b64": null, "price": 436.62, "ma150": 313.87, "ma50": 380.81, "ma200": 280.81, "pct_above_ma150": 39.11, "pct_above_ma50": 14.66, "rsi": 61.7, "vol_ratio": 1.9, "rs_vs_spy": 1.22, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "נפח גבוה (×1.9)", "Stage 2 alignment", "RSI=62", "RS=1.22 מעל S&P"]}, {"ticker": "ZM", "passed": 1.0, "score": 65, "summary": "מעל MA150 ב-+16.3%. נפח ×1.6 מהממוצע — אישור חזק. Stage 2: מחיר>MA50>MA150>MA200. RSI 56 בריא. 🔶 על הגבול.", "chart_b64": null, "price": 100.16, "ma150": 86.11, "ma50": 87.46, "ma200": 84.45, "pct_above_ma150": 16.31, "pct_above_ma50": 14.52, "rsi": 55.5, "vol_ratio": 1.56, "rs_vs_spy": 1.0, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "נפח גבוה (×1.6)", "Stage 2 alignment", "RSI=56", "Golden cross"]}, {"ticker": "ARM", "passed": 1.0, "score": 60, "summary": "מעל MA150 ב-+45.0%. Stage 2: מחיר>MA50>MA150>MA200. RSI 55 בריא. חוזק יחסי 1.57 מעל S&P. 🔶 על הגבול.", "chart_b64": null, "price": 209.16, "ma150": 144.21, "ma50": 167.81, "ma200": 144.03, "pct_above_ma150": 45.04, "pct_above_ma50": 24.64, "rsi": 54.8, "vol_ratio": 1.13, "rs_vs_spy": 1.57, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=55", "RS=1.57 מעל S&P", "Golden cross"]}, {"ticker": "NVDA", "passed": 1.0, "score": 60, "summary": "מעל MA150 ב-+19.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 65 בריא. חוזק יחסי 1.11 מעל S&P. 🔶 על הגבול.", "chart_b64": null, "price": 225.32, "ma150": 188.27, "ma50": 193.07, "ma200": 185.96, "pct_above_ma150": 19.68, "pct_above_ma50": 16.7, "rsi": 64.7, "vol_ratio": 1.11, "rs_vs_spy": 1.11, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=65", "RS=1.11 מעל S&P", "Golden cross"]}, {"ticker": "NXPI", "passed": 1.0, "score": 60, "summary": "מעל MA150 ב-+30.9%. Stage 2: מחיר>MA50>MA150>MA200. RSI 64 בריא. חוזק יחסי 1.11 מעל S&P. 🔶 על הגבול.", "chart_b64": null, "price": 291.5, "ma150": 222.67, "ma50": 228.26, "ma200": 222.37, "pct_above_ma150": 30.91, "pct_above_ma50": 27.7, "rsi": 64.4, "vol_ratio": 1.0, "rs_vs_spy": 1.11, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=64", "RS=1.11 מעל S&P", "Golden cross"]}], "all_results": [{"ticker": "ENPH", "passed": 1.0, "score": 85, "summary": "חצתה את MA150 לאחרונה (כעת +44.8% מעליו). נפח ×3.0 מהממוצע — אישור חזק. Stage 2: מחיר>MA50>MA150>MA200. ⚠️ RSI 80 - קניית יתר. חוזק יחסי 1.10 מעל S&P. ✅ מועמדת לכניסה.", "price": 52.89, "ma150": 36.52, "ma50": 37.67, "ma200": 36.44, "pct_above_ma150": 44.81, "pct_above_ma50": 40.4, "rsi": 79.8, "vol_ratio": 3.03, "rs_vs_spy": 1.1, "is_recent_breakout": true, "stage2": true, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "נפח גבוה (×3.0)", "Stage 2 alignment", "RSI גבוה (80)", "RS=1.10 מעל S&P"]}, {"ticker": "AMAT", "passed": 1.0, "score": 70, "summary": "מעל MA150 ב-+39.1%. נפח ×1.9 מהממוצע — אישור חזק. Stage 2: מחיר>MA50>MA150>MA200. RSI 62 בריא. חוזק יחסי 1.22 מעל S&P. ✅ מועמדת לכניסה.", "price": 436.62, "ma150": 313.87, "ma50": 380.81, "ma200": 280.81, "pct_above_ma150": 39.11, "pct_above_ma50": 14.66, "rsi": 61.7, "vol_ratio": 1.9, "rs_vs_spy": 1.22, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "נפח גבוה (×1.9)", "Stage 2 alignment", "RSI=62", "RS=1.22 מעל S&P"]}, {"ticker": "BIDU", "passed": 1.0, "score": 70, "summary": "חצתה את MA150 לאחרונה (כעת +5.4% מעליו). נפח ×2.0 מהממוצע — אישור חזק. RSI 54 בריא. ✅ מועמדת לכניסה.", "price": 135.33, "ma150": 128.41, "ma50": 122.7, "ma200": 123.56, "pct_above_ma150": 5.39, "pct_above_ma50": 10.29, "rsi": 53.6, "vol_ratio": 2.04, "rs_vs_spy": 0.9, "is_recent_breakout": true, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "נפח גבוה (×2.0)", "RSI=54"]}, {"ticker": "CINF", "passed": 1.0, "score": 70, "summary": "חצתה את MA150 לאחרונה (כעת +3.1% מעליו). Stage 2: מחיר>MA50>MA150>MA200. RSI 60 בריא. ✅ מועמדת לכניסה.", "price": 166.42, "ma150": 161.44, "ma50": 162.05, "ma200": 159.18, "pct_above_ma150": 3.09, "pct_above_ma50": 2.7, "rsi": 59.7, "vol_ratio": 1.1, "rs_vs_spy": 0.93, "is_recent_breakout": true, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "Stage 2 alignment", "RSI=60"]}, {"ticker": "LI", "passed": 1.0, "score": 70, "summary": "חצתה את MA150 לאחרונה (כעת +1.0% מעליו). נפח ×1.6 מהממוצע — אישור חזק. RSI 52 בריא. ✅ מועמדת לכניסה.", "price": 18.51, "ma150": 18.33, "ma50": 18.1, "ma200": 19.9, "pct_above_ma150": 1.0, "pct_above_ma50": 2.27, "rsi": 51.6, "vol_ratio": 1.63, "rs_vs_spy": 0.9, "is_recent_breakout": true, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "נפח גבוה (×1.6)", "RSI=52"]}, {"ticker": "MSTR", "passed": 1.0, "score": 65, "summary": "חצתה את MA150 לאחרונה (כעת +1.5% מעליו). RSI 54 בריא. חוזק יחסי 1.33 מעל S&P. 🔶 על הגבול.", "price": 177.42, "ma150": 174.82, "ma50": 152.14, "ma200": 218.01, "pct_above_ma150": 1.49, "pct_above_ma50": 16.62, "rsi": 54.4, "vol_ratio": 1.05, "rs_vs_spy": 1.33, "is_recent_breakout": true, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "RSI=54", "RS=1.33 מעל S&P"]}, {"ticker": "ZM", "passed": 1.0, "score": 65, "summary": "מעל MA150 ב-+16.3%. נפח ×1.6 מהממוצע — אישור חזק. Stage 2: מחיר>MA50>MA150>MA200. RSI 56 בריא. 🔶 על הגבול.", "price": 100.16, "ma150": 86.11, "ma50": 87.46, "ma200": 84.45, "pct_above_ma150": 16.31, "pct_above_ma50": 14.52, "rsi": 55.5, "vol_ratio": 1.56, "rs_vs_spy": 1.0, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "נפח גבוה (×1.6)", "Stage 2 alignment", "RSI=56", "Golden cross"]}, {"ticker": "ARM", "passed": 1.0, "score": 60, "summary": "מעל MA150 ב-+45.0%. Stage 2: מחיר>MA50>MA150>MA200. RSI 55 בריא. חוזק יחסי 1.57 מעל S&P. 🔶 על הגבול.", "price": 209.16, "ma150": 144.21, "ma50": 167.81, "ma200": 144.03, "pct_above_ma150": 45.04, "pct_above_ma50": 24.64, "rsi": 54.8, "vol_ratio": 1.13, "rs_vs_spy": 1.57, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=55", "RS=1.57 מעל S&P", "Golden cross"]}, {"ticker": "NVDA", "passed": 1.0, "score": 60, "summary": "מעל MA150 ב-+19.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 65 בריא. חוזק יחסי 1.11 מעל S&P. 🔶 על הגבול.", "price": 225.32, "ma150": 188.27, "ma50": 193.07, "ma200": 185.96, "pct_above_ma150": 19.68, "pct_above_ma50": 16.7, "rsi": 64.7, "vol_ratio": 1.11, "rs_vs_spy": 1.11, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=65", "RS=1.11 מעל S&P", "Golden cross"]}, {"ticker": "NXPI", "passed": 1.0, "score": 60, "summary": "מעל MA150 ב-+30.9%. Stage 2: מחיר>MA50>MA150>MA200. RSI 64 בריא. חוזק יחסי 1.11 מעל S&P. 🔶 על הגבול.", "price": 291.5, "ma150": 222.67, "ma50": 228.26, "ma200": 222.37, "pct_above_ma150": 30.91, "pct_above_ma50": 27.7, "rsi": 64.4, "vol_ratio": 1.0, "rs_vs_spy": 1.11, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=64", "RS=1.11 מעל S&P", "Golden cross"]}, {"ticker": "ADI", "passed": 1.0, "score": 55, "summary": "מעל MA150 ב-+36.5%. Stage 2: מחיר>MA50>MA150>MA200. RSI 63 בריא. חוזק יחסי 1.16 מעל S&P.", "price": 417.49, "ma150": 305.84, "ma50": 356.38, "ma200": 289.14, "pct_above_ma150": 36.51, "pct_above_ma50": 17.15, "rsi": 63.3, "vol_ratio": 1.06, "rs_vs_spy": 1.16, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=63", "RS=1.16 מעל S&P"]}, {"ticker": "CFLT", "passed": 1.0, "score": 55, "summary": "מעל MA150 ב-+22.5%. Stage 2: מחיר>MA50>MA150>MA200. RSI 73 בריא.", "price": 30.99, "ma150": 25.3, "ma50": 30.58, "ma200": 24.86, "pct_above_ma150": 22.51, "pct_above_ma50": 1.35, "rsi": 73.4, "vol_ratio": null, "rs_vs_spy": 1.05, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=73", "RS=1.05 מעל S&P"]}, {"ticker": "ILMN", "passed": 1.0, "score": 55, "summary": "מעל MA150 ב-+12.1%. Stage 2: מחיר>MA50>MA150>MA200. RSI 61 בריא. חוזק יחסי 1.14 מעל S&P.", "price": 142.54, "ma150": 127.15, "ma50": 128.97, "ma200": 119.96, "pct_above_ma150": 12.11, "pct_above_ma50": 10.52, "rsi": 60.5, "vol_ratio": 1.14, "rs_vs_spy": 1.14, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=61", "RS=1.14 מעל S&P"]}, {"ticker": "INTC", "passed": 1.0, "score": 55, "summary": "מעל MA150 ב-+114.1%. Stage 2: מחיר>MA50>MA150>MA200. RSI 62 בריא. חוזק יחסי 2.15 מעל S&P.", "price": 108.77, "ma150": 50.81, "ma50": 69.5, "ma200": 44.79, "pct_above_ma150": 114.08, "pct_above_ma50": 56.5, "rsi": 62.3, "vol_ratio": 1.09, "rs_vs_spy": 2.15, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=62", "RS=2.15 מעל S&P"]}, {"ticker": "KEYS", "passed": 1.0, "score": 55, "summary": "מעל MA150 ב-+42.5%. Stage 2: מחיר>MA50>MA150>MA200. RSI 55 בריא. חוזק יחסי 1.40 מעל S&P.", "price": 349.01, "ma150": 244.98, "ma50": 318.05, "ma200": 225.82, "pct_above_ma150": 42.46, "pct_above_ma50": 9.73, "rsi": 54.8, "vol_ratio": 1.41, "rs_vs_spy": 1.4, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=55", "RS=1.40 מעל S&P"]}, {"ticker": "MU", "passed": 1.0, "score": 55, "summary": "מעל MA150 ב-+100.0%. Stage 2: מחיר>MA50>MA150>MA200. RSI 66 בריא. חוזק יחסי 1.61 מעל S&P.", "price": 724.66, "ma150": 362.35, "ma50": 486.18, "ma200": 306.98, "pct_above_ma150": 99.99, "pct_above_ma50": 49.05, "rsi": 66.3, "vol_ratio": 1.02, "rs_vs_spy": 1.61, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=66", "RS=1.61 מעל S&P"]}, {"ticker": "ON", "passed": 1.0, "score": 55, "summary": "מעל MA150 ב-+76.3%. Stage 2: מחיר>MA50>MA150>MA200. RSI 69 בריא. חוזק יחסי 1.47 מעל S&P.", "price": 113.11, "ma150": 64.17, "ma50": 78.67, "ma200": 60.58, "pct_above_ma150": 76.26, "pct_above_ma50": 43.78, "rsi": 69.3, "vol_ratio": 1.07, "rs_vs_spy": 1.47, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=69", "RS=1.47 מעל S&P"]}, {"ticker": "RPRX", "passed": 1.0, "score": 55, "summary": "מעל MA150 ב-+23.9%. Stage 2: מחיר>MA50>MA150>MA200. RSI 73 בריא.", "price": 52.85, "ma150": 42.65, "ma50": 48.21, "ma200": 40.9, "pct_above_ma150": 23.91, "pct_above_ma50": 9.63, "rsi": 72.8, "vol_ratio": 1.29, "rs_vs_spy": 1.09, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=73", "RS=1.09 מעל S&P"]}, {"ticker": "NTLA", "passed": 1.0, "score": 50, "summary": "מעל MA150 ב-+4.8%. נפח ×2.7 מהממוצע — אישור חזק.", "price": 13.67, "ma150": 13.04, "ma50": 13.65, "ma200": 13.21, "pct_above_ma150": 4.84, "pct_above_ma50": 0.14, "rsi": 49.0, "vol_ratio": 2.67, "rs_vs_spy": 1.08, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "נפח גבוה (×2.7)", "RS=1.08 מעל S&P", "Golden cross"]}, {"ticker": "ASML", "passed": 1.0, "score": 45, "summary": "מעל MA150 ב-+19.0%. Stage 2: מחיר>MA50>MA150>MA200. RSI 52 בריא.", "price": 1501.81, "ma150": 1262.24, "ma50": 1415.2, "ma200": 1152.64, "pct_above_ma150": 18.98, "pct_above_ma50": 6.12, "rsi": 52.4, "vol_ratio": 1.02, "rs_vs_spy": 0.98, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=52"]}, {"ticker": "BIIB", "passed": 1.0, "score": 45, "summary": "מעל MA150 ב-+9.0%. Stage 2: מחיר>MA50>MA150>MA200. RSI 54 בריא.", "price": 192.95, "ma150": 177.02, "ma50": 185.39, "ma200": 167.72, "pct_above_ma150": 9.0, "pct_above_ma50": 4.08, "rsi": 53.6, "vol_ratio": 1.05, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=54"]}, {"ticker": "COST", "passed": 1.0, "score": 45, "summary": "מעל MA150 ב-+10.1%. Stage 2: מחיר>MA50>MA150>MA200. RSI 66 בריא.", "price": 1048.95, "ma150": 953.16, "ma50": 1000.32, "ma200": 951.96, "pct_above_ma150": 10.05, "pct_above_ma50": 4.86, "rsi": 65.7, "vol_ratio": 1.11, "rs_vs_spy": 0.97, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=66"]}, {"ticker": "HON", "passed": 1.0, "score": 45, "summary": "חצתה את MA150 לאחרונה (כעת +0.4% מעליו). 🟡 פריצה ראשונית.", "price": 213.24, "ma150": 212.45, "ma50": 223.27, "ma200": 209.0, "pct_above_ma150": 0.37, "pct_above_ma50": -4.49, "rsi": 43.1, "vol_ratio": 1.17, "rs_vs_spy": 0.83, "is_recent_breakout": true, "stage2": false, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150"]}, {"ticker": "JD", "passed": 1.0, "score": 45, "summary": "מעל MA150 ב-+11.1%. RSI 60 בריא. חוזק יחסי 1.11 מעל S&P.", "price": 32.01, "ma150": 28.82, "ma50": 29.09, "ma200": 29.57, "pct_above_ma150": 11.09, "pct_above_ma50": 10.03, "rsi": 59.8, "vol_ratio": 1.36, "rs_vs_spy": 1.11, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "RSI=60", "RS=1.11 מעל S&P", "Golden cross"]}, {"ticker": "MNST", "passed": 1.0, "score": 45, "summary": "מעל MA150 ב-+14.5%. Stage 2: מחיר>MA50>MA150>MA200. RSI 73 בריא.", "price": 87.09, "ma150": 76.04, "ma50": 76.61, "ma200": 73.04, "pct_above_ma150": 14.53, "pct_above_ma50": 13.68, "rsi": 73.0, "vol_ratio": 1.16, "rs_vs_spy": 0.99, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=73"]}, {"ticker": "QCOM", "passed": 1.0, "score": 40, "summary": "מעל MA150 ב-+27.8%. RSI 62 בריא. חוזק יחסי 1.35 מעל S&P.", "price": 201.49, "ma150": 157.71, "ma50": 148.98, "ma200": 157.72, "pct_above_ma150": 27.76, "pct_above_ma50": 35.24, "rsi": 62.3, "vol_ratio": 1.36, "rs_vs_spy": 1.35, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI=62", "RS=1.35 מעל S&P"]}, {"ticker": "S", "passed": 1.0, "score": 40, "summary": "מעל MA150 ב-+13.2%. RSI 66 בריא. חוזק יחסי 1.16 מעל S&P.", "price": 16.86, "ma150": 14.9, "ma50": 14.26, "ma200": 15.59, "pct_above_ma150": 13.17, "pct_above_ma50": 18.2, "rsi": 66.2, "vol_ratio": 1.0, "rs_vs_spy": 1.16, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI=66", "RS=1.16 מעל S&P"]}, {"ticker": "AEP", "passed": 1.0, "score": 35, "summary": "מעל MA150 ב-+1.9%. נפח ×2.6 מהממוצע — אישור חזק.", "price": 125.15, "ma150": 122.83, "ma50": 131.54, "ma200": 119.31, "pct_above_ma150": 1.89, "pct_above_ma50": -4.86, "rsi": 34.9, "vol_ratio": 2.59, "rs_vs_spy": 0.92, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "נפח גבוה (×2.6)"]}, {"ticker": "AAPL", "passed": 1.0, "score": 30, "summary": "מעל MA150 ב-+12.7%. ⚠️ RSI 76 - קניית יתר.", "price": 300.23, "ma150": 266.35, "ma50": 265.97, "ma200": 258.65, "pct_above_ma150": 12.72, "pct_above_ma50": 12.88, "rsi": 76.0, "vol_ratio": 1.24, "rs_vs_spy": 1.06, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI גבוה (76)", "RS=1.06 מעל S&P"]}, {"ticker": "ASTS", "passed": 1.0, "score": 30, "summary": "מעל MA150 ב-+1.0%. RSI 54 בריא.", "price": 83.67, "ma150": 82.8, "ma50": 83.71, "ma200": 74.68, "pct_above_ma150": 1.05, "pct_above_ma50": -0.05, "rsi": 54.0, "vol_ratio": 1.32, "rs_vs_spy": 0.94, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI=54"]}, {"ticker": "TTWO", "passed": 1.0, "score": 30, "summary": "מעל MA150 ב-+6.1%. ⚠️ RSI 76 - קניית יתר. חוזק יחסי 1.17 מעל S&P.", "price": 242.44, "ma150": 228.51, "ma50": 210.02, "ma200": 231.59, "pct_above_ma150": 6.1, "pct_above_ma50": 15.44, "rsi": 76.0, "vol_ratio": 1.14, "rs_vs_spy": 1.17, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI גבוה (76)", "RS=1.17 מעל S&P"]}, {"ticker": "ZTO", "passed": 1.0, "score": 20, "summary": "מעל MA150 ב-+7.1%.", "price": 23.74, "ma150": 22.16, "ma50": 24.58, "ma200": 21.36, "pct_above_ma150": 7.15, "pct_above_ma50": -3.42, "rsi": 35.1, "vol_ratio": 1.24, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150"]}, {"ticker": "FOX", "passed": 0.0, "score": 65, "summary": "חצתה את MA150 לאחרונה (כעת +0.3% מעליו). RSI 54 בריא. 🔶 על הגבול.", "price": 57.87, "ma150": 57.72, "ma50": 55.29, "ma200": 56.61, "pct_above_ma150": 0.26, "pct_above_ma50": 4.67, "rsi": 53.8, "vol_ratio": 0.56, "rs_vs_spy": 1.04, "is_recent_breakout": true, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "RSI=54", "RS=1.04 מעל S&P"]}, {"ticker": "FOXA", "passed": 0.0, "score": 65, "summary": "חצתה את MA150 לאחרונה (כעת +1.0% מעליו). RSI 56 בריא. 🔶 על הגבול.", "price": 64.85, "ma150": 64.23, "ma50": 61.39, "ma200": 62.86, "pct_above_ma150": 0.96, "pct_above_ma50": 5.63, "rsi": 55.7, "vol_ratio": 0.87, "rs_vs_spy": 1.06, "is_recent_breakout": true, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "RSI=56", "RS=1.06 מעל S&P"]}, {"ticker": "IONQ", "passed": 0.0, "score": 65, "summary": "חצתה את MA150 לאחרונה (כעת +14.9% מעליו). RSI 59 בריא. חוזק יחסי 1.53 מעל S&P. 🔶 על הגבול.", "price": 51.95, "ma150": 45.21, "ma50": 38.98, "ma200": 46.98, "pct_above_ma150": 14.91, "pct_above_ma50": 33.26, "rsi": 58.6, "vol_ratio": 0.95, "rs_vs_spy": 1.53, "is_recent_breakout": true, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "RSI=59", "RS=1.53 מעל S&P"]}, {"ticker": "PSTG", "passed": 0.0, "score": 65, "summary": "חצתה את MA150 לאחרונה (כעת +9.6% מעליו). RSI 64 בריא. 🔶 על הגבול.", "price": 81.18, "ma150": 74.08, "ma50": 67.59, "ma200": 73.99, "pct_above_ma150": 9.59, "pct_above_ma50": 20.11, "rsi": 63.6, "vol_ratio": 0.83, "rs_vs_spy": 1.05, "is_recent_breakout": true, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "RSI=64", "RS=1.05 מעל S&P"]}, {"ticker": "AMD", "passed": 0.0, "score": 60, "summary": "מעל MA150 ב-+75.0%. Stage 2: מחיר>MA50>MA150>MA200. RSI 67 בריא. חוזק יחסי 1.89 מעל S&P. 🔶 על הגבול.", "price": 424.1, "ma150": 242.34, "ma50": 279.21, "ma200": 224.19, "pct_above_ma150": 75.0, "pct_above_ma50": 51.89, "rsi": 67.3, "vol_ratio": 0.75, "rs_vs_spy": 1.89, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=67", "RS=1.89 מעל S&P", "Golden cross"]}, {"ticker": "AMZN", "passed": 0.0, "score": 60, "summary": "מעל MA150 ב-+14.6%. Stage 2: מחיר>MA50>MA150>MA200. RSI 59 בריא. חוזק יחסי 1.22 מעל S&P. 🔶 על הגבול.", "price": 264.14, "ma150": 230.55, "ma50": 236.71, "ma200": 229.42, "pct_above_ma150": 14.57, "pct_above_ma50": 11.59, "rsi": 58.6, "vol_ratio": 0.89, "rs_vs_spy": 1.22, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=59", "RS=1.22 מעל S&P", "Golden cross"]}, {"ticker": "AVGO", "passed": 0.0, "score": 60, "summary": "מעל MA150 ב-+20.0%. Stage 2: מחיר>MA50>MA150>MA200. RSI 59 בריא. חוזק יחסי 1.18 מעל S&P. 🔶 על הגבול.", "price": 425.19, "ma150": 354.39, "ma50": 369.25, "ma200": 345.83, "pct_above_ma150": 19.98, "pct_above_ma50": 15.15, "rsi": 58.7, "vol_ratio": 0.8, "rs_vs_spy": 1.18, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=59", "RS=1.18 מעל S&P", "Golden cross"]}, {"ticker": "CSCO", "passed": 0.0, "score": 60, "summary": "מעל MA150 ב-+49.7%. נפח ×1.7 מהממוצע — אישור חזק. Stage 2: מחיר>MA50>MA150>MA200. ⚠️ RSI 88 - קניית יתר. חוזק יחסי 1.46 מעל S&P. 🔶 על הגבול.", "price": 118.21, "ma150": 78.99, "ma50": 85.76, "ma200": 76.02, "pct_above_ma150": 49.66, "pct_above_ma50": 37.84, "rsi": 88.5, "vol_ratio": 1.68, "rs_vs_spy": 1.46, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "נפח גבוה (×1.7)", "Stage 2 alignment", "RSI גבוה (88)", "RS=1.46 מעל S&P"]}, {"ticker": "DELL", "passed": 0.0, "score": 60, "summary": "מעל MA150 ב-+60.3%. Stage 2: מחיר>MA50>MA150>MA200. RSI 63 בריא. חוזק יחסי 1.98 מעל S&P. 🔶 על הגבול.", "price": 241.99, "ma150": 151.0, "ma50": 190.17, "ma200": 146.32, "pct_above_ma150": 60.25, "pct_above_ma50": 27.25, "rsi": 63.0, "vol_ratio": 0.64, "rs_vs_spy": 1.98, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=63", "RS=1.98 מעל S&P", "Golden cross"]}, {"ticker": "HPE", "passed": 0.0, "score": 60, "summary": "מעל MA150 ב-+39.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 70 בריא. חוזק יחסי 1.38 מעל S&P. 🔶 על הגבול.", "price": 33.1, "ma150": 23.69, "ma50": 25.92, "ma200": 23.45, "pct_above_ma150": 39.73, "pct_above_ma50": 27.71, "rsi": 69.7, "vol_ratio": 0.92, "rs_vs_spy": 1.38, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=70", "RS=1.38 מעל S&P", "Golden cross"]}, {"ticker": "MRVL", "passed": 0.0, "score": 60, "summary": "מעל MA150 ב-+78.5%. Stage 2: מחיר>MA50>MA150>MA200. RSI 66 בריא. חוזק יחסי 2.08 מעל S&P. 🔶 על הגבול.", "price": 176.89, "ma150": 99.07, "ma50": 128.17, "ma200": 93.15, "pct_above_ma150": 78.55, "pct_above_ma50": 38.01, "rsi": 65.9, "vol_ratio": 0.93, "rs_vs_spy": 2.08, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=66", "RS=2.08 מעל S&P", "Golden cross"]}, {"ticker": "ROKU", "passed": 0.0, "score": 60, "summary": "מעל MA150 ב-+20.9%. Stage 2: מחיר>MA50>MA150>MA200. RSI 61 בריא. חוזק יחסי 1.37 מעל S&P. 🔶 על הגבול.", "price": 124.02, "ma150": 102.59, "ma50": 107.58, "ma200": 100.59, "pct_above_ma150": 20.89, "pct_above_ma50": 15.28, "rsi": 60.7, "vol_ratio": 0.71, "rs_vs_spy": 1.37, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=61", "RS=1.37 מעל S&P", "Golden cross"]}, {"ticker": "CSX", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+17.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 61 בריא.", "price": 45.66, "ma150": 38.78, "ma50": 42.34, "ma200": 37.6, "pct_above_ma150": 17.74, "pct_above_ma50": 7.83, "rsi": 61.2, "vol_ratio": 1.0, "rs_vs_spy": 1.03, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=61", "RS=1.03 מעל S&P"]}, {"ticker": "FANG", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+23.3%. Stage 2: מחיר>MA50>MA150>MA200. RSI 59 בריא. חוזק יחסי 1.13 מעל S&P.", "price": 203.56, "ma150": 165.1, "ma50": 191.69, "ma200": 158.78, "pct_above_ma150": 23.3, "pct_above_ma50": 6.19, "rsi": 59.0, "vol_ratio": 0.65, "rs_vs_spy": 1.13, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=59", "RS=1.13 מעל S&P"]}, {"ticker": "GFS", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+60.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 64 בריא. חוזק יחסי 1.34 מעל S&P.", "price": 71.03, "ma150": 44.2, "ma50": 54.13, "ma200": 41.58, "pct_above_ma150": 60.7, "pct_above_ma50": 31.23, "rsi": 63.5, "vol_ratio": 0.76, "rs_vs_spy": 1.34, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=64", "RS=1.34 מעל S&P"]}, {"ticker": "GOOG", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+25.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 70 בריא. חוזק יחסי 1.17 מעל S&P.", "price": 393.32, "ma150": 312.94, "ma50": 330.78, "ma200": 291.01, "pct_above_ma150": 25.68, "pct_above_ma50": 18.91, "rsi": 69.9, "vol_ratio": 0.84, "rs_vs_spy": 1.17, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=70", "RS=1.17 מעל S&P"]}, {"ticker": "GOOGL", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+26.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 70 בריא. חוזק יחסי 1.18 מעל S&P.", "price": 396.78, "ma150": 313.23, "ma50": 332.74, "ma200": 291.06, "pct_above_ma150": 26.67, "pct_above_ma50": 19.25, "rsi": 70.2, "vol_ratio": 0.73, "rs_vs_spy": 1.18, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=70", "RS=1.18 מעל S&P"]}, {"ticker": "KLAC", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+27.2%. Stage 2: מחיר>MA50>MA150>MA200. RSI 53 בריא. חוזק יחסי 1.14 מעל S&P.", "price": 1804.32, "ma150": 1418.41, "ma50": 1653.15, "ma200": 1303.51, "pct_above_ma150": 27.21, "pct_above_ma50": 9.14, "rsi": 53.1, "vol_ratio": 0.98, "rs_vs_spy": 1.14, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=53", "RS=1.14 מעל S&P"]}, {"ticker": "LRCX", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+37.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 57 בריא. חוזק יחסי 1.13 מעל S&P.", "price": 284.72, "ma150": 206.7, "ma50": 247.87, "ma200": 183.41, "pct_above_ma150": 37.74, "pct_above_ma50": 14.87, "rsi": 57.1, "vol_ratio": 0.97, "rs_vs_spy": 1.13, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=57", "RS=1.13 מעל S&P"]}, {"ticker": "LUNR", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+93.0%. Stage 2: מחיר>MA50>MA150>MA200. RSI 65 בריא. חוזק יחסי 1.98 מעל S&P.", "price": 33.89, "ma150": 17.56, "ma50": 23.59, "ma200": 15.62, "pct_above_ma150": 92.99, "pct_above_ma50": 43.64, "rsi": 64.7, "vol_ratio": 0.96, "rs_vs_spy": 1.98, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=65", "RS=1.98 מעל S&P"]}, {"ticker": "NWSA", "passed": 0.0, "score": 55, "summary": "חצתה את MA150 לאחרונה (כעת +2.0% מעליו). 🟡 פריצה ראשונית.", "price": 25.92, "ma150": 25.41, "ma50": 25.23, "ma200": 26.37, "pct_above_ma150": 2.01, "pct_above_ma50": 2.73, "rsi": 49.1, "vol_ratio": 0.73, "rs_vs_spy": 1.07, "is_recent_breakout": true, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "RS=1.07 מעל S&P"]}, {"ticker": "ODFL", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+16.5%. Stage 2: מחיר>MA50>MA150>MA200. RSI 51 בריא.", "price": 203.12, "ma150": 174.33, "ma50": 199.85, "ma200": 167.22, "pct_above_ma150": 16.51, "pct_above_ma50": 1.63, "rsi": 50.6, "vol_ratio": 0.95, "rs_vs_spy": 1.01, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=51", "RS=1.01 מעל S&P"]}, {"ticker": "RKLB", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+76.7%. Stage 2: מחיר>MA50>MA150>MA200. RSI 71 בריא. חוזק יחסי 1.74 מעל S&P.", "price": 124.77, "ma150": 70.59, "ma50": 79.25, "ma200": 64.94, "pct_above_ma150": 76.75, "pct_above_ma50": 57.45, "rsi": 70.8, "vol_ratio": 0.89, "rs_vs_spy": 1.74, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=71", "RS=1.74 מעל S&P"]}, {"ticker": "SBUX", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+17.3%. Stage 2: מחיר>MA50>MA150>MA200. RSI 67 בריא.", "price": 106.82, "ma150": 91.09, "ma50": 97.98, "ma200": 89.53, "pct_above_ma150": 17.27, "pct_above_ma50": 9.02, "rsi": 66.9, "vol_ratio": 0.82, "rs_vs_spy": 1.03, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=67", "RS=1.03 מעל S&P"]}, {"ticker": "TSLA", "passed": 0.0, "score": 55, "summary": "חצתה את MA150 לאחרונה (כעת +0.8% מעליו). RSI 58 בריא. 🟡 פריצה ראשונית.", "price": 422.24, "ma150": 418.78, "ma50": 386.78, "ma200": 407.4, "pct_above_ma150": 0.83, "pct_above_ma50": 9.17, "rsi": 58.0, "vol_ratio": 0.82, "rs_vs_spy": 0.93, "is_recent_breakout": true, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "פריצה טרייה של MA150", "RSI=58"]}, {"ticker": "TXN", "passed": 0.0, "score": 55, "summary": "מעל MA150 ב-+51.9%. Stage 2: מחיר>MA50>MA150>MA200. RSI 75 בריא. חוזק יחסי 1.25 מעל S&P.", "price": 302.73, "ma150": 199.31, "ma50": 230.34, "ma200": 195.54, "pct_above_ma150": 51.89, "pct_above_ma50": 31.43, "rsi": 74.7, "vol_ratio": 0.92, "rs_vs_spy": 1.25, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=75", "RS=1.25 מעל S&P"]}, {"ticker": "FTNT", "passed": 0.0, "score": 50, "summary": "מעל MA150 ב-+46.9%. Stage 2: מחיר>MA50>MA150>MA200. ⚠️ RSI 85 - קניית יתר. חוזק יחסי 1.34 מעל S&P.", "price": 122.78, "ma150": 83.59, "ma50": 87.69, "ma200": 83.3, "pct_above_ma150": 46.89, "pct_above_ma50": 40.02, "rsi": 85.4, "vol_ratio": 0.91, "rs_vs_spy": 1.34, "is_recent_breakout": false, "stage2": true, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI גבוה (85)", "RS=1.34 מעל S&P", "Golden cross"]}, {"ticker": "FFIV", "passed": 0.0, "score": 45, "summary": "מעל MA150 ב-+29.3%. RSI 73 בריא. חוזק יחסי 1.27 מעל S&P.", "price": 362.58, "ma150": 280.37, "ma50": 308.22, "ma200": 290.72, "pct_above_ma150": 29.32, "pct_above_ma50": 17.64, "rsi": 73.4, "vol_ratio": 0.72, "rs_vs_spy": 1.27, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "RSI=73", "RS=1.27 מעל S&P", "Golden cross"]}, {"ticker": "HAS", "passed": 0.0, "score": 45, "summary": "מעל MA150 ב-+8.8%. Stage 2: מחיר>MA50>MA150>MA200. RSI 52 בריא.", "price": 95.25, "ma150": 87.51, "ma50": 93.53, "ma200": 84.69, "pct_above_ma150": 8.84, "pct_above_ma50": 1.84, "rsi": 51.5, "vol_ratio": 0.91, "rs_vs_spy": 0.87, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment", "RSI=52"]}, {"ticker": "SIRI", "passed": 0.0, "score": 45, "summary": "מעל MA150 ב-+17.7%. RSI 51 בריא. חוזק יחסי 1.11 מעל S&P.", "price": 25.83, "ma150": 21.94, "ma50": 24.29, "ma200": 21.94, "pct_above_ma150": 17.74, "pct_above_ma50": 6.34, "rsi": 51.5, "vol_ratio": 0.57, "rs_vs_spy": 1.11, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "RSI=51", "RS=1.11 מעל S&P", "Golden cross"]}, {"ticker": "AFRM", "passed": 0.0, "score": 40, "summary": "מעל MA150 ב-+3.6%. RSI 57 בריא. חוזק יחסי 1.22 מעל S&P.", "price": 65.82, "ma150": 63.56, "ma50": 55.42, "ma200": 67.6, "pct_above_ma150": 3.56, "pct_above_ma50": 18.77, "rsi": 57.0, "vol_ratio": 0.65, "rs_vs_spy": 1.22, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI=57", "RS=1.22 מעל S&P"]}, {"ticker": "CDNS", "passed": 0.0, "score": 40, "summary": "מעל MA150 ב-+11.0%. RSI 59 בריא. חוזק יחסי 1.11 מעל S&P.", "price": 347.24, "ma150": 312.89, "ma50": 309.26, "ma200": 322.81, "pct_above_ma150": 10.98, "pct_above_ma50": 12.28, "rsi": 59.0, "vol_ratio": 0.73, "rs_vs_spy": 1.11, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI=59", "RS=1.11 מעל S&P"]}, {"ticker": "FROG", "passed": 0.0, "score": 40, "summary": "מעל MA150 ב-+25.1%. RSI 70 בריא. חוזק יחסי 1.14 מעל S&P.", "price": 66.16, "ma150": 52.9, "ma50": 48.24, "ma200": 51.42, "pct_above_ma150": 25.07, "pct_above_ma50": 37.16, "rsi": 70.0, "vol_ratio": 0.6, "rs_vs_spy": 1.14, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI=70", "RS=1.14 מעל S&P"]}, {"ticker": "SNPS", "passed": 0.0, "score": 40, "summary": "מעל MA150 ב-+11.7%. RSI 62 בריא.", "price": 502.42, "ma150": 449.9, "ma50": 447.22, "ma200": 474.47, "pct_above_ma150": 11.67, "pct_above_ma50": 12.34, "rsi": 61.7, "vol_ratio": 0.87, "rs_vs_spy": 1.09, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI=62", "RS=1.09 מעל S&P"]}, {"ticker": "BEAM", "passed": 0.0, "score": 35, "summary": "מעל MA150 ב-+2.6%. Stage 2: מחיר>MA50>MA150>MA200.", "price": 27.93, "ma150": 27.22, "ma50": 27.71, "ma200": 25.53, "pct_above_ma150": 2.62, "pct_above_ma50": 0.78, "rsi": 43.9, "vol_ratio": 0.95, "rs_vs_spy": 0.95, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment"]}, {"ticker": "BKR", "passed": 0.0, "score": 35, "summary": "מעל MA150 ב-+16.9%. Stage 2: מחיר>MA50>MA150>MA200.", "price": 64.12, "ma150": 54.85, "ma50": 62.34, "ma200": 52.47, "pct_above_ma150": 16.9, "pct_above_ma50": 2.85, "rsi": 48.5, "vol_ratio": 0.84, "rs_vs_spy": 0.97, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment"]}, {"ticker": "CRWV", "passed": 0.0, "score": 35, "summary": "מעל MA150 ב-+12.1%.", "price": 107.3, "ma150": 95.69, "ma50": 99.19, "ma200": 100.35, "pct_above_ma150": 12.13, "pct_above_ma50": 8.17, "rsi": 47.2, "vol_ratio": 0.77, "rs_vs_spy": 1.03, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "RS=1.03 מעל S&P", "Golden cross"]}, {"ticker": "MAR", "passed": 0.0, "score": 35, "summary": "מעל MA150 ב-+10.8%. Stage 2: מחיר>MA50>MA150>MA200.", "price": 353.17, "ma150": 318.64, "ma50": 344.23, "ma200": 304.91, "pct_above_ma150": 10.83, "pct_above_ma50": 2.6, "rsi": 50.0, "vol_ratio": 0.77, "rs_vs_spy": 0.92, "is_recent_breakout": false, "stage2": true, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "Stage 2 alignment"]}, {"ticker": "MDLZ", "passed": 0.0, "score": 35, "summary": "מעל MA150 ב-+5.6%. RSI 55 בריא.", "price": 60.44, "ma150": 57.26, "ma50": 58.18, "ma200": 58.16, "pct_above_ma150": 5.56, "pct_above_ma50": 3.89, "rsi": 54.7, "vol_ratio": 0.89, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "RSI=55", "Golden cross"]}, {"ticker": "MTCH", "passed": 0.0, "score": 35, "summary": "מעל MA150 ב-+9.2%.", "price": 35.4, "ma150": 32.41, "ma50": 33.52, "ma200": 33.28, "pct_above_ma150": 9.24, "pct_above_ma50": 5.61, "rsi": 49.3, "vol_ratio": 0.58, "rs_vs_spy": 1.09, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "RS=1.09 מעל S&P", "Golden cross"]}, {"ticker": "NIO", "passed": 0.0, "score": 35, "summary": "מעל MA150 ב-+7.6%. חוזק יחסי 1.13 מעל S&P.", "price": 6.1, "ma150": 5.67, "ma50": 6.04, "ma200": 5.8, "pct_above_ma150": 7.62, "pct_above_ma50": 0.94, "rsi": 49.2, "vol_ratio": 0.67, "rs_vs_spy": 1.13, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["מעל MA150", "RS=1.13 מעל S&P", "Golden cross"]}, {"ticker": "ABNB", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+2.6%.", "price": 132.85, "ma150": 129.48, "ma50": 133.96, "ma200": 128.25, "pct_above_ma150": 2.61, "pct_above_ma50": -0.83, "rsi": 41.4, "vol_ratio": 0.78, "rs_vs_spy": 1.05, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "RS=1.05 מעל S&P"]}, {"ticker": "CRWD", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+28.0%. ⚠️ RSI 83 - קניית יתר. חוזק יחסי 1.33 מעל S&P.", "price": 594.08, "ma150": 464.05, "ma50": 442.54, "ma200": 460.47, "pct_above_ma150": 28.02, "pct_above_ma50": 34.24, "rsi": 82.6, "vol_ratio": 1.14, "rs_vs_spy": 1.33, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI גבוה (83)", "RS=1.33 מעל S&P"]}, {"ticker": "DDOG", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+47.8%. ⚠️ RSI 83 - קניית יתר. חוזק יחסי 1.52 מעל S&P.", "price": 207.98, "ma150": 140.72, "ma50": 136.07, "ma200": 139.95, "pct_above_ma150": 47.8, "pct_above_ma50": 52.85, "rsi": 83.3, "vol_ratio": 1.03, "rs_vs_spy": 1.52, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI גבוה (83)", "RS=1.52 מעל S&P"]}, {"ticker": "ETSY", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+0.6%. חוזק יחסי 1.15 מעל S&P.", "price": 58.07, "ma150": 57.73, "ma50": 57.1, "ma200": 58.79, "pct_above_ma150": 0.6, "pct_above_ma50": 1.7, "rsi": 45.1, "vol_ratio": 0.69, "rs_vs_spy": 1.15, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RS=1.15 מעל S&P"]}, {"ticker": "KDP", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+5.1%. RSI 59 בריא.", "price": 28.93, "ma150": 27.53, "ma50": 27.31, "ma200": 27.87, "pct_above_ma150": 5.09, "pct_above_ma50": 5.94, "rsi": 58.6, "vol_ratio": 0.74, "rs_vs_spy": 0.9, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI=59"]}, {"ticker": "MRNA", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+22.4%. חוזק יחסי 1.12 מעל S&P.", "price": 49.04, "ma150": 40.07, "ma50": 51.35, "ma200": 36.57, "pct_above_ma150": 22.38, "pct_above_ma50": -4.51, "rsi": 46.5, "vol_ratio": 0.99, "rs_vs_spy": 1.12, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "RS=1.12 מעל S&P"]}, {"ticker": "NWS", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+2.6%.", "price": 29.74, "ma150": 29.0, "ma50": 28.92, "ma200": 30.03, "pct_above_ma150": 2.57, "pct_above_ma50": 2.85, "rsi": 48.4, "vol_ratio": 0.77, "rs_vs_spy": 1.07, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RS=1.07 מעל S&P"]}, {"ticker": "PANW", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+32.3%. ⚠️ RSI 86 - קניית יתר. חוזק יחסי 1.37 מעל S&P.", "price": 242.83, "ma150": 183.55, "ma50": 175.6, "ma200": 185.64, "pct_above_ma150": 32.29, "pct_above_ma50": 38.29, "rsi": 86.1, "vol_ratio": 1.49, "rs_vs_spy": 1.37, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["מעל MA150", "RSI גבוה (86)", "RS=1.37 מעל S&P"]}, {"ticker": "ROST", "passed": 0.0, "score": 30, "summary": "מעל MA150 ב-+10.6%.", "price": 212.75, "ma150": 192.3, "ma50": 218.84, "ma200": 181.05, "pct_above_ma150": 10.63, "pct_above_ma50": -2.78, "rsi": 38.8, "vol_ratio": 0.96, "rs_vs_spy": 1.01, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150", "RS=1.01 מעל S&P"]}, {"ticker": "DXCM", "passed": 0.0, "score": 25, "summary": "נפח ×2.4 מהממוצע — אישור חזק. RSI 51 בריא.", "price": 61.63, "ma150": 65.94, "ma50": 63.23, "ma200": 68.16, "pct_above_ma150": -6.54, "pct_above_ma50": -2.53, "rsi": 50.8, "vol_ratio": 2.37, "rs_vs_spy": 0.87, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×2.4)", "RSI=51"]}, {"ticker": "DOCU", "passed": 0.0, "score": 20, "summary": "RSI 54 בריא.", "price": 47.71, "ma150": 56.96, "ma50": 46.88, "ma200": 61.62, "pct_above_ma150": -16.24, "pct_above_ma50": 1.76, "rsi": 53.9, "vol_ratio": 1.01, "rs_vs_spy": 1.0, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=54", "RS=1.00 מעל S&P"]}, {"ticker": "QUBT", "passed": 0.0, "score": 20, "summary": "RSI 57 בריא. חוזק יחסי 1.18 מעל S&P.", "price": 10.51, "ma150": 10.7, "ma50": 8.35, "ma200": 12.36, "pct_above_ma150": -1.85, "pct_above_ma50": 25.81, "rsi": 56.6, "vol_ratio": 1.3, "rs_vs_spy": 1.18, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=57", "RS=1.18 מעל S&P"]}, {"ticker": "SOUN", "passed": 0.0, "score": 20, "summary": "RSI 52 בריא.", "price": 8.41, "ma150": 10.51, "ma50": 7.64, "ma200": 11.53, "pct_above_ma150": -19.95, "pct_above_ma50": 10.14, "rsi": 51.6, "vol_ratio": 0.65, "rs_vs_spy": 1.04, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=52", "RS=1.04 מעל S&P"]}, {"ticker": "WBD", "passed": 0.0, "score": 20, "summary": "מעל MA150 ב-+2.6%.", "price": 26.98, "ma150": 26.29, "ma50": 27.3, "ma200": 23.44, "pct_above_ma150": 2.61, "pct_above_ma50": -1.19, "rsi": 42.3, "vol_ratio": 0.85, "rs_vs_spy": 0.88, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": ["מעל MA150"]}, {"ticker": "BABA", "passed": 0.0, "score": 15, "summary": "נפח ×1.6 מהממוצע — אישור חזק.", "price": 132.59, "ma150": 150.44, "ma50": 131.89, "ma200": 149.14, "pct_above_ma150": -11.86, "pct_above_ma50": 0.53, "rsi": 46.9, "vol_ratio": 1.55, "rs_vs_spy": 0.77, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×1.6)"]}, {"ticker": "BILI", "passed": 0.0, "score": 15, "summary": "נפח ×1.8 מהממוצע — אישור חזק.", "price": 19.07, "ma150": 26.72, "ma50": 23.37, "ma200": 26.29, "pct_above_ma150": -28.62, "pct_above_ma50": -18.4, "rsi": 29.2, "vol_ratio": 1.78, "rs_vs_spy": 0.58, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×1.8)"]}, {"ticker": "CHTR", "passed": 0.0, "score": 15, "summary": "נפח ×2.1 מהממוצע — אישור חזק.", "price": 140.33, "ma150": 212.55, "ma50": 202.57, "ma200": 226.11, "pct_above_ma150": -33.98, "pct_above_ma50": -30.72, "rsi": 27.3, "vol_ratio": 2.1, "rs_vs_spy": 0.54, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×2.1)"]}, {"ticker": "CSGP", "passed": 0.0, "score": 15, "summary": "נפח ×5.3 מהממוצע — אישור חזק.", "price": 32.68, "ma150": 55.38, "ma50": 38.97, "ma200": 63.55, "pct_above_ma150": -40.99, "pct_above_ma50": -16.15, "rsi": 33.8, "vol_ratio": 5.32, "rs_vs_spy": 0.67, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×5.3)"]}, {"ticker": "JKHY", "passed": 0.0, "score": 15, "summary": "נפח ×2.4 מהממוצע — אישור חזק.", "price": 136.87, "ma150": 165.44, "ma50": 155.45, "ma200": 163.32, "pct_above_ma150": -17.27, "pct_above_ma50": -11.95, "rsi": 30.8, "vol_ratio": 2.41, "rs_vs_spy": 0.8, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×2.4)"]}, {"ticker": "NTRA", "passed": 0.0, "score": 15, "summary": "נפח ×1.6 מהממוצע — אישור חזק.", "price": 186.36, "ma150": 212.21, "ma50": 201.1, "ma200": 199.96, "pct_above_ma150": -12.18, "pct_above_ma50": -7.33, "rsi": 40.9, "vol_ratio": 1.58, "rs_vs_spy": 0.82, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×1.6)"]}, {"ticker": "PATH", "passed": 0.0, "score": 15, "summary": "נפח ×1.5 מהממוצע — אישור חזק.", "price": 10.27, "ma150": 13.37, "ma50": 10.87, "ma200": 13.0, "pct_above_ma150": -23.19, "pct_above_ma50": -5.54, "rsi": 47.3, "vol_ratio": 1.52, "rs_vs_spy": 0.84, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×1.5)"]}, {"ticker": "RIVN", "passed": 0.0, "score": 15, "summary": "נפח ×1.5 מהממוצע — אישור חזק.", "price": 13.79, "ma150": 15.95, "ma50": 15.52, "ma200": 15.33, "pct_above_ma150": -13.56, "pct_above_ma50": -11.16, "rsi": 36.1, "vol_ratio": 1.5, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×1.5)"]}, {"ticker": "SHOP", "passed": 0.0, "score": 15, "summary": "נפח ×1.6 מהממוצע — אישור חזק.", "price": 100.28, "ma150": 139.53, "ma50": 119.18, "ma200": 141.04, "pct_above_ma150": -28.13, "pct_above_ma50": -15.86, "rsi": 37.1, "vol_ratio": 1.55, "rs_vs_spy": 0.83, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×1.6)"]}, {"ticker": "SMMT", "passed": 0.0, "score": 15, "summary": "", "price": 16.87, "ma150": 17.89, "ma50": 18.79, "ma200": 19.25, "pct_above_ma150": -5.72, "pct_above_ma50": -10.2, "rsi": 39.8, "vol_ratio": 0.73, "rs_vs_spy": 1.06, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["RS=1.06 מעל S&P", "Golden cross"]}, {"ticker": "WTW", "passed": 0.0, "score": 15, "summary": "נפח ×1.6 מהממוצע — אישור חזק.", "price": 248.38, "ma150": 306.16, "ma50": 281.11, "ma200": 312.41, "pct_above_ma150": -18.87, "pct_above_ma50": -11.64, "rsi": 33.1, "vol_ratio": 1.56, "rs_vs_spy": 0.81, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["נפח גבוה (×1.6)"]}, {"ticker": "ADBE", "passed": 0.0, "score": 10, "summary": "RSI 51 בריא.", "price": 247.6, "ma150": 293.59, "ma50": 247.53, "ma200": 308.17, "pct_above_ma150": -15.67, "pct_above_ma50": 0.03, "rsi": 51.0, "vol_ratio": 1.14, "rs_vs_spy": 0.87, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=51"]}, {"ticker": "ADP", "passed": 0.0, "score": 10, "summary": "RSI 58 בריא.", "price": 214.48, "ma150": 234.94, "ma50": 206.08, "ma200": 249.31, "pct_above_ma150": -8.71, "pct_above_ma50": 4.07, "rsi": 57.8, "vol_ratio": 0.85, "rs_vs_spy": 0.95, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=58"]}, {"ticker": "BBAI", "passed": 0.0, "score": 10, "summary": "RSI 52 בריא.", "price": 4.08, "ma150": 5.16, "ma50": 3.82, "ma200": 5.4, "pct_above_ma150": -20.87, "pct_above_ma50": 6.91, "rsi": 51.7, "vol_ratio": 0.97, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=52"]}, {"ticker": "CART", "passed": 0.0, "score": 10, "summary": "", "price": 39.71, "ma150": 39.84, "ma50": 39.73, "ma200": 40.91, "pct_above_ma150": -0.33, "pct_above_ma50": -0.05, "rsi": 47.3, "vol_ratio": 1.43, "rs_vs_spy": 1.1, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RS=1.10 מעל S&P"]}, {"ticker": "COIN", "passed": 0.0, "score": 10, "summary": "חוזק יחסי 1.27 מעל S&P.", "price": 195.43, "ma150": 230.67, "ma50": 191.73, "ma200": 254.42, "pct_above_ma150": -15.28, "pct_above_ma50": 1.93, "rsi": 49.3, "vol_ratio": 1.33, "rs_vs_spy": 1.27, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RS=1.27 מעל S&P"]}, {"ticker": "DKNG", "passed": 0.0, "score": 10, "summary": "RSI 59 בריא.", "price": 25.0, "ma150": 28.45, "ma50": 23.63, "ma200": 32.18, "pct_above_ma150": -12.12, "pct_above_ma50": 5.78, "rsi": 58.6, "vol_ratio": 1.0, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=59"]}, {"ticker": "DUOL", "passed": 0.0, "score": 10, "summary": "RSI 58 בריא.", "price": 112.06, "ma150": 157.46, "ma50": 101.14, "ma200": 197.54, "pct_above_ma150": -28.83, "pct_above_ma50": 10.8, "rsi": 58.4, "vol_ratio": 0.76, "rs_vs_spy": 0.92, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=58"]}, {"ticker": "ESTC", "passed": 0.0, "score": 10, "summary": "RSI 53 בריא.", "price": 50.6, "ma150": 66.22, "ma50": 49.82, "ma200": 70.47, "pct_above_ma150": -23.58, "pct_above_ma50": 1.57, "rsi": 53.3, "vol_ratio": 1.27, "rs_vs_spy": 0.77, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=53"]}, {"ticker": "GH", "passed": 0.0, "score": 10, "summary": "RSI 55 בריא.", "price": 94.92, "ma150": 95.26, "ma50": 89.15, "ma200": 86.05, "pct_above_ma150": -0.35, "pct_above_ma50": 6.47, "rsi": 55.2, "vol_ratio": 0.88, "rs_vs_spy": 0.85, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=55"]}, {"ticker": "GTLB", "passed": 0.0, "score": 10, "summary": "RSI 52 בריא.", "price": 23.66, "ma150": 32.97, "ma50": 22.42, "ma200": 36.22, "pct_above_ma150": -28.25, "pct_above_ma50": 5.51, "rsi": 52.2, "vol_ratio": 0.8, "rs_vs_spy": 0.74, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=52"]}, {"ticker": "JOBY", "passed": 0.0, "score": 10, "summary": "RSI 57 בריא.", "price": 10.36, "ma150": 12.27, "ma50": 9.26, "ma200": 13.16, "pct_above_ma150": -15.53, "pct_above_ma50": 11.9, "rsi": 56.7, "vol_ratio": 0.96, "rs_vs_spy": 0.96, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=57"]}, {"ticker": "KHC", "passed": 0.0, "score": 10, "summary": "RSI 51 בריא.", "price": 22.92, "ma150": 23.47, "ma50": 22.61, "ma200": 24.04, "pct_above_ma150": -2.35, "pct_above_ma50": 1.37, "rsi": 51.2, "vol_ratio": 0.76, "rs_vs_spy": 0.88, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=51"]}, {"ticker": "MDB", "passed": 0.0, "score": 10, "summary": "RSI 68 בריא.", "price": 312.16, "ma150": 332.54, "ma50": 262.65, "ma200": 319.95, "pct_above_ma150": -6.13, "pct_above_ma50": 18.85, "rsi": 68.2, "vol_ratio": 0.91, "rs_vs_spy": 0.8, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=68"]}, {"ticker": "MSFT", "passed": 0.0, "score": 10, "summary": "RSI 58 בריא.", "price": 421.92, "ma150": 445.37, "ma50": 399.06, "ma200": 461.91, "pct_above_ma150": -5.27, "pct_above_ma50": 5.73, "rsi": 57.9, "vol_ratio": 1.5, "rs_vs_spy": 0.97, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=58"]}, {"ticker": "NFLX", "passed": 0.0, "score": 10, "summary": "", "price": 87.02, "ma150": 96.46, "ma50": 94.45, "ma200": 102.56, "pct_above_ma150": -9.79, "pct_above_ma50": -7.87, "rsi": 36.7, "vol_ratio": 0.81, "rs_vs_spy": 1.05, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RS=1.05 מעל S&P"]}, {"ticker": "NVO", "passed": 0.0, "score": 10, "summary": "RSI 60 בריא.", "price": 44.74, "ma150": 45.82, "ma50": 39.55, "ma200": 47.61, "pct_above_ma150": -2.35, "pct_above_ma50": 13.11, "rsi": 59.9, "vol_ratio": 0.94, "rs_vs_spy": 0.87, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=60"]}, {"ticker": "OKTA", "passed": 0.0, "score": 10, "summary": "RSI 60 בריא.", "price": 82.77, "ma150": 82.84, "ma50": 76.88, "ma200": 85.16, "pct_above_ma150": -0.08, "pct_above_ma50": 7.66, "rsi": 59.7, "vol_ratio": 0.75, "rs_vs_spy": 0.9, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=60"]}, {"ticker": "PYPL", "passed": 0.0, "score": 10, "summary": "", "price": 44.41, "ma150": 54.02, "ma50": 46.77, "ma200": 57.63, "pct_above_ma150": -17.79, "pct_above_ma50": -5.04, "rsi": 35.0, "vol_ratio": 1.05, "rs_vs_spy": 1.05, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RS=1.05 מעל S&P"]}, {"ticker": "QBTS", "passed": 0.0, "score": 10, "summary": "RSI 50 בריא.", "price": 20.35, "ma150": 23.6, "ma50": 18.21, "ma200": 22.85, "pct_above_ma150": -13.76, "pct_above_ma50": 11.73, "rsi": 50.2, "vol_ratio": 0.87, "rs_vs_spy": 0.99, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=50"]}, {"ticker": "RGTI", "passed": 0.0, "score": 10, "summary": "", "price": 17.85, "ma150": 23.35, "ma50": 16.65, "ma200": 23.01, "pct_above_ma150": -23.54, "pct_above_ma50": 7.2, "rsi": 50.0, "vol_ratio": 0.95, "rs_vs_spy": 1.09, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RS=1.09 מעל S&P"]}, {"ticker": "SMCI", "passed": 0.0, "score": 10, "summary": "RSI 54 בריא.", "price": 31.04, "ma150": 33.21, "ma50": 27.78, "ma200": 36.65, "pct_above_ma150": -6.54, "pct_above_ma50": 11.73, "rsi": 53.6, "vol_ratio": 0.68, "rs_vs_spy": 0.94, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=54"]}, {"ticker": "SNOW", "passed": 0.0, "score": 10, "summary": "RSI 58 בריא.", "price": 157.47, "ma150": 199.21, "ma50": 154.18, "ma200": 203.79, "pct_above_ma150": -20.95, "pct_above_ma50": 2.13, "rsi": 58.0, "vol_ratio": 1.17, "rs_vs_spy": 0.84, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=58"]}, {"ticker": "TEAM", "passed": 0.0, "score": 10, "summary": "RSI 59 בריא.", "price": 87.46, "ma150": 115.87, "ma50": 73.87, "ma200": 128.93, "pct_above_ma150": -24.52, "pct_above_ma50": 18.4, "rsi": 58.7, "vol_ratio": 0.88, "rs_vs_spy": 0.93, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=59"]}, {"ticker": "WDAY", "passed": 0.0, "score": 10, "summary": "RSI 51 בריא.", "price": 125.01, "ma150": 176.78, "ma50": 127.25, "ma200": 190.11, "pct_above_ma150": -29.28, "pct_above_ma50": -1.76, "rsi": 50.7, "vol_ratio": 1.07, "rs_vs_spy": 0.8, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=51"]}, {"ticker": "ZS", "passed": 0.0, "score": 10, "summary": "RSI 66 בריא.", "price": 161.05, "ma150": 207.79, "ma50": 142.57, "ma200": 226.8, "pct_above_ma150": -22.49, "pct_above_ma50": 12.96, "rsi": 65.5, "vol_ratio": 1.48, "rs_vs_spy": 0.87, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": ["RSI=66"]}, {"ticker": "NET", "passed": 0.0, "score": 5, "summary": "", "price": 197.56, "ma150": 201.52, "ma50": 207.68, "ma200": 204.06, "pct_above_ma150": -1.97, "pct_above_ma50": -4.87, "rsi": 45.9, "vol_ratio": 0.75, "rs_vs_spy": 0.98, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": true, "reasons": ["Golden cross"]}, {"ticker": "ACHR", "passed": 0.0, "score": 0, "summary": "", "price": 6.05, "ma150": 7.62, "ma50": 5.88, "ma200": 8.14, "pct_above_ma150": -20.61, "pct_above_ma50": 2.95, "rsi": 49.4, "vol_ratio": 1.48, "rs_vs_spy": 0.82, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "ADSK", "passed": 0.0, "score": 0, "summary": "", "price": 236.62, "ma150": 267.31, "ma50": 241.17, "ma200": 277.45, "pct_above_ma150": -11.48, "pct_above_ma50": -1.89, "rsi": 47.6, "vol_ratio": 0.8, "rs_vs_spy": 0.97, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "AI", "passed": 0.0, "score": 0, "summary": "", "price": 8.65, "ma150": 12.21, "ma50": 8.85, "ma200": 13.7, "pct_above_ma150": -29.13, "pct_above_ma50": -2.29, "rsi": 44.2, "vol_ratio": 1.11, "rs_vs_spy": 0.77, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "ALGN", "passed": 0.0, "score": 0, "summary": "", "price": 157.25, "ma150": 163.97, "ma50": 175.35, "ma200": 156.87, "pct_above_ma150": -4.1, "pct_above_ma50": -10.32, "rsi": 32.3, "vol_ratio": 0.8, "rs_vs_spy": 0.79, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "AMGN", "passed": 0.0, "score": 0, "summary": "", "price": 326.31, "ma150": 335.13, "ma50": 345.38, "ma200": 321.4, "pct_above_ma150": -2.63, "pct_above_ma50": -5.52, "rsi": 39.9, "vol_ratio": 1.3, "rs_vs_spy": 0.83, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "AVAV", "passed": 0.0, "score": 0, "summary": "", "price": 158.0, "ma150": 262.87, "ma50": 192.4, "ma200": 265.96, "pct_above_ma150": -39.89, "pct_above_ma50": -17.88, "rsi": 34.9, "vol_ratio": 0.67, "rs_vs_spy": 0.62, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "BKNG", "passed": 0.0, "score": 0, "summary": "", "price": 154.13, "ma150": 189.25, "ma50": 172.71, "ma200": 196.61, "pct_above_ma150": -18.56, "pct_above_ma50": -10.76, "rsi": 33.5, "vol_ratio": 0.88, "rs_vs_spy": 0.85, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "BNTX", "passed": 0.0, "score": 0, "summary": "", "price": 89.55, "ma150": 100.69, "ma50": 94.93, "ma200": 101.7, "pct_above_ma150": -11.07, "pct_above_ma50": -5.67, "rsi": 35.4, "vol_ratio": 0.92, "rs_vs_spy": 0.78, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "BROS", "passed": 0.0, "score": 0, "summary": "", "price": 51.01, "ma150": 55.65, "ma50": 52.62, "ma200": 57.07, "pct_above_ma150": -8.34, "pct_above_ma50": -3.05, "rsi": 44.0, "vol_ratio": 0.83, "rs_vs_spy": 0.92, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "CDW", "passed": 0.0, "score": 0, "summary": "", "price": 102.07, "ma150": 133.04, "ma50": 122.89, "ma200": 140.35, "pct_above_ma150": -23.28, "pct_above_ma50": -16.94, "rsi": 28.1, "vol_ratio": 1.18, "rs_vs_spy": 0.74, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "CEG", "passed": 0.0, "score": 0, "summary": "", "price": 267.2, "ma150": 323.58, "ma50": 296.96, "ma200": 324.81, "pct_above_ma150": -17.42, "pct_above_ma50": -10.02, "rsi": 35.3, "vol_ratio": 1.26, "rs_vs_spy": 0.89, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "CHWY", "passed": 0.0, "score": 0, "summary": "", "price": 21.28, "ma150": 29.76, "ma50": 25.3, "ma200": 31.96, "pct_above_ma150": -28.48, "pct_above_ma50": -15.88, "rsi": 28.7, "vol_ratio": 0.99, "rs_vs_spy": 0.81, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "CMCSA", "passed": 0.0, "score": 0, "summary": "", "price": 24.76, "ma150": 27.7, "ma50": 28.13, "ma200": 28.15, "pct_above_ma150": -10.6, "pct_above_ma50": -11.97, "rsi": 31.3, "vol_ratio": 0.99, "rs_vs_spy": 0.72, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "CPRT", "passed": 0.0, "score": 0, "summary": "", "price": 32.3, "ma150": 37.98, "ma50": 33.53, "ma200": 40.18, "pct_above_ma150": -14.97, "pct_above_ma50": -3.68, "rsi": 35.6, "vol_ratio": 1.02, "rs_vs_spy": 0.81, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "CRSP", "passed": 0.0, "score": 0, "summary": "", "price": 48.41, "ma150": 54.95, "ma50": 51.45, "ma200": 55.94, "pct_above_ma150": -11.91, "pct_above_ma50": -5.92, "rsi": 40.7, "vol_ratio": 1.0, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "CTAS", "passed": 0.0, "score": 0, "summary": "", "price": 168.31, "ma150": 184.97, "ma50": 176.42, "ma200": 190.63, "pct_above_ma150": -9.01, "pct_above_ma50": -4.59, "rsi": 44.2, "vol_ratio": 1.19, "rs_vs_spy": 0.79, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "CTSH", "passed": 0.0, "score": 0, "summary": "", "price": 47.13, "ma150": 69.46, "ma50": 57.84, "ma200": 69.34, "pct_above_ma150": -32.15, "pct_above_ma50": -18.51, "rsi": 24.1, "vol_ratio": 1.42, "rs_vs_spy": 0.66, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "DASH", "passed": 0.0, "score": 0, "summary": "", "price": 159.2, "ma150": 197.98, "ma50": 164.76, "ma200": 213.02, "pct_above_ma150": -19.59, "pct_above_ma50": -3.37, "rsi": 44.6, "vol_ratio": 1.17, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "DLTR", "passed": 0.0, "score": 0, "summary": "", "price": 89.58, "ma150": 112.44, "ma50": 103.03, "ma200": 110.21, "pct_above_ma150": -20.33, "pct_above_ma50": -13.06, "rsi": 35.3, "vol_ratio": 0.78, "rs_vs_spy": 0.64, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "EA", "passed": 0.0, "score": 0, "summary": "", "price": 200.64, "ma150": 201.85, "ma50": 201.75, "ma200": 195.26, "pct_above_ma150": -0.6, "pct_above_ma50": -0.55, "rsi": 38.9, "vol_ratio": 0.88, "rs_vs_spy": 0.92, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "EXC", "passed": 0.0, "score": 0, "summary": "", "price": 43.38, "ma150": 45.91, "ma50": 47.44, "ma200": 45.33, "pct_above_ma150": -5.52, "pct_above_ma50": -8.56, "rsi": 31.6, "vol_ratio": 1.15, "rs_vs_spy": 0.85, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "FAST", "passed": 0.0, "score": 0, "summary": "", "price": 43.26, "ma150": 43.29, "ma50": 45.11, "ma200": 44.32, "pct_above_ma150": -0.06, "pct_above_ma50": -4.1, "rsi": 40.9, "vol_ratio": 0.62, "rs_vs_spy": 0.88, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "FLUT", "passed": 0.0, "score": 0, "summary": "", "price": 92.38, "ma150": 165.27, "ma50": 105.14, "ma200": 195.26, "pct_above_ma150": -44.11, "pct_above_ma50": -12.14, "rsi": 31.2, "vol_ratio": 0.79, "rs_vs_spy": 0.6, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "FUTU", "passed": 0.0, "score": 0, "summary": "", "price": 134.64, "ma150": 158.82, "ma50": 147.57, "ma200": 162.15, "pct_above_ma150": -15.22, "pct_above_ma50": -8.76, "rsi": 37.3, "vol_ratio": 1.21, "rs_vs_spy": 0.85, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "GILD", "passed": 0.0, "score": 0, "summary": "", "price": 129.58, "ma150": 131.53, "ma50": 137.27, "ma200": 126.81, "pct_above_ma150": -1.48, "pct_above_ma50": -5.6, "rsi": 39.7, "vol_ratio": 1.12, "rs_vs_spy": 0.79, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "HOOD", "passed": 0.0, "score": 0, "summary": "", "price": 77.14, "ma150": 101.03, "ma50": 76.47, "ma200": 105.25, "pct_above_ma150": -23.65, "pct_above_ma50": 0.87, "rsi": 48.4, "vol_ratio": 0.67, "rs_vs_spy": 1.0, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "IDXX", "passed": 0.0, "score": 0, "summary": "", "price": 528.79, "ma150": 642.69, "ma50": 570.92, "ma200": 641.42, "pct_above_ma150": -17.72, "pct_above_ma50": -7.38, "rsi": 36.2, "vol_ratio": 1.18, "rs_vs_spy": 0.79, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "INCY", "passed": 0.0, "score": 0, "summary": "", "price": 95.31, "ma150": 98.48, "ma50": 95.39, "ma200": 94.85, "pct_above_ma150": -3.22, "pct_above_ma50": -0.09, "rsi": 44.9, "vol_ratio": 1.1, "rs_vs_spy": 0.87, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "INFY", "passed": 0.0, "score": 0, "summary": "", "price": 12.07, "ma150": 15.76, "ma50": 13.2, "ma200": 15.93, "pct_above_ma150": -23.39, "pct_above_ma50": -8.59, "rsi": 39.3, "vol_ratio": 1.08, "rs_vs_spy": 0.78, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "INSM", "passed": 0.0, "score": 0, "summary": "", "price": 109.14, "ma150": 162.59, "ma50": 140.67, "ma200": 156.05, "pct_above_ma150": -32.87, "pct_above_ma50": -22.41, "rsi": 33.8, "vol_ratio": 1.29, "rs_vs_spy": 0.69, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "INTU", "passed": 0.0, "score": 0, "summary": "", "price": 393.0, "ma150": 526.7, "ma50": 411.3, "ma200": 566.86, "pct_above_ma150": -25.38, "pct_above_ma50": -4.45, "rsi": 48.8, "vol_ratio": 1.15, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "ISRG", "passed": 0.0, "score": 0, "summary": "", "price": 421.12, "ma150": 509.26, "ma50": 462.86, "ma200": 496.92, "pct_above_ma150": -17.31, "pct_above_ma50": -9.02, "rsi": 33.5, "vol_ratio": 1.17, "rs_vs_spy": 0.81, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "KTOS", "passed": 0.0, "score": 0, "summary": "", "price": 52.09, "ma150": 83.15, "ma50": 71.81, "ma200": 80.79, "pct_above_ma150": -37.35, "pct_above_ma50": -27.46, "rsi": 32.2, "vol_ratio": 0.99, "rs_vs_spy": 0.55, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "LCID", "passed": 0.0, "score": 0, "summary": "", "price": 6.04, "ma150": 11.5, "ma50": 8.24, "ma200": 14.0, "pct_above_ma150": -47.46, "pct_above_ma50": -26.67, "rsi": 37.4, "vol_ratio": 0.91, "rs_vs_spy": 0.56, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "LULU", "passed": 0.0, "score": 0, "summary": "", "price": 119.14, "ma150": 173.21, "ma50": 151.16, "ma200": 176.1, "pct_above_ma150": -31.22, "pct_above_ma50": -21.18, "rsi": 24.2, "vol_ratio": 0.96, "rs_vs_spy": 0.65, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "MELI", "passed": 0.0, "score": 0, "summary": "", "price": 1546.81, "ma150": 1955.05, "ma50": 1738.31, "ma200": 2057.88, "pct_above_ma150": -20.88, "pct_above_ma50": -11.02, "rsi": 34.2, "vol_ratio": 1.13, "rs_vs_spy": 0.71, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "META", "passed": 0.0, "score": 0, "summary": "", "price": 614.23, "ma150": 646.08, "ma50": 621.8, "ma200": 672.6, "pct_above_ma150": -4.93, "pct_above_ma50": -1.22, "rsi": 45.6, "vol_ratio": 0.81, "rs_vs_spy": 0.87, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "NTES", "passed": 0.0, "score": 0, "summary": "", "price": 113.38, "ma150": 127.36, "ma50": 114.69, "ma200": 130.31, "pct_above_ma150": -10.98, "pct_above_ma50": -1.15, "rsi": 45.3, "vol_ratio": 1.11, "rs_vs_spy": 0.89, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "ORLY", "passed": 0.0, "score": 0, "summary": "", "price": 88.49, "ma150": 94.86, "ma50": 92.32, "ma200": 97.08, "pct_above_ma150": -6.71, "pct_above_ma50": -4.15, "rsi": 37.4, "vol_ratio": 1.14, "rs_vs_spy": 0.85, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "PCAR", "passed": 0.0, "score": 0, "summary": "", "price": 110.32, "ma150": 113.01, "ma50": 118.2, "ma200": 108.91, "pct_above_ma150": -2.38, "pct_above_ma50": -6.67, "rsi": 33.5, "vol_ratio": 1.01, "rs_vs_spy": 0.81, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "PDD", "passed": 0.0, "score": 0, "summary": "", "price": 95.83, "ma150": 110.78, "ma50": 100.26, "ma200": 114.17, "pct_above_ma150": -13.49, "pct_above_ma50": -4.42, "rsi": 43.2, "vol_ratio": 0.96, "rs_vs_spy": 0.88, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "PEP", "passed": 0.0, "score": 0, "summary": "", "price": 149.12, "ma150": 151.23, "ma50": 155.14, "ma200": 148.61, "pct_above_ma150": -1.4, "pct_above_ma50": -3.88, "rsi": 38.7, "vol_ratio": 1.03, "rs_vs_spy": 0.83, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "PINS", "passed": 0.0, "score": 0, "summary": "", "price": 19.47, "ma150": 23.5, "ma50": 19.34, "ma200": 26.48, "pct_above_ma150": -17.13, "pct_above_ma50": 0.65, "rsi": 45.9, "vol_ratio": 0.75, "rs_vs_spy": 0.97, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "PLTR", "passed": 0.0, "score": 0, "summary": "", "price": 133.99, "ma150": 160.83, "ma50": 144.4, "ma200": 163.35, "pct_above_ma150": -16.69, "pct_above_ma50": -7.21, "rsi": 43.5, "vol_ratio": 0.69, "rs_vs_spy": 0.95, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "RBLX", "passed": 0.0, "score": 0, "summary": "", "price": 42.85, "ma150": 77.94, "ma50": 54.48, "ma200": 90.74, "pct_above_ma150": -45.02, "pct_above_ma50": -21.35, "rsi": 33.6, "vol_ratio": 1.05, "rs_vs_spy": 0.62, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "REGN", "passed": 0.0, "score": 0, "summary": "", "price": 698.25, "ma150": 730.16, "ma50": 742.36, "ma200": 690.5, "pct_above_ma150": -4.37, "pct_above_ma50": -5.94, "rsi": 39.3, "vol_ratio": 1.05, "rs_vs_spy": 0.82, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "ROP", "passed": 0.0, "score": 0, "summary": "", "price": 320.9, "ma150": 397.57, "ma50": 350.94, "ma200": 427.33, "pct_above_ma150": -19.28, "pct_above_ma50": -8.56, "rsi": 29.7, "vol_ratio": 1.09, "rs_vs_spy": 0.92, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "RXRX", "passed": 0.0, "score": 0, "summary": "", "price": 2.93, "ma150": 4.15, "ma50": 3.34, "ma200": 4.38, "pct_above_ma150": -29.32, "pct_above_ma50": -12.19, "rsi": 34.9, "vol_ratio": 1.36, "rs_vs_spy": 0.75, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "SPOT", "passed": 0.0, "score": 0, "summary": "", "price": 436.94, "ma150": 539.8, "ma50": 484.2, "ma200": 579.05, "pct_above_ma150": -19.05, "pct_above_ma50": -9.76, "rsi": 40.7, "vol_ratio": 1.05, "rs_vs_spy": 0.9, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "TCOM", "passed": 0.0, "score": 0, "summary": "", "price": 49.61, "ma150": 62.03, "ma50": 52.19, "ma200": 63.91, "pct_above_ma150": -20.02, "pct_above_ma50": -4.95, "rsi": 35.5, "vol_ratio": 0.92, "rs_vs_spy": 0.84, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "TIGR", "passed": 0.0, "score": 0, "summary": "", "price": 6.16, "ma150": 8.33, "ma50": 6.77, "ma200": 8.98, "pct_above_ma150": -26.06, "pct_above_ma50": -9.07, "rsi": 40.2, "vol_ratio": 1.01, "rs_vs_spy": 0.7, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "TME", "passed": 0.0, "score": 0, "summary": "", "price": 8.47, "ma150": 15.22, "ma50": 9.99, "ma200": 17.3, "pct_above_ma150": -44.34, "pct_above_ma50": -15.18, "rsi": 30.4, "vol_ratio": 0.8, "rs_vs_spy": 0.53, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "TMUS", "passed": 0.0, "score": 0, "summary": "", "price": 185.22, "ma150": 203.84, "ma50": 200.74, "ma200": 213.01, "pct_above_ma150": -9.13, "pct_above_ma50": -7.73, "rsi": 37.3, "vol_ratio": 1.38, "rs_vs_spy": 0.8, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "TOST", "passed": 0.0, "score": 0, "summary": "", "price": 23.05, "ma150": 31.6, "ma50": 27.3, "ma200": 34.06, "pct_above_ma150": -27.05, "pct_above_ma50": -15.58, "rsi": 33.1, "vol_ratio": 1.18, "rs_vs_spy": 0.81, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "TRMB", "passed": 0.0, "score": 0, "summary": "", "price": 55.13, "ma150": 72.36, "ma50": 65.41, "ma200": 74.63, "pct_above_ma150": -23.81, "pct_above_ma50": -15.71, "rsi": 24.2, "vol_ratio": 1.23, "rs_vs_spy": 0.77, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "TTD", "passed": 0.0, "score": 0, "summary": "", "price": 21.15, "ma150": 32.99, "ma50": 23.27, "ma200": 38.52, "pct_above_ma150": -35.9, "pct_above_ma50": -9.12, "rsi": 41.1, "vol_ratio": 0.91, "rs_vs_spy": 0.74, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "ULTA", "passed": 0.0, "score": 0, "summary": "", "price": 494.28, "ma150": 580.86, "ma50": 541.29, "ma200": 567.6, "pct_above_ma150": -14.91, "pct_above_ma50": -8.69, "rsi": 33.0, "vol_ratio": 0.8, "rs_vs_spy": 0.68, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "UPST", "passed": 0.0, "score": 0, "summary": "", "price": 29.51, "ma150": 37.97, "ma50": 28.91, "ma200": 44.63, "pct_above_ma150": -22.27, "pct_above_ma50": 2.07, "rsi": 48.2, "vol_ratio": 1.14, "rs_vs_spy": 0.9, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "VKTX", "passed": 0.0, "score": 0, "summary": "", "price": 30.27, "ma150": 33.79, "ma50": 33.27, "ma200": 32.69, "pct_above_ma150": -10.43, "pct_above_ma50": -9.02, "rsi": 39.0, "vol_ratio": 0.75, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "VRSK", "passed": 0.0, "score": 0, "summary": "", "price": 162.55, "ma150": 204.22, "ma50": 183.55, "ma200": 217.73, "pct_above_ma150": -20.4, "pct_above_ma50": -11.44, "rsi": 37.9, "vol_ratio": 0.89, "rs_vs_spy": 0.84, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "VRTX", "passed": 0.0, "score": 0, "summary": "", "price": 436.95, "ma150": 447.44, "ma50": 444.64, "ma200": 434.66, "pct_above_ma150": -2.34, "pct_above_ma50": -1.73, "rsi": 49.2, "vol_ratio": 1.0, "rs_vs_spy": 0.86, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "WIT", "passed": 0.0, "score": 0, "summary": "", "price": 1.89, "ma150": 2.47, "ma50": 2.12, "ma200": 2.54, "pct_above_ma150": -23.61, "pct_above_ma50": -10.92, "rsi": 35.1, "vol_ratio": 0.93, "rs_vs_spy": 0.76, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "WIX", "passed": 0.0, "score": 0, "summary": "", "price": 54.67, "ma150": 94.5, "ma50": 79.22, "ma200": 107.88, "pct_above_ma150": -42.15, "pct_above_ma50": -30.99, "rsi": 30.6, "vol_ratio": 1.28, "rs_vs_spy": 0.71, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "WYNN", "passed": 0.0, "score": 0, "summary": "", "price": 95.42, "ma150": 113.37, "ma50": 102.82, "ma200": 114.82, "pct_above_ma150": -15.83, "pct_above_ma50": -7.2, "rsi": 32.6, "vol_ratio": 0.63, "rs_vs_spy": 0.81, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "XEL", "passed": 0.0, "score": 0, "summary": "", "price": 77.92, "ma150": 78.29, "ma50": 80.07, "ma200": 76.98, "pct_above_ma150": -0.47, "pct_above_ma50": -2.69, "rsi": 40.6, "vol_ratio": 0.99, "rs_vs_spy": 0.91, "is_recent_breakout": false, "stage2": false, "ma200_rising": true, "ma50_above_ma150": true, "golden_cross_recent": false, "reasons": []}, {"ticker": "XPEV", "passed": 0.0, "score": 0, "summary": "", "price": 15.62, "ma150": 19.28, "ma50": 17.4, "ma200": 19.79, "pct_above_ma150": -18.99, "pct_above_ma50": -10.24, "rsi": 40.8, "vol_ratio": 0.96, "rs_vs_spy": 0.81, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "Z", "passed": 0.0, "score": 0, "summary": "", "price": 37.66, "ma150": 58.2, "ma50": 43.02, "ma200": 64.27, "pct_above_ma150": -35.29, "pct_above_ma50": -12.45, "rsi": 32.1, "vol_ratio": 0.86, "rs_vs_spy": 0.79, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}, {"ticker": "ZG", "passed": 0.0, "score": 0, "summary": "", "price": 38.06, "ma150": 57.31, "ma50": 43.04, "ma200": 62.83, "pct_above_ma150": -33.58, "pct_above_ma50": -11.56, "rsi": 32.6, "vol_ratio": 1.17, "rs_vs_spy": 0.8, "is_recent_breakout": false, "stage2": false, "ma200_rising": false, "ma50_above_ma150": false, "golden_cross_recent": false, "reasons": []}], "error_tickers": []};
+const RESULTS_PATH = "(inline)";
+
+// ---- Position size calculator (state in localStorage, falls back gracefully) ----
+const PC_LS_KEY = "nasdaq_position_calc";
+function pcLoad() {
+  try {
+    const raw = localStorage.getItem(PC_LS_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return { account: 10000, risk: 1 };
+}
+function pcSave(state) {
+  try { localStorage.setItem(PC_LS_KEY, JSON.stringify(state)); } catch (e) {}
+}
+function pcGet() {
+  const account = parseFloat(document.getElementById("pc-account").value) || 10000;
+  const risk = parseFloat(document.getElementById("pc-risk").value) || 1;
+  return { account, risk };
+}
+function computePosition(r, pc) {
+  if (!r.price || !r.stop_loss || r.stop_loss >= r.price) return null;
+  const riskDollars = pc.account * (pc.risk / 100);
+  const riskPerShare = r.price - r.stop_loss;
+  const shares = Math.floor(riskDollars / riskPerShare);
+  if (shares <= 0) return null;
+  const totalCost = shares * r.price;
+  const maxLoss = shares * riskPerShare;
+  const target1Gain = r.target1 ? shares * (r.target1 - r.price) : null;
+  const target2Gain = r.target2 ? shares * (r.target2 - r.price) : null;
+  return { shares, totalCost, maxLoss, target1Gain, target2Gain };
+}
+function positionBlockHtml(r) {
+  const pc = pcGet();
+  const p = computePosition(r, pc);
+  if (!p) return "";
+  const fmt = (n) => n.toLocaleString("en-US", { maximumFractionDigits: 0 });
+  return `
+    <div class="position-block">
+      <div class="pb-row"><span class="pb-label">קנה</span><span class="pb-val">${fmt(p.shares)} מניות</span></div>
+      <div class="pb-row"><span class="pb-label">עלות סך הכל</span><span class="pb-val">$${fmt(p.totalCost)}</span></div>
+      <div class="pb-row"><span class="pb-label">הפסד מקסימלי (Stop)</span><span class="pb-val" style="color:#dc2626">-$${fmt(p.maxLoss)}</span></div>
+      ${p.target1Gain ? `<div class="pb-row"><span class="pb-label">רווח ביעד 1</span><span class="pb-val" style="color:#059669">+$${fmt(p.target1Gain)}</span></div>` : ""}
+      ${p.target2Gain ? `<div class="pb-row"><span class="pb-label">רווח ביעד 2</span><span class="pb-val" style="color:#059669">+$${fmt(p.target2Gain)}</span></div>` : ""}
+    </div>`;
+}
+
+function fmtDate(iso) {
+  if (!iso) return "—";
+  try {
+    const d = new Date(iso);
+    return d.toLocaleString("he-IL", { dateStyle: "short", timeStyle: "short" });
+  } catch (e) { return iso; }
+}
+
+function chip(text, cls) {
+  return `<span class="chip ${cls||""}">${text}</span>`;
+}
+
+let _chartCounter = 0;
+const _pendingCharts = [];
+
+function copyJournalEntry(jsonStr) {
+  try {
+    navigator.clipboard.writeText(jsonStr);
+    alert("הועתק ללוח! פתח את trade_journal.json והדבק לתוך מערך 'trades' (הוסף פסיק לפני אם יש כבר עסקה). אחר כך הרץ:\n\npython3 trade_journal.py");
+  } catch (e) {
+    prompt("העתק ידנית:", jsonStr);
+  }
+}
+
+function renderCard(r) {
+  const reasons = (r.reasons || []).map(x => chip(x, "blue")).join("");
+  const stage2 = r.stage2 ? chip("Stage 2", "green") : "";
+  const recent = r.is_recent_breakout ? chip("פריצה טרייה", "green") : "";
+  const golden = r.golden_cross_recent ? chip("Golden Cross", "amber") : "";
+  const weekly = r.weekly_above_ma ? chip("✓ MA שבועי", "green") : "";
+  const personalStar = r.is_personal ? `<span class="star" title="מהרשימה האישית שלך">★</span> ` : "";
+  const sector = r.sector ? `<span class="sector-pill">${r.sector}</span>` : "";
+  const sectorStrength = r.sector_strength ?
+    `<span class="sector-strength" style="background:${r.sector_strength.color}22;color:${r.sector_strength.color};border:1px solid ${r.sector_strength.color}55" title="${r.sector_strength.etf || ''} 1m: ${r.sector_strength.ret_1m ?? '—'}%, 3m: ${r.sector_strength.ret_3m ?? '—'}%">${r.sector_strength.emoji} ${r.sector_strength.label}</span>` : "";
+  const high52 = r.near_52w_high ?
+    `<span class="high52-pill" title="שיא 52 שבועות: $${r.high_52w}, מרחק ${r.distance_from_52w}%">🔥 שיא 52 שבועות</span>` : "";
+
+  let newsHtml = "";
+  if (r.news && r.news.length > 0) {
+    const items = r.news.map(n => {
+      const url = n.link ? n.link : "#";
+      const pub = n.publisher ? `<span class="np">${n.publisher}</span>` : "";
+      return `<a class="news-item" href="${url}" target="_blank" rel="noopener">${n.title} ${pub}</a>`;
+    }).join("");
+    newsHtml = `<div class="news-list"><div class="nh">📰 חדשות אחרונות</div>${items}</div>`;
+  }
+  const summary = r.summary ? `<div class="summary">${r.summary}</div>` : "";
+
+  // Prefer interactive Lightweight Chart when data + library available;
+  // fall back to the static PNG.
+  let chartHtml = "";
+  if (r.chart_data && typeof LightweightCharts !== "undefined") {
+    const chartId = `tvchart_${_chartCounter++}`;
+    chartHtml = `
+      <div class="tv-chart" id="${chartId}">
+        <div class="tv-legend">
+          <div><span class="ln" style="background:#3b82f6"></span>MA50</div>
+          <div><span class="ln" style="background:#dc2626"></span>MA150</div>
+          <div><span class="ln" style="background:#9ca3af"></span>MA200</div>
+        </div>
+      </div>`;
+    _pendingCharts.push({ id: chartId, r });
+  } else if (r.chart_b64) {
+    chartHtml = `<img class="chart" alt="${r.ticker} chart" src="data:image/png;base64,${r.chart_b64}">`;
+  }
+
+  const tvLink = `<a class="ext-link" href="https://www.tradingview.com/symbols/NASDAQ-${r.ticker}/" target="_blank" rel="noopener">📊 פתח ב-TradingView</a>`;
+
+  // "Copy to journal" button — builds a JSON trade entry on click
+  const journalSnippet = (() => {
+    const pc = pcGet();
+    const p = computePosition(r, pc);
+    const shares = p ? p.shares : Math.max(1, Math.floor(1000 / (r.price || 1)));
+    const today = new Date().toISOString().slice(0, 10);
+    const id = `${r.ticker}-${today}-${Math.random().toString(36).slice(2,7)}`;
+    return JSON.stringify({
+      id, ticker: r.ticker, kind: "paper", status: "open",
+      entry_date: today, entry_price: r.price, shares,
+      stop_loss: r.stop_loss, target1: r.target1, target2: r.target2,
+      notes: `Score ${r.score}, ${r.sector || ''}`
+    }, null, 2);
+  })();
+  const copyBtn = `<button class="copy-btn" onclick='copyJournalEntry(${JSON.stringify(journalSnippet)})'>📓 העתק ליומן</button>`;
+
+  // Historical track-record badge
+  let trackRecord = "";
+  if (r.historical_performance && r.historical_performance.appearances > 0) {
+    const tr = r.historical_performance;
+    const hexLight = (c) => c + "12"; // light tint
+    let stats = `הופיעה ${tr.appearances} פעמים בארכיון`;
+    if (tr.appearances_with_returns > 0) {
+      stats += ` · ${tr.appearances_with_returns} עם תוצאה ידועה`;
+      stats += ` · win-rate <strong>${tr.win_rate_20d}%</strong>`;
+      stats += ` · תשואה ממוצעת <strong class="${tr.avg_return_20d >= 0 ? 'tr-pos' : 'tr-neg'}">${tr.avg_return_20d > 0 ? '+' : ''}${tr.avg_return_20d}%</strong>`;
+    }
+    let history = "";
+    if (tr.history && tr.history.length > 0) {
+      const items = tr.history.map(h => {
+        const cls = h.ret_20d >= 0 ? 'tr-pos' : 'tr-neg';
+        const sign = h.ret_20d > 0 ? '+' : '';
+        return `<span class="tr-hist-item">${h.date}: <span class="${cls}">${sign}${h.ret_20d}%</span></span>`;
+      }).join("");
+      history = `<div class="tr-history">${items}</div>`;
+    }
+    trackRecord = `
+      <div class="track-record" style="background:${hexLight(tr.color)};border-color:${tr.color};">
+        <div class="tr-head" style="color:${tr.color};">${tr.emoji} ${tr.label}</div>
+        <div class="tr-stats">${stats}</div>
+        ${history}
+      </div>`;
+  }
+
+  const earningsWarn = (r.days_to_earnings !== null && r.days_to_earnings !== undefined && r.days_to_earnings >= 0 && r.days_to_earnings <= 7)
+    ? `<div class="earnings-warn">⚠️ דוח כספי בעוד ${r.days_to_earnings} ימים — סיכון מוגבר</div>`
+    : "";
+
+  const tradeLevels = (r.stop_loss && r.target1 && r.target2) ? `
+    <div class="trade-levels">
+      <div class="lvl stop"><div class="lvl-label">Stop-Loss</div><div class="lvl-val">$${r.stop_loss}</div></div>
+      <div class="lvl tgt1"><div class="lvl-label">יעד 1 (1:${r.risk_reward ?? '?'})</div><div class="lvl-val">$${r.target1}</div></div>
+      <div class="lvl tgt2"><div class="lvl-label">יעד 2</div><div class="lvl-val">$${r.target2}</div></div>
+    </div>` : "";
+
+  return `
+    <div class="card">
+      <div class="row">
+        <div class="ticker">${personalStar}${r.ticker}${sector}${sectorStrength}${high52}</div>
+        <div class="score-pill">${r.score}</div>
+      </div>
+      <div class="row" style="margin-top:4px">
+        <div class="price">$${r.price?.toFixed?.(2) ?? r.price}</div>
+        <div class="meta">+${r.pct_above_ma150}% מעל MA150</div>
+      </div>
+      <div class="meta">
+        <span>RSI ${r.rsi}</span>
+        <span>נפח ×${r.vol_ratio ?? "—"}</span>
+        <span>RS ${r.rs_vs_spy ?? "—"}</span>
+        ${r.atr ? `<span>ATR ${r.atr}</span>` : ""}
+      </div>
+      ${trackRecord}
+      ${earningsWarn}
+      ${chartHtml}
+      ${tvLink}
+      ${copyBtn}
+      ${tradeLevels}
+      ${positionBlockHtml(r)}
+      ${summary}
+      ${newsHtml}
+      <div class="reasons" style="margin-top:8px">${stage2}${recent}${golden}${weekly}${reasons}</div>
+    </div>
+  `;
+}
+
+function renderInteractiveCharts() {
+  if (typeof LightweightCharts === "undefined") return;
+  for (const { id, r } of _pendingCharts) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    try {
+      const chart = LightweightCharts.createChart(el, {
+        layout: { background: { color: "#ffffff" }, textColor: "#374151" },
+        grid: { vertLines: { color: "#f3f4f6" }, horzLines: { color: "#f3f4f6" } },
+        rightPriceScale: { borderColor: "#e5e7eb" },
+        timeScale: { borderColor: "#e5e7eb", timeVisible: false, secondsVisible: false },
+        crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+        autoSize: true,
+      });
+
+      const candle = chart.addCandlestickSeries({
+        upColor: "#10b981", downColor: "#ef4444",
+        borderUpColor: "#059669", borderDownColor: "#dc2626",
+        wickUpColor: "#10b981", wickDownColor: "#ef4444",
+      });
+      candle.setData(r.chart_data.ohlc);
+
+      const ma50 = chart.addLineSeries({ color: "#3b82f6", lineWidth: 1.5, priceLineVisible: false, lastValueVisible: false });
+      ma50.setData(r.chart_data.ma50);
+
+      const ma150 = chart.addLineSeries({ color: "#dc2626", lineWidth: 2.5, priceLineVisible: false, lastValueVisible: false });
+      ma150.setData(r.chart_data.ma150);
+
+      const ma200 = chart.addLineSeries({ color: "#9ca3af", lineWidth: 1.5, lineStyle: 2, priceLineVisible: false, lastValueVisible: false });
+      ma200.setData(r.chart_data.ma200);
+
+      // Horizontal lines: Stop / Entry / Targets
+      if (r.stop_loss) candle.createPriceLine({ price: r.stop_loss, color: "#dc2626", lineWidth: 2, lineStyle: 2, axisLabelVisible: true, title: "Stop" });
+      if (r.price)      candle.createPriceLine({ price: r.price,     color: "#111827", lineWidth: 1, lineStyle: 0, axisLabelVisible: true, title: "Entry" });
+      if (r.target1)   candle.createPriceLine({ price: r.target1,   color: "#10b981", lineWidth: 2, lineStyle: 2, axisLabelVisible: true, title: "T1" });
+      if (r.target2)   candle.createPriceLine({ price: r.target2,   color: "#059669", lineWidth: 2, lineStyle: 2, axisLabelVisible: true, title: "T2" });
+
+      // Marker on the breakout day
+      if (r.chart_data.breakout_marker) {
+        candle.setMarkers([{
+          time: r.chart_data.breakout_marker.time,
+          position: "belowBar",
+          color: "#10b981",
+          shape: "arrowUp",
+          text: `Breakout $${r.chart_data.breakout_marker.price}`,
+        }]);
+      }
+
+      chart.timeScale().fitContent();
+    } catch (err) {
+      console.error(`chart render failed for ${r.ticker}:`, err);
+    }
+  }
+  _pendingCharts.length = 0;
+}
+
+function renderRow(r) {
+  const cls = (n) => n > 0 ? "pos" : n < 0 ? "neg" : "";
+  return `
+    <tr>
+      <td><strong>${r.ticker}</strong></td>
+      <td class="num">$${r.price}</td>
+      <td class="num ${cls(r.pct_above_ma150)}">${r.pct_above_ma150}%</td>
+      <td class="num ${cls(r.pct_above_ma50)}">${r.pct_above_ma50}%</td>
+      <td class="num">${r.rsi ?? "—"}</td>
+      <td class="num">${r.vol_ratio ?? "—"}</td>
+      <td class="num">${r.rs_vs_spy ?? "—"}</td>
+      <td class="num"><strong>${r.score}</strong></td>
+    </tr>
+  `;
+}
+
+function setStat(idx, label, value, cls) {
+  const stats = document.getElementById("stats");
+  const el = stats.children[idx];
+  el.className = "stat " + (cls || "");
+  el.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div>`;
+}
+
+async function load() {
+  const errArea = document.getElementById("error-area");
+  errArea.innerHTML = "";
+  try {
+    const data = __INLINE_DATA__;
+
+    document.getElementById("status-badge").textContent = "מעודכן";
+    document.getElementById("sub").textContent =
+      `סורק מניות מעל $5B לפריצות מעל ממוצע 150 בנפח מוגבר · עדכון אחרון: ${fmtDate(data.generated_at)}`;
+
+    if (data._status) {
+      errArea.innerHTML = `<div class="error">${data._status}</div>`;
+    }
+
+    setStat(0, "פריצות היום", (data.breakouts || []).length, "alert");
+    setStat(1, "רשימת מעקב", (data.watchlist || []).length, "warn");
+    setStat(2, "נסרקו", `${data.scanned || 0} / ${data.universe_size || 0}`);
+    setStat(3, "סריקה אחרונה", fmtDate(data.generated_at));
+
+    const bEl = document.getElementById("breakouts");
+    const wEl = document.getElementById("watchlist");
+    document.getElementById("b-count").textContent = (data.breakouts || []).length;
+    document.getElementById("w-count").textContent = (data.watchlist || []).length;
+
+    if ((data.breakouts || []).length === 0) {
+      bEl.outerHTML = `<div class="empty">אין פריצות שעוברות את הסף בסריקה האחרונה</div>`;
+    } else {
+      bEl.innerHTML = data.breakouts.map(renderCard).join("");
+    }
+
+    if ((data.watchlist || []).length === 0) {
+      document.getElementById("watchlist-section").style.display = "none";
+    } else {
+      wEl.innerHTML = data.watchlist.map(renderCard).join("");
+    }
+
+    // Personal watchlist
+    const pEl = document.getElementById("personal");
+    const personal = data.personal || [];
+    if (personal.length > 0) {
+      document.getElementById("personal-section").style.display = "";
+      document.getElementById("p-count").textContent = personal.length;
+      pEl.innerHTML = personal.map(renderCard).join("");
+    }
+
+    if ((data.all_results || []).length > 0) {
+      document.getElementById("all-section").style.display = "";
+      const tb = document.querySelector("#all-table tbody");
+      tb.innerHTML = data.all_results.slice(0, 100).map(renderRow).join("");
+    }
+
+    // After all cards are in the DOM, initialize the interactive charts.
+    // Delay slightly to ensure layout is settled.
+    setTimeout(renderInteractiveCharts, 50);
+  } catch (e) {
+    document.getElementById("status-badge").textContent = "שגיאה";
+    errArea.innerHTML = `<div class="error">לא ניתן לטעון את scan_results.json: ${e.message}<br>
+      ודא שהסקריפט scan_nasdaq.py רץ והפיק תוצאות. הקובץ אמור להיות ב:<br>
+      <code>${RESULTS_PATH}</code></div>`;
+    setStat(0, "פריצות היום", "—");
+    setStat(1, "רשימת מעקב", "—");
+    setStat(2, "נסרקו", "—");
+    setStat(3, "סריקה אחרונה", "—");
+  }
+}
+
+// Restore position calculator inputs from localStorage
+(function initPositionCalc() {
+  const st = pcLoad();
+  document.getElementById("pc-account").value = st.account;
+  document.getElementById("pc-risk").value = st.risk;
+  let _lastData = null;
+  for (const id of ["pc-account", "pc-risk"]) {
+    document.getElementById(id).addEventListener("change", () => {
+      pcSave(pcGet());
+      // Re-render the cards using the cached data
+      if (window._lastData) load(window._lastData);
+    });
+  }
+})();
+
+// Patch load() so it caches data for re-renders
+const _origLoad = load;
+load = async function(cached) {
+  if (cached) {
+    // Re-render only — same path but using cached data
+    window._lastData = cached;
+    // Easiest: re-fetch via DOM is overkill; rebuild cards directly
+    const data = cached;
+    const bEl = document.getElementById("breakouts");
+    if (data.breakouts) bEl.innerHTML = data.breakouts.map(renderCard).join("");
+    const wEl = document.getElementById("watchlist");
+    if (data.watchlist && data.watchlist.length) wEl.innerHTML = data.watchlist.map(renderCard).join("");
+    const pEl = document.getElementById("personal");
+    if (data.personal && data.personal.length) pEl.innerHTML = data.personal.map(renderCard).join("");
+    setTimeout(renderInteractiveCharts, 50);
+    return;
+  }
+  await _origLoad();
+};
+
+(async function() {
+  await _origLoad();
+  // Capture data for re-renders triggered by position-calc input changes
+  try {
+    const res = await window.cowork?.callMcpTool?.("mcp__workspace__bash", { command: `cat "${RESULTS_PATH}"` });
+    if (res) {
+      let text = typeof res === "string" ? res : (res?.content?.[0]?.text ?? res?.stdout ?? JSON.stringify(res));
+      window._lastData = JSON.parse(text.trim());
+    }
+  } catch (e) { /* standalone has inline data, captured below */ }
+  if (typeof __INLINE_DATA__ !== "undefined") window._lastData = __INLINE_DATA__;
+})();
+</script>
+</body>
+</html>
