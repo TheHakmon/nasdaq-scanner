@@ -90,6 +90,9 @@ ATR_TARGET1_MULT = 4.0                # target1 = entry + 4 * ATR (1:2 R/R)
 ATR_TARGET2_MULT = 6.0                # target2 = entry + 6 * ATR (1:3 R/R)
 NEAR_52W_HIGH_PCT = 5.0               # "near 52-week high" if within 5% of it
 NEWS_PER_TICKER = 3                   # how many news headlines to include
+ADX_TREND_MIN = 25                   # ADX above this = strong trend
+EXTENDED_MA50_PCT = 15.0             # > this % above MA50 = "extended" (chasing risk)
+STRONG_GROWTH_PCT = 0.20             # earnings/revenue YoY growth >= 20% = strong
 
 # Map yfinance sector names to SPDR sector ETFs for sector-strength check.
 SECTOR_ETF_MAP = {
@@ -181,6 +184,45 @@ def atr(hist: pd.DataFrame, period: int = 14) -> pd.Series:
         (low - prev_close).abs(),
     ], axis=1).max(axis=1)
     return tr.ewm(alpha=1 / period, min_periods=period, adjust=False).mean()
+
+
+def adx(hist: pd.DataFrame, period: int = 14) -> pd.Series:
+    """Average Directional Index — measures TREND STRENGTH (not direction).
+    ADX > 25 ≈ strong trend; < 20 ≈ choppy/no trend."""
+    high, low, close = hist["High"], hist["Low"], hist["Close"]
+    up = high.diff()
+    down = -low.diff()
+    plus_dm = pd.Series(np.where((up > down) & (up > 0), up, 0.0), index=hist.index)
+    minus_dm = pd.Series(np.where((down > up) & (down > 0), down, 0.0), index=hist.index)
+    prev_close = close.shift(1)
+    tr = pd.concat([(high - low).abs(), (high - prev_close).abs(),
+                    (low - prev_close).abs()], axis=1).max(axis=1)
+    atr_ = tr.ewm(alpha=1 / period, min_periods=period, adjust=False).mean()
+    plus_di = 100 * plus_dm.ewm(alpha=1 / period, min_periods=period, adjust=False).mean() / atr_
+    minus_di = 100 * minus_dm.ewm(alpha=1 / period, min_periods=period, adjust=False).mean() / atr_
+    dx = 100 * (plus_di - minus_di).abs() / (plus_di + minus_di).replace(0, np.nan)
+    return dx.ewm(alpha=1 / period, min_periods=period, adjust=False).mean()
+
+
+def rs_raw_score(close: pd.Series) -> float | None:
+    """IBD-style weighted multi-period return — the basis for the RS Rating.
+    More weight on recent performance. Ranked across the universe in main()."""
+    if len(close) < 70:
+        return None
+    def ret(n):
+        if len(close) < n + 1:
+            return None
+        return close.iloc[-1] / close.iloc[-n] - 1
+    r3, r6, r9, r12 = ret(63), ret(126), ret(189), ret(252)
+    # Use available periods; weight recent quarter most.
+    parts, weights = [], []
+    for r, w in ((r3, 0.4), (r6, 0.2), (r9, 0.2), (r12, 0.2)):
+        if r is not None:
+            parts.append(r * w)
+            weights.append(w)
+    if not parts:
+        return None
+    return sum(parts) / sum(weights)
 
 
 def weekly_above_ma(close: pd.Series, weeks: int = 30) -> tuple[bool, float | None]:
@@ -388,10 +430,15 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
         sector = None
         industry = None
         days_to_earnings = None
+        earnings_growth = None
+        revenue_growth = None
         try:
             full_info = t.info
             sector = full_info.get("sector")
             industry = full_info.get("industry")
+            # YoY growth as fractions (e.g. 0.25 = +25%)
+            earnings_growth = full_info.get("earningsGrowth") or full_info.get("earningsQuarterlyGrowth")
+            revenue_growth = full_info.get("revenueGrowth")
         except Exception:
             full_info = {}
         try:
@@ -412,6 +459,9 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
         rsi14 = rsi(close, 14)
         vol_avg50 = volume.rolling(50, min_periods=20).mean()
         atr14 = atr(hist, 14)
+        adx14 = adx(hist, 14)
+        last_adx = float(adx14.iloc[-1]) if not pd.isna(adx14.iloc[-1]) else None
+        rs_raw = rs_raw_score(close)   # ranked into rs_rating (1-99) in main()
         weekly_ok, weekly_ma = weekly_above_ma(close, weeks=30)
 
         # 52-week high distance
@@ -461,6 +511,15 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
         pct_above_ma150 = (last / last_ma150 - 1) * 100 if last_ma150 else float("nan")
         pct_above_ma50 = (last / last_ma50 - 1) * 100 if last_ma50 else float("nan")
         vol_ratio = last_vol / last_vol_avg if last_vol_avg else float("nan")
+        # Extended above MA50? (chasing risk)
+        is_extended = bool(not pd.isna(pct_above_ma50) and pct_above_ma50 > EXTENDED_MA50_PCT)
+        # Trend strength
+        strong_trend = bool(last_adx is not None and last_adx >= ADX_TREND_MIN)
+        # Fundamental growth
+        strong_growth = bool(
+            (earnings_growth is not None and earnings_growth >= STRONG_GROWTH_PCT) or
+            (revenue_growth is not None and revenue_growth >= STRONG_GROWTH_PCT)
+        )
 
         # Was there a recent cross above MA150 (within lookback window)?
         recent_above = (close.iloc[-BREAKOUT_LOOKBACK_DAYS:] > ma150.iloc[-BREAKOUT_LOOKBACK_DAYS:]).all()
@@ -528,6 +587,22 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
             elif sector_strength["strength"] == "weak":
                 score -= 5
                 reasons.append(f"⚠️ סקטור חלש")
+        # ADX trend strength
+        if strong_trend:
+            score += 8
+            reasons.append(f"מגמה חזקה (ADX {last_adx:.0f})")
+        elif last_adx is not None and last_adx < 20:
+            score -= 3
+            reasons.append(f"⚠️ מגמה חלשה (ADX {last_adx:.0f})")
+        # Extension above MA50 (chasing risk)
+        if is_extended:
+            score -= 6
+            reasons.append(f"⚠️ מתוח (+{pct_above_ma50:.0f}% מעל MA50)")
+        # Fundamental growth bonus
+        if strong_growth:
+            score += 8
+            g = max([x for x in (earnings_growth, revenue_growth) if x is not None])
+            reasons.append(f"📈 צמיחה חזקה ({g*100:.0f}%)")
 
         # Only include candidates that pass minimum bar
         passed = (
@@ -639,6 +714,34 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
                 "אם נכנסים, להקטין גודל פוזיציה או לחכות לדוח."
             )
 
+        # 6e. ADX trend strength
+        if strong_trend:
+            summary_parts.append(
+                f"💪 ADX {last_adx:.0f} — מגמה חזקה ומבוססת (לא דשדוש). אות אמין יותר."
+            )
+        elif last_adx is not None and last_adx < 20:
+            summary_parts.append(
+                f"⚠️ ADX {last_adx:.0f} — מגמה חלשה/דשדוש. הפריצה פחות אמינה."
+            )
+
+        # 6f. Extension
+        if is_extended:
+            summary_parts.append(
+                f"⚠️ המחיר מתוח +{pct_above_ma50:.0f}% מעל MA50 — ייתכן שכבר רץ. "
+                "סיכון של רדיפה; עדיף להמתין למשיכה."
+            )
+
+        # 6g. Fundamental growth
+        if strong_growth:
+            bits = []
+            if earnings_growth is not None:
+                bits.append(f"רווחים {earnings_growth*100:+.0f}%")
+            if revenue_growth is not None:
+                bits.append(f"הכנסות {revenue_growth*100:+.0f}%")
+            summary_parts.append(
+                f"📈 צמיחה יסודית חזקה ({', '.join(bits)}) — לא רק טכני, גם העסק צומח."
+            )
+
         # 6d. Trade levels
         if stop_loss and target1 and target2 and risk_reward:
             summary_parts.append(
@@ -707,6 +810,14 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
             "distance_from_52w": round(distance_from_52w, 2),
             "near_52w_high": near_52w_high,
             "sector_strength": sector_strength,
+            "adx": round(last_adx, 1) if last_adx is not None else None,
+            "strong_trend": strong_trend,
+            "is_extended": is_extended,
+            "earnings_growth": round(earnings_growth, 3) if earnings_growth is not None else None,
+            "revenue_growth": round(revenue_growth, 3) if revenue_growth is not None else None,
+            "strong_growth": strong_growth,
+            "rs_raw": round(rs_raw, 4) if rs_raw is not None else None,
+            "rs_rating": None,  # filled in main() after ranking the whole universe
             "news": news_items,
             "reasons": reasons,
         }
@@ -873,6 +984,25 @@ def main() -> int:
         results.append(out)
         # gentle pacing to avoid rate limits
         time.sleep(0.05)
+
+    # ---- RS Rating: rank every scanned stock's raw RS into a 1-99 percentile ----
+    rs_values = sorted(r["rs_raw"] for r in results if r.get("rs_raw") is not None)
+    if rs_values:
+        import bisect
+        n = len(rs_values)
+        for r in results:
+            if r.get("rs_raw") is not None:
+                # percentile rank (how many in the universe it beats)
+                rank = bisect.bisect_right(rs_values, r["rs_raw"]) / n
+                r["rs_rating"] = max(1, min(99, int(round(rank * 99))))
+                # Bonus for top-tier relative strength
+                if r["rs_rating"] >= 90:
+                    r["score"] += 8
+                    r["reasons"].append(f"RS Rating {r['rs_rating']} (טופ 10%)")
+                elif r["rs_rating"] >= 80:
+                    r["score"] += 4
+                    r["reasons"].append(f"RS Rating {r['rs_rating']}")
+        print(f"RS Rating computed across {n} stocks")
 
     # Sort: passed first, by score
     results.sort(key=lambda r: (not r["passed"], -r["score"]))

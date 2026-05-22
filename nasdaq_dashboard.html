@@ -670,8 +670,11 @@ function renderCard(r) {
       <div class="meta">
         <span>RSI ${r.rsi}</span>
         <span>נפח ×${r.vol_ratio ?? "—"}</span>
-        <span>RS ${r.rs_vs_spy ?? "—"}</span>
+        ${r.rs_rating != null ? `<span title="דירוג חוזק יחסי מול כל היקום, 1-99">RS Rating <strong style="color:${r.rs_rating>=80?'var(--success)':r.rs_rating>=50?'var(--text)':'var(--danger)'}">${r.rs_rating}</strong></span>` : `<span>RS ${r.rs_vs_spy ?? "—"}</span>`}
+        ${r.adx != null ? `<span title="חוזק מגמה">ADX ${r.adx}${r.strong_trend?' 💪':''}</span>` : ""}
         ${r.atr ? `<span>ATR ${r.atr}</span>` : ""}
+        ${r.strong_growth ? `<span style="color:var(--success)">📈 צמיחה</span>` : ""}
+        ${r.is_extended ? `<span style="color:var(--warning)">⚠️ מתוח</span>` : ""}
       </div>
       ${trackRecord}
       ${earningsWarn}
