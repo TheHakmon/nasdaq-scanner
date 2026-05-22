@@ -92,6 +92,11 @@ jobs:
           cp -r archive/* _site/archive/ 2>/dev/null || true
           # The dashboard links to dashboard_standalone.html; add an alias.
           cp dashboard_standalone.html _site/dashboard_standalone.html
+          # PWA assets (icons + manifest) so it installs as an app.
+          cp manifest.webmanifest _site/manifest.webmanifest 2>/dev/null || true
+          cp icon_180.png _site/icon_180.png 2>/dev/null || true
+          cp icon_192.png _site/icon_192.png 2>/dev/null || true
+          cp icon_512.png _site/icon_512.png 2>/dev/null || true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

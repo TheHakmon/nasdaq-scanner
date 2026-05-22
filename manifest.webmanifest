@@ -1,0 +1,17 @@
+{
+  "name": "NASDAQ Breakout Scanner",
+  "short_name": "NASDAQ Scan",
+  "description": "סורק פריצות טכניות במניות נאסדק מעל $5B",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "lang": "he",
+  "dir": "rtl",
+  "icons": [
+    { "src": "icon_192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon_512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
