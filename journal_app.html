@@ -94,6 +94,29 @@
   .hint { font-size:11px; color:var(--text-subtle); margin-top:4px; }
   .price-live { font-size:11px; color:var(--success); margin-top:4px; }
   .by-ticker { margin-top:8px; }
+
+  /* Wide tables scroll horizontally on small screens */
+  #open-area, #closed-area, #byticker-area { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  @media (max-width: 700px) {
+    .wrap { padding:16px 12px 50px; }
+    h1 { font-size:20px; }
+    /* Summary stats: 2 per row */
+    .stats { grid-template-columns: 1fr 1fr; gap:10px; }
+    .stat .value { font-size:19px; }
+    /* Tables: keep readable, allow horizontal scroll */
+    table { font-size:14px; min-width:560px; }
+    th, td { padding:10px 12px; }
+    .mini-btn { padding:6px 12px; font-size:13px; }
+    /* Toolbar buttons full-width-ish and tappable */
+    .toolbar { gap:8px; }
+    .btn { font-size:14px; padding:10px 14px; }
+    /* Modals fill more of the screen */
+    .modal { max-width:100%; padding:18px; }
+    .field input, .field textarea { font-size:16px; padding:11px 12px; } /* 16px avoids iOS zoom */
+    .field-row { grid-template-columns:1fr 1fr; }
+    h2 { font-size:16px; }
+  }
 </style>
 </head>
 <body>
