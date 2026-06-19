@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-18T11:43:07",
+  "generated_at": "2026-06-19T12:21:13",
   "signals": [
     {
       "date": "2026-01-08",
@@ -8863,12 +8863,7 @@
       "vol_ratio": 1.5,
       "rs_vs_spy": 1.05,
       "is_recent_breakout": true,
-      "kind": "breakout",
-      "ret_1d": 1.32,
-      "ret_5d": -8.76,
-      "ret_20d": -20.16,
-      "max_drawdown_20d": -16.0,
-      "max_gain_20d": 6.02
+      "kind": "breakout"
     },
     {
       "date": "2026-05-12",
@@ -10276,7 +10271,10 @@
       "is_recent_breakout": true,
       "kind": "breakout",
       "ret_1d": 17.29,
-      "ret_5d": 30.76
+      "ret_5d": 30.76,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -10.1,
+      "max_gain_20d": 36.09
     },
     {
       "date": "2026-05-20",
@@ -10290,7 +10288,10 @@
       "is_recent_breakout": true,
       "kind": "breakout",
       "ret_1d": 7.42,
-      "ret_5d": 48.57
+      "ret_5d": 48.57,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -8.18,
+      "max_gain_20d": 48.57
     },
     {
       "date": "2026-05-20",
@@ -10304,7 +10305,10 @@
       "is_recent_breakout": true,
       "kind": "breakout",
       "ret_1d": 0.09,
-      "ret_5d": 8.76
+      "ret_5d": 8.76,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -6.42,
+      "max_gain_20d": 11.28
     },
     {
       "date": "2026-05-20",
@@ -10318,7 +10322,10 @@
       "is_recent_breakout": true,
       "kind": "breakout",
       "ret_1d": 0.62,
-      "ret_5d": -7.92
+      "ret_5d": -7.92,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -11.06,
+      "max_gain_20d": 0.62
     },
     {
       "date": "2026-05-20",
@@ -10332,7 +10339,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 16.16,
-      "ret_5d": 30.59
+      "ret_5d": 30.59,
+      "ret_20d": NaN,
+      "max_drawdown_20d": 0.0,
+      "max_gain_20d": 63.16
     },
     {
       "date": "2026-05-20",
@@ -10346,7 +10356,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -3.48,
-      "ret_5d": 5.27
+      "ret_5d": 5.27,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -3.48,
+      "max_gain_20d": 10.25
     },
     {
       "date": "2026-05-20",
@@ -10360,7 +10373,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -1.32,
-      "ret_5d": -0.86
+      "ret_5d": -0.86,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -5.29,
+      "max_gain_20d": 4.34
     },
     {
       "date": "2026-05-20",
@@ -10374,7 +10390,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -3.47,
-      "ret_5d": 6.49
+      "ret_5d": 6.49,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -7.93,
+      "max_gain_20d": 7.26
     },
     {
       "date": "2026-05-20",
@@ -10388,7 +10407,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 2.08,
-      "ret_5d": 9.65
+      "ret_5d": 9.65,
+      "ret_20d": NaN,
+      "max_drawdown_20d": 0.0,
+      "max_gain_20d": 69.4
     },
     {
       "date": "2026-05-20",
@@ -10402,7 +10424,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -2.13,
-      "ret_5d": 3.63
+      "ret_5d": 3.63,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -7.5,
+      "max_gain_20d": 6.56
     },
     {
       "date": "2026-05-20",
@@ -10416,7 +10441,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 7.17,
-      "ret_5d": 10.43
+      "ret_5d": 10.43,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -0.15,
+      "max_gain_20d": 10.43
     },
     {
       "date": "2026-05-20",
@@ -10430,7 +10458,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -0.32,
-      "ret_5d": 0.31
+      "ret_5d": 0.31,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -8.31,
+      "max_gain_20d": 0.31
     },
     {
       "date": "2026-05-20",
@@ -10444,7 +10475,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -0.39,
-      "ret_5d": 1.62
+      "ret_5d": 1.62,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -16.64,
+      "max_gain_20d": 7.48
     },
     {
       "date": "2026-05-20",
@@ -10458,7 +10492,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -2.69,
-      "ret_5d": 1.05
+      "ret_5d": 1.05,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -12.1,
+      "max_gain_20d": 12.53
     },
     {
       "date": "2026-05-20",
@@ -10472,7 +10509,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 3.37,
-      "ret_5d": 3.75
+      "ret_5d": 3.75,
+      "ret_20d": NaN,
+      "max_drawdown_20d": 0.0,
+      "max_gain_20d": 13.69
     },
     {
       "date": "2026-05-20",
@@ -10486,7 +10526,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -0.96,
-      "ret_5d": -0.77
+      "ret_5d": -0.77,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -4.76,
+      "max_gain_20d": 4.17
     },
     {
       "date": "2026-05-20",
@@ -10500,7 +10543,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -2.19,
-      "ret_5d": -7.34
+      "ret_5d": -7.34,
+      "ret_20d": NaN,
+      "max_drawdown_20d": -11.91,
+      "max_gain_20d": 0.0
     },
     {
       "date": "2026-05-20",
@@ -10514,7 +10560,10 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 0.22,
-      "ret_5d": 4.54
+      "ret_5d": 4.54,
+      "ret_20d": NaN,
+      "max_drawdown_20d": 0.0,
+      "max_gain_20d": 9.08
     },
     {
       "date": "2026-05-21",
@@ -11156,9 +11205,7 @@
       "vol_ratio": 1.86,
       "rs_vs_spy": 1.09,
       "is_recent_breakout": false,
-      "kind": "watchlist",
-      "ret_1d": -2.95,
-      "ret_5d": -6.08
+      "kind": "watchlist"
     },
     {
       "date": "2026-05-23",
@@ -11492,9 +11539,7 @@
       "vol_ratio": 1.86,
       "rs_vs_spy": 1.09,
       "is_recent_breakout": false,
-      "kind": "watchlist",
-      "ret_1d": -2.95,
-      "ret_5d": -6.08
+      "kind": "watchlist"
     },
     {
       "date": "2026-05-26",
@@ -11926,9 +11971,7 @@
       "vol_ratio": 1.84,
       "rs_vs_spy": 1.17,
       "is_recent_breakout": false,
-      "kind": "watchlist",
-      "ret_1d": -14.81,
-      "ret_5d": -5.71
+      "kind": "watchlist"
     },
     {
       "date": "2026-05-27",
@@ -12290,9 +12333,7 @@
       "vol_ratio": 1.88,
       "rs_vs_spy": 1.16,
       "is_recent_breakout": false,
-      "kind": "watchlist",
-      "ret_1d": 8.86,
-      "ret_5d": 7.49
+      "kind": "watchlist"
     },
     {
       "date": "2026-05-28",
@@ -13200,9 +13241,7 @@
       "vol_ratio": 2.42,
       "rs_vs_spy": 1.1,
       "is_recent_breakout": false,
-      "kind": "watchlist",
-      "ret_1d": -1.74,
-      "ret_5d": -12.65
+      "kind": "watchlist"
     },
     {
       "date": "2026-05-30",
@@ -13942,9 +13981,7 @@
       "vol_ratio": 1.34,
       "rs_vs_spy": 1.19,
       "is_recent_breakout": false,
-      "kind": "watchlist",
-      "ret_1d": -2.58,
-      "ret_5d": -15.64
+      "kind": "watchlist"
     },
     {
       "date": "2026-06-03",
@@ -14376,9 +14413,7 @@
       "vol_ratio": 1.18,
       "rs_vs_spy": 1.14,
       "is_recent_breakout": false,
-      "kind": "watchlist",
-      "ret_1d": -2.88,
-      "ret_5d": -17.7
+      "kind": "watchlist"
     },
     {
       "date": "2026-06-04",
@@ -14782,9 +14817,7 @@
       "vol_ratio": 1.2,
       "rs_vs_spy": 1.18,
       "is_recent_breakout": false,
-      "kind": "watchlist",
-      "ret_1d": -8.08,
-      "ret_5d": -11.68
+      "kind": "watchlist"
     },
     {
       "date": "2026-06-04",
@@ -15945,7 +15978,8 @@
       "rs_vs_spy": 1.02,
       "is_recent_breakout": true,
       "kind": "breakout",
-      "ret_1d": 0.65
+      "ret_1d": 0.65,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -15958,7 +15992,8 @@
       "rs_vs_spy": 1.01,
       "is_recent_breakout": true,
       "kind": "breakout",
-      "ret_1d": -1.56
+      "ret_1d": -1.56,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -15971,7 +16006,8 @@
       "rs_vs_spy": 0.94,
       "is_recent_breakout": true,
       "kind": "breakout",
-      "ret_1d": -0.95
+      "ret_1d": -0.95,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -15984,7 +16020,8 @@
       "rs_vs_spy": 1.24,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -3.15
+      "ret_1d": -3.15,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -15997,7 +16034,8 @@
       "rs_vs_spy": 1.34,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 2.64
+      "ret_1d": 2.64,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16010,7 +16048,8 @@
       "rs_vs_spy": 1.13,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -0.81
+      "ret_1d": -0.81,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16023,7 +16062,8 @@
       "rs_vs_spy": 1.37,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 5.55
+      "ret_1d": 5.55,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16036,7 +16076,8 @@
       "rs_vs_spy": 1.11,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 0.87
+      "ret_1d": 0.87,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16049,7 +16090,8 @@
       "rs_vs_spy": 1.54,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 0.85
+      "ret_1d": 0.85,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16062,7 +16104,8 @@
       "rs_vs_spy": 2.02,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 2.93
+      "ret_1d": 2.93,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16075,7 +16118,8 @@
       "rs_vs_spy": 2.4,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 1.05
+      "ret_1d": 1.05,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16088,7 +16132,8 @@
       "rs_vs_spy": 2.52,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -0.36
+      "ret_1d": -0.36,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16101,7 +16146,8 @@
       "rs_vs_spy": 2.06,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -1.43
+      "ret_1d": -1.43,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16114,7 +16160,8 @@
       "rs_vs_spy": 1.19,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -0.25
+      "ret_1d": -0.25,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16127,7 +16174,8 @@
       "rs_vs_spy": 1.39,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 1.18
+      "ret_1d": 1.18,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16140,7 +16188,8 @@
       "rs_vs_spy": 1.11,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 1.42
+      "ret_1d": 1.42,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16153,7 +16202,8 @@
       "rs_vs_spy": 1.32,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 0.76
+      "ret_1d": 0.76,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16166,7 +16216,8 @@
       "rs_vs_spy": 1.06,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 1.54
+      "ret_1d": 1.54,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16179,7 +16230,8 @@
       "rs_vs_spy": 1.17,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -1.89
+      "ret_1d": -1.89,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16192,7 +16244,8 @@
       "rs_vs_spy": 1.04,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -1.52
+      "ret_1d": -1.52,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16205,7 +16258,8 @@
       "rs_vs_spy": 1.72,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 0.72
+      "ret_1d": 0.72,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16218,7 +16272,8 @@
       "rs_vs_spy": 1.01,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -0.91
+      "ret_1d": -0.91,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-11",
@@ -16231,7 +16286,8 @@
       "rs_vs_spy": 1.07,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": 1.32
+      "ret_1d": 1.32,
+      "ret_5d": NaN
     },
     {
       "date": "2026-06-12",
@@ -16802,7 +16858,8 @@
       "vol_ratio": 1.1,
       "rs_vs_spy": 2.9,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16814,7 +16871,8 @@
       "vol_ratio": 1.15,
       "rs_vs_spy": 1.41,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16826,7 +16884,8 @@
       "vol_ratio": 1.44,
       "rs_vs_spy": 1.46,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16838,7 +16897,8 @@
       "vol_ratio": 1.05,
       "rs_vs_spy": 1.19,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16850,7 +16910,8 @@
       "vol_ratio": 1.23,
       "rs_vs_spy": 1.5,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16862,7 +16923,8 @@
       "vol_ratio": 1.49,
       "rs_vs_spy": 2.71,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16874,7 +16936,8 @@
       "vol_ratio": 1.32,
       "rs_vs_spy": 1.47,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16886,7 +16949,8 @@
       "vol_ratio": 1.31,
       "rs_vs_spy": 1.1,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16898,7 +16962,8 @@
       "vol_ratio": 1.05,
       "rs_vs_spy": 1.04,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16910,7 +16975,8 @@
       "vol_ratio": 1.01,
       "rs_vs_spy": 1.13,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16922,7 +16988,8 @@
       "vol_ratio": 1.36,
       "rs_vs_spy": 1.21,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16934,7 +17001,8 @@
       "vol_ratio": 1.22,
       "rs_vs_spy": 1.03,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-17",
@@ -16946,7 +17014,8 @@
       "vol_ratio": 1.06,
       "rs_vs_spy": 1.01,
       "is_recent_breakout": false,
-      "kind": "watchlist"
+      "kind": "watchlist",
+      "ret_1d": NaN
     },
     {
       "date": "2026-06-18",
@@ -17253,28 +17322,28 @@
     "total_signals": 1094,
     "by_horizon": {
       "1d": {
-        "n": 1051,
-        "win_rate": 49.2,
-        "avg_return": 0.07,
-        "median_return": -0.04,
+        "n": 1042,
+        "win_rate": 49.4,
+        "avg_return": 0.1,
+        "median_return": -0.02,
         "best": 32.52,
         "worst": -25.5,
-        "stdev": 4.9
+        "stdev": 4.88
       },
       "5d": {
-        "n": 985,
-        "win_rate": 51.3,
-        "avg_return": 1.27,
-        "median_return": 0.14,
+        "n": 976,
+        "win_rate": 51.6,
+        "avg_return": 1.36,
+        "median_return": 0.2,
         "best": 57.85,
         "worst": -33.01,
         "stdev": 11.26
       },
       "20d": {
-        "n": 580,
-        "win_rate": 53.4,
-        "avg_return": 3.49,
-        "median_return": 1.12,
+        "n": 579,
+        "win_rate": 53.5,
+        "avg_return": 3.53,
+        "median_return": 1.15,
         "best": 97.24,
         "worst": -38.42,
         "stdev": 18.76
@@ -17297,10 +17366,10 @@
         "avg_return_20d": 1.12
       },
       "60-69": {
-        "n": 257,
-        "win_rate": 54.5,
-        "good_rate": 40.9,
-        "avg_return_20d": 4.66
+        "n": 256,
+        "win_rate": 54.7,
+        "good_rate": 41.0,
+        "avg_return_20d": 4.76
       },
       "70-79": {
         "n": 240,
