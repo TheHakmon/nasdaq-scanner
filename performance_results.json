@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19T12:21:13",
+  "generated_at": "2026-06-20T08:34:33",
   "signals": [
     {
       "date": "2026-01-08",
@@ -10272,7 +10272,7 @@
       "kind": "breakout",
       "ret_1d": 17.29,
       "ret_5d": 30.76,
-      "ret_20d": NaN,
+      "ret_20d": -1.64,
       "max_drawdown_20d": -10.1,
       "max_gain_20d": 36.09
     },
@@ -10289,7 +10289,7 @@
       "kind": "breakout",
       "ret_1d": 7.42,
       "ret_5d": 48.57,
-      "ret_20d": NaN,
+      "ret_20d": -9.96,
       "max_drawdown_20d": -8.18,
       "max_gain_20d": 48.57
     },
@@ -10306,7 +10306,7 @@
       "kind": "breakout",
       "ret_1d": 0.09,
       "ret_5d": 8.76,
-      "ret_20d": NaN,
+      "ret_20d": 10.13,
       "max_drawdown_20d": -6.42,
       "max_gain_20d": 11.28
     },
@@ -10323,7 +10323,7 @@
       "kind": "breakout",
       "ret_1d": 0.62,
       "ret_5d": -7.92,
-      "ret_20d": NaN,
+      "ret_20d": 1.12,
       "max_drawdown_20d": -11.06,
       "max_gain_20d": 0.62
     },
@@ -10340,7 +10340,7 @@
       "kind": "watchlist",
       "ret_1d": 16.16,
       "ret_5d": 30.59,
-      "ret_20d": NaN,
+      "ret_20d": 71.18,
       "max_drawdown_20d": 0.0,
       "max_gain_20d": 63.16
     },
@@ -10357,7 +10357,7 @@
       "kind": "watchlist",
       "ret_1d": -3.48,
       "ret_5d": 5.27,
-      "ret_20d": NaN,
+      "ret_20d": 9.45,
       "max_drawdown_20d": -3.48,
       "max_gain_20d": 10.25
     },
@@ -10391,7 +10391,7 @@
       "kind": "watchlist",
       "ret_1d": -3.47,
       "ret_5d": 6.49,
-      "ret_20d": NaN,
+      "ret_20d": 1.01,
       "max_drawdown_20d": -7.93,
       "max_gain_20d": 7.26
     },
@@ -10408,7 +10408,7 @@
       "kind": "watchlist",
       "ret_1d": 2.08,
       "ret_5d": 9.65,
-      "ret_20d": NaN,
+      "ret_20d": 66.26,
       "max_drawdown_20d": 0.0,
       "max_gain_20d": 69.4
     },
@@ -10425,7 +10425,7 @@
       "kind": "watchlist",
       "ret_1d": -2.13,
       "ret_5d": 3.63,
-      "ret_20d": NaN,
+      "ret_20d": 5.9,
       "max_drawdown_20d": -7.5,
       "max_gain_20d": 6.56
     },
@@ -10459,7 +10459,7 @@
       "kind": "watchlist",
       "ret_1d": -0.32,
       "ret_5d": 0.31,
-      "ret_20d": NaN,
+      "ret_20d": -5.31,
       "max_drawdown_20d": -8.31,
       "max_gain_20d": 0.31
     },
@@ -10476,7 +10476,7 @@
       "kind": "watchlist",
       "ret_1d": -0.39,
       "ret_5d": 1.62,
-      "ret_20d": NaN,
+      "ret_20d": 12.63,
       "max_drawdown_20d": -16.64,
       "max_gain_20d": 7.48
     },
@@ -10493,7 +10493,7 @@
       "kind": "watchlist",
       "ret_1d": -2.69,
       "ret_5d": 1.05,
-      "ret_20d": NaN,
+      "ret_20d": -13.14,
       "max_drawdown_20d": -12.1,
       "max_gain_20d": 12.53
     },
@@ -10510,7 +10510,7 @@
       "kind": "watchlist",
       "ret_1d": 3.37,
       "ret_5d": 3.75,
-      "ret_20d": NaN,
+      "ret_20d": 4.54,
       "max_drawdown_20d": 0.0,
       "max_gain_20d": 13.69
     },
@@ -10527,7 +10527,7 @@
       "kind": "watchlist",
       "ret_1d": -0.96,
       "ret_5d": -0.77,
-      "ret_20d": NaN,
+      "ret_20d": 5.06,
       "max_drawdown_20d": -4.76,
       "max_gain_20d": 4.17
     },
@@ -10544,7 +10544,7 @@
       "kind": "watchlist",
       "ret_1d": -2.19,
       "ret_5d": -7.34,
-      "ret_20d": NaN,
+      "ret_20d": -11.41,
       "max_drawdown_20d": -11.91,
       "max_gain_20d": 0.0
     },
@@ -16035,7 +16035,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 2.64,
-      "ret_5d": NaN
+      "ret_5d": 11.67
     },
     {
       "date": "2026-06-11",
@@ -16063,7 +16063,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 5.55,
-      "ret_5d": NaN
+      "ret_5d": 7.63
     },
     {
       "date": "2026-06-11",
@@ -16077,7 +16077,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 0.87,
-      "ret_5d": NaN
+      "ret_5d": -0.75
     },
     {
       "date": "2026-06-11",
@@ -16091,7 +16091,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 0.85,
-      "ret_5d": NaN
+      "ret_5d": -0.23
     },
     {
       "date": "2026-06-11",
@@ -16105,7 +16105,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 2.93,
-      "ret_5d": NaN
+      "ret_5d": 1.6
     },
     {
       "date": "2026-06-11",
@@ -16119,7 +16119,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 1.05,
-      "ret_5d": NaN
+      "ret_5d": 4.61
     },
     {
       "date": "2026-06-11",
@@ -16133,7 +16133,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -0.36,
-      "ret_5d": NaN
+      "ret_5d": 10.64
     },
     {
       "date": "2026-06-11",
@@ -16147,7 +16147,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -1.43,
-      "ret_5d": NaN
+      "ret_5d": 13.87
     },
     {
       "date": "2026-06-11",
@@ -16175,7 +16175,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 1.18,
-      "ret_5d": NaN
+      "ret_5d": 7.39
     },
     {
       "date": "2026-06-11",
@@ -16203,7 +16203,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 0.76,
-      "ret_5d": NaN
+      "ret_5d": 3.54
     },
     {
       "date": "2026-06-11",
@@ -16217,7 +16217,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 1.54,
-      "ret_5d": NaN
+      "ret_5d": -1.5
     },
     {
       "date": "2026-06-11",
@@ -16231,7 +16231,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -1.89,
-      "ret_5d": NaN
+      "ret_5d": 1.59
     },
     {
       "date": "2026-06-11",
@@ -16245,7 +16245,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -1.52,
-      "ret_5d": NaN
+      "ret_5d": 0.81
     },
     {
       "date": "2026-06-11",
@@ -16259,7 +16259,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 0.72,
-      "ret_5d": NaN
+      "ret_5d": 4.88
     },
     {
       "date": "2026-06-11",
@@ -16273,7 +16273,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": -0.91,
-      "ret_5d": NaN
+      "ret_5d": 6.69
     },
     {
       "date": "2026-06-11",
@@ -16287,7 +16287,7 @@
       "is_recent_breakout": false,
       "kind": "watchlist",
       "ret_1d": 1.32,
-      "ret_5d": NaN
+      "ret_5d": 8.75
     },
     {
       "date": "2026-06-12",
@@ -16859,7 +16859,7 @@
       "rs_vs_spy": 2.9,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 4.91
     },
     {
       "date": "2026-06-17",
@@ -16872,7 +16872,7 @@
       "rs_vs_spy": 1.41,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 5.05
     },
     {
       "date": "2026-06-17",
@@ -16885,7 +16885,7 @@
       "rs_vs_spy": 1.46,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 4.08
     },
     {
       "date": "2026-06-17",
@@ -16898,7 +16898,7 @@
       "rs_vs_spy": 1.19,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 4.83
     },
     {
       "date": "2026-06-17",
@@ -16911,7 +16911,7 @@
       "rs_vs_spy": 1.5,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 3.97
     },
     {
       "date": "2026-06-17",
@@ -16924,7 +16924,7 @@
       "rs_vs_spy": 2.71,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 7.27
     },
     {
       "date": "2026-06-17",
@@ -16937,7 +16937,7 @@
       "rs_vs_spy": 1.47,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 8.73
     },
     {
       "date": "2026-06-17",
@@ -16963,7 +16963,7 @@
       "rs_vs_spy": 1.04,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": -0.42
     },
     {
       "date": "2026-06-17",
@@ -16989,7 +16989,7 @@
       "rs_vs_spy": 1.21,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 2.38
     },
     {
       "date": "2026-06-17",
@@ -17002,7 +17002,7 @@
       "rs_vs_spy": 1.03,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": NaN
+      "ret_1d": 4.7
     },
     {
       "date": "2026-06-17",
@@ -17316,37 +17316,577 @@
       "rs_vs_spy": 1.01,
       "is_recent_breakout": false,
       "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "ABNB",
+      "score": 108,
+      "price_at_entry": 142.41,
+      "pct_above_ma150": 8.7,
+      "rsi": 63.0,
+      "vol_ratio": 1.94,
+      "rs_vs_spy": 0.96,
+      "is_recent_breakout": true,
+      "kind": "breakout"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "BROS",
+      "score": 96,
+      "price_at_entry": 70.72,
+      "pct_above_ma150": 25.97,
+      "rsi": 77.1,
+      "vol_ratio": 1.36,
+      "rs_vs_spy": 1.22,
+      "is_recent_breakout": true,
+      "kind": "breakout"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "HON",
+      "score": 93,
+      "price_at_entry": 229.01,
+      "pct_above_ma150": 5.5,
+      "rsi": 56.4,
+      "vol_ratio": 1.48,
+      "rs_vs_spy": 0.88,
+      "is_recent_breakout": true,
+      "kind": "breakout"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "TXN",
+      "score": 120,
+      "price_at_entry": 322.86,
+      "pct_above_ma150": 46.39,
+      "rsi": 62.0,
+      "vol_ratio": 2.6,
+      "rs_vs_spy": 1.5,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "ARM",
+      "score": 119,
+      "price_at_entry": 439.46,
+      "pct_above_ma150": 155.86,
+      "rsi": 69.0,
+      "vol_ratio": 2.89,
+      "rs_vs_spy": 3.02,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "FTNT",
+      "score": 119,
+      "price_at_entry": 144.73,
+      "pct_above_ma150": 57.19,
+      "rsi": 63.7,
+      "vol_ratio": 2.8,
+      "rs_vs_spy": 1.53,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "AAPL",
+      "score": 117,
+      "price_at_entry": 298.01,
+      "pct_above_ma150": 9.3,
+      "rsi": 51.0,
+      "vol_ratio": 1.76,
+      "rs_vs_spy": 1.05,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "NXPI",
+      "score": 117,
+      "price_at_entry": 313.27,
+      "pct_above_ma150": 31.69,
+      "rsi": 55.5,
+      "vol_ratio": 2.0,
+      "rs_vs_spy": 1.44,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "ROKU",
+      "score": 117,
+      "price_at_entry": 138.07,
+      "pct_above_ma150": 29.12,
+      "rsi": 61.8,
+      "vol_ratio": 6.05,
+      "rs_vs_spy": 1.27,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "LRCX",
+      "score": 114,
+      "price_at_entry": 389.04,
+      "pct_above_ma150": 66.29,
+      "rsi": 68.6,
+      "vol_ratio": 2.25,
+      "rs_vs_spy": 1.53,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "MRVL",
+      "score": 114,
+      "price_at_entry": 310.58,
+      "pct_above_ma150": 151.61,
+      "rsi": 64.6,
+      "vol_ratio": 5.63,
+      "rs_vs_spy": 3.12,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "ADI",
+      "score": 112,
+      "price_at_entry": 434.46,
+      "pct_above_ma150": 30.74,
+      "rsi": 59.0,
+      "vol_ratio": 2.75,
+      "rs_vs_spy": 1.24,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "CSCO",
+      "score": 112,
+      "price_at_entry": 119.54,
+      "pct_above_ma150": 37.84,
+      "rsi": 55.8,
+      "vol_ratio": 2.17,
+      "rs_vs_spy": 1.36,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "MNST",
+      "score": 112,
+      "price_at_entry": 91.34,
+      "pct_above_ma150": 15.31,
+      "rsi": 62.5,
+      "vol_ratio": 2.34,
+      "rs_vs_spy": 1.09,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "HPE",
+      "score": 111,
+      "price_at_entry": 47.41,
+      "pct_above_ma150": 76.84,
+      "rsi": 60.5,
+      "vol_ratio": 2.02,
+      "rs_vs_spy": 1.96,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "DELL",
+      "score": 106,
+      "price_at_entry": 409.5,
+      "pct_above_ma150": 123.47,
+      "rsi": 64.4,
+      "vol_ratio": 1.71,
+      "rs_vs_spy": 2.43,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "INTC",
+      "score": 106,
+      "price_at_entry": 133.99,
+      "pct_above_ma150": 113.66,
+      "rsi": 64.2,
+      "vol_ratio": 1.66,
+      "rs_vs_spy": 2.62,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "KLAC",
+      "score": 106,
+      "price_at_entry": 259.56,
+      "pct_above_ma150": 66.17,
+      "rsi": 70.2,
+      "vol_ratio": 2.35,
+      "rs_vs_spy": 1.54,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "AMAT",
+      "score": 104,
+      "price_at_entry": 617.11,
+      "pct_above_ma150": 74.41,
+      "rsi": 76.0,
+      "vol_ratio": 2.13,
+      "rs_vs_spy": 1.56,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "AMD",
+      "score": 104,
+      "price_at_entry": 537.37,
+      "pct_above_ma150": 91.43,
+      "rsi": 61.2,
+      "vol_ratio": 1.15,
+      "rs_vs_spy": 2.37,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "CSX",
+      "score": 102,
+      "price_at_entry": 45.63,
+      "pct_above_ma150": 13.1,
+      "rsi": 46.9,
+      "vol_ratio": 1.8,
+      "rs_vs_spy": 1.02,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "RKLB",
+      "score": 102,
+      "price_at_entry": 107.24,
+      "pct_above_ma150": 34.37,
+      "rsi": 46.9,
+      "vol_ratio": 2.54,
+      "rs_vs_spy": 1.36,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "KDP",
+      "score": 101,
+      "price_at_entry": 30.76,
+      "pct_above_ma150": 9.48,
+      "rsi": 55.0,
+      "vol_ratio": 1.77,
+      "rs_vs_spy": 1.01,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "CRWD",
+      "score": 96,
+      "price_at_entry": 684.86,
+      "pct_above_ma150": 40.22,
+      "rsi": 58.2,
+      "vol_ratio": 1.55,
+      "rs_vs_spy": 1.38,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "OKTA",
+      "score": 96,
+      "price_at_entry": 117.81,
+      "pct_above_ma150": 36.62,
+      "rsi": 59.6,
+      "vol_ratio": 1.97,
+      "rs_vs_spy": 1.32,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "MRNA",
+      "score": 95,
+      "price_at_entry": 63.96,
+      "pct_above_ma150": 46.46,
+      "rsi": 74.9,
+      "vol_ratio": 3.33,
+      "rs_vs_spy": 1.08,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "MU",
+      "score": 94,
+      "price_at_entry": 1133.99,
+      "pct_above_ma150": 140.21,
+      "rsi": 66.4,
+      "vol_ratio": 1.3,
+      "rs_vs_spy": 2.16,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "ASML",
+      "score": 91,
+      "price_at_entry": 1929.68,
+      "pct_above_ma150": 41.27,
+      "rsi": 65.7,
+      "vol_ratio": 1.29,
+      "rs_vs_spy": 1.26,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "AVGO",
+      "score": 91,
+      "price_at_entry": 411.35,
+      "pct_above_ma150": 13.11,
+      "rsi": 51.3,
+      "vol_ratio": 1.71,
+      "rs_vs_spy": 1.15,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "CRWV",
+      "score": 91,
+      "price_at_entry": 117.95,
+      "pct_above_ma150": 27.16,
+      "rsi": 58.1,
+      "vol_ratio": 2.01,
+      "rs_vs_spy": 1.25,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "NVDA",
+      "score": 91,
+      "price_at_entry": 210.69,
+      "pct_above_ma150": 10.0,
+      "rsi": 50.5,
+      "vol_ratio": 1.49,
+      "rs_vs_spy": 1.03,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "ON",
+      "score": 90,
+      "price_at_entry": 121.62,
+      "pct_above_ma150": 62.87,
+      "rsi": 54.7,
+      "vol_ratio": 1.6,
+      "rs_vs_spy": 1.77,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "PANW",
+      "score": 89,
+      "price_at_entry": 287.78,
+      "pct_above_ma150": 49.8,
+      "rsi": 66.5,
+      "vol_ratio": 1.45,
+      "rs_vs_spy": 1.5,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "QCOM",
+      "score": 88,
+      "price_at_entry": 226.11,
+      "pct_above_ma150": 36.82,
+      "rsi": 55.5,
+      "vol_ratio": 2.02,
+      "rs_vs_spy": 1.53,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "ENPH",
+      "score": 86,
+      "price_at_entry": 52.28,
+      "pct_above_ma150": 29.59,
+      "rsi": 48.4,
+      "vol_ratio": 1.67,
+      "rs_vs_spy": 1.06,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "EA",
+      "score": 85,
+      "price_at_entry": 202.15,
+      "pct_above_ma150": 0.07,
+      "rsi": 48.4,
+      "vol_ratio": 3.15,
+      "rs_vs_spy": 0.89,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "AMZN",
+      "score": 84,
+      "price_at_entry": 244.39,
+      "pct_above_ma150": 4.3,
+      "rsi": 44.0,
+      "vol_ratio": 1.66,
+      "rs_vs_spy": 1.03,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "GOOGL",
+      "score": 83,
+      "price_at_entry": 368.03,
+      "pct_above_ma150": 11.63,
+      "rsi": 49.2,
+      "vol_ratio": 1.52,
+      "rs_vs_spy": 1.05,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "DDOG",
+      "score": 81,
+      "price_at_entry": 223.0,
+      "pct_above_ma150": 47.56,
+      "rsi": 52.4,
+      "vol_ratio": 1.36,
+      "rs_vs_spy": 1.5,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "GOOG",
+      "score": 78,
+      "price_at_entry": 367.46,
+      "pct_above_ma150": 11.74,
+      "rsi": 50.6,
+      "vol_ratio": 1.45,
+      "rs_vs_spy": 1.06,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "NTRA",
+      "score": 78,
+      "price_at_entry": 231.41,
+      "pct_above_ma150": 7.29,
+      "rsi": 62.0,
+      "vol_ratio": 1.74,
+      "rs_vs_spy": 1.03,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "ROST",
+      "score": 76,
+      "price_at_entry": 232.8,
+      "pct_above_ma150": 14.73,
+      "rsi": 54.6,
+      "vol_ratio": 1.47,
+      "rs_vs_spy": 0.99,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "TTWO",
+      "score": 70,
+      "price_at_entry": 239.28,
+      "pct_above_ma150": 6.87,
+      "rsi": 66.6,
+      "vol_ratio": 3.2,
+      "rs_vs_spy": 1.03,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "HOOD",
+      "score": 68,
+      "price_at_entry": 108.15,
+      "pct_above_ma150": 15.96,
+      "rsi": 71.2,
+      "vol_ratio": 1.23,
+      "rs_vs_spy": 1.27,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-06-20",
+      "ticker": "FAST",
+      "score": 64,
+      "price_at_entry": 45.89,
+      "pct_above_ma150": 4.64,
+      "rsi": 53.3,
+      "vol_ratio": 1.55,
+      "rs_vs_spy": 0.9,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
     }
   ],
   "summary": {
-    "total_signals": 1094,
+    "total_signals": 1139,
     "by_horizon": {
       "1d": {
-        "n": 1042,
-        "win_rate": 49.4,
-        "avg_return": 0.1,
+        "n": 1052,
+        "win_rate": 49.8,
+        "avg_return": 0.14,
         "median_return": -0.02,
         "best": 32.52,
         "worst": -25.5,
         "stdev": 4.88
       },
       "5d": {
-        "n": 976,
-        "win_rate": 51.6,
-        "avg_return": 1.36,
-        "median_return": 0.2,
+        "n": 992,
+        "win_rate": 52.1,
+        "avg_return": 1.42,
+        "median_return": 0.26,
         "best": 57.85,
         "worst": -33.01,
-        "stdev": 11.26
+        "stdev": 11.19
       },
       "20d": {
-        "n": 579,
-        "win_rate": 53.5,
-        "avg_return": 3.53,
+        "n": 594,
+        "win_rate": 53.9,
+        "avg_return": 3.69,
         "median_return": 1.15,
         "best": 97.24,
         "worst": -38.42,
-        "stdev": 18.76
+        "stdev": 18.94
       },
       "60d": {
         "n": 343,
@@ -17366,22 +17906,22 @@
         "avg_return_20d": 1.12
       },
       "60-69": {
-        "n": 256,
-        "win_rate": 54.7,
-        "good_rate": 41.0,
-        "avg_return_20d": 4.76
+        "n": 257,
+        "win_rate": 54.5,
+        "good_rate": 40.9,
+        "avg_return_20d": 4.7
       },
       "70-79": {
-        "n": 240,
-        "win_rate": 52.1,
-        "good_rate": 37.9,
-        "avg_return_20d": 3.46
+        "n": 247,
+        "win_rate": 52.6,
+        "good_rate": 38.1,
+        "avg_return_20d": 3.42
       },
       "80+": {
-        "n": 41,
-        "win_rate": 56.1,
-        "good_rate": 31.7,
-        "avg_return_20d": -1.23
+        "n": 48,
+        "win_rate": 58.3,
+        "good_rate": 35.4,
+        "avg_return_20d": 1.91
       }
     },
     "top_winners": [
@@ -17428,6 +17968,20 @@
         "ret_20d": 77.45
       },
       {
+        "date": "2026-05-20",
+        "ticker": "ARM",
+        "score": 101,
+        "price_at_entry": 256.73,
+        "ret_20d": 71.18
+      },
+      {
+        "date": "2026-05-20",
+        "ticker": "MRVL",
+        "score": 81,
+        "price_at_entry": 186.8,
+        "ret_20d": 66.26
+      },
+      {
         "date": "2026-05-06",
         "ticker": "ARM",
         "score": 60,
@@ -17440,20 +17994,6 @@
         "score": 60,
         "price_at_entry": 213.31,
         "ret_20d": 60.77
-      },
-      {
-        "date": "2026-04-16",
-        "ticker": "RKLB",
-        "score": 60,
-        "price_at_entry": 82.93,
-        "ret_20d": 59.83
-      },
-      {
-        "date": "2026-03-31",
-        "ticker": "MRVL",
-        "score": 70,
-        "price_at_entry": 99.0,
-        "ret_20d": 58.15
       }
     ],
     "top_losers": [
