@@ -2158,15 +2158,7 @@
         "⚠️ מגמה חלשה (ADX 17)",
         "⚠️ מתוח (+24% מעל MA50)",
         "📈 צמיחה חזקה (39%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "AFRM",
@@ -4313,37 +4305,7 @@
         "⚠️ מתוח (+16% מעל MA50)",
         "📈 צמיחה חזקה (3529%)",
         "RS Rating 83"
-      ],
-      "historical_performance": {
-        "appearances": 10,
-        "appearances_with_returns": 7,
-        "wins_20d": 5,
-        "win_rate_20d": 71.4,
-        "avg_return_20d": 4.83,
-        "best_return": 12.11,
-        "worst_return": -5.57,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 80,
-            "ret_20d": 12.11
-          },
-          {
-            "date": "2026-05-23",
-            "score": 80,
-            "ret_20d": 12.11
-          },
-          {
-            "date": "2026-05-20",
-            "score": 75,
-            "ret_20d": 10.13
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "VRTX",
@@ -6487,32 +6449,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (61%)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 2,
-        "wins_20d": 2,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 1.75,
-        "best_return": 1.76,
-        "worst_return": 1.75,
-        "history": [
-          {
-            "date": "2026-01-21",
-            "score": 60,
-            "ret_20d": 1.76
-          },
-          {
-            "date": "2026-01-08",
-            "score": 60,
-            "ret_20d": 1.75
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "TTWO",
@@ -8655,32 +8592,7 @@
         "RS=1.05 מעל S&P",
         "אישור MA30 שבועי",
         "⚠️ סקטור חלש"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 2,
-        "wins_20d": 2,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 0.88,
-        "best_return": 1.12,
-        "worst_return": 0.63,
-        "history": [
-          {
-            "date": "2026-05-21",
-            "score": 90,
-            "ret_20d": 0.63
-          },
-          {
-            "date": "2026-05-20",
-            "score": 70,
-            "ret_20d": 1.12
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "ABNB",
@@ -10824,37 +10736,7 @@
         "🔥 קרוב לשיא 52 שבועות (0.0%)",
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)"
-      ],
-      "historical_performance": {
-        "appearances": 8,
-        "appearances_with_returns": 6,
-        "wins_20d": 2,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": -0.22,
-        "best_return": 11.73,
-        "worst_return": -8.02,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 70,
-            "ret_20d": 5.06
-          },
-          {
-            "date": "2026-05-08",
-            "score": 70,
-            "ret_20d": -4.99
-          },
-          {
-            "date": "2026-05-07",
-            "score": 70,
-            "ret_20d": -4.93
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "PCAR",
@@ -12996,37 +12878,7 @@
         "RSI=51",
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 15)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 3,
-        "wins_20d": 1,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": -3.72,
-        "best_return": 3.39,
-        "worst_return": -10.58,
-        "history": [
-          {
-            "date": "2026-02-27",
-            "score": 70,
-            "ret_20d": -10.58
-          },
-          {
-            "date": "2026-02-04",
-            "score": 70,
-            "ret_20d": -3.97
-          },
-          {
-            "date": "2026-01-27",
-            "score": 70,
-            "ret_20d": 3.39
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     }
   ],
   "watchlist": [
@@ -15177,37 +15029,7 @@
         "⚠️ מתוח (+26% מעל MA50)",
         "📈 צמיחה חזקה (48%)",
         "RS Rating 92 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 4,
-        "wins_20d": 3,
-        "win_rate_20d": 75.0,
-        "avg_return_20d": 8.42,
-        "best_return": 14.28,
-        "worst_return": -4.05,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 87,
-            "ret_20d": 14.28
-          },
-          {
-            "date": "2026-05-23",
-            "score": 87,
-            "ret_20d": 14.28
-          },
-          {
-            "date": "2026-05-21",
-            "score": 63,
-            "ret_20d": 9.17
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "ILMN",
@@ -17353,37 +17175,7 @@
         "מגמה חזקה (ADX 29)",
         "⚠️ מתוח (+19% מעל MA50)",
         "RS Rating 85"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 7,
-        "wins_20d": 4,
-        "win_rate_20d": 57.1,
-        "avg_return_20d": 2.74,
-        "best_return": 21.08,
-        "worst_return": -19.79,
-        "history": [
-          {
-            "date": "2026-05-16",
-            "score": 65,
-            "ret_20d": 16.09
-          },
-          {
-            "date": "2026-05-12",
-            "score": 95,
-            "ret_20d": 11.51
-          },
-          {
-            "date": "2026-05-11",
-            "score": 80,
-            "ret_20d": 12.29
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "EA",
@@ -19528,27 +19320,7 @@
         "🔥 קרוב לשיא 52 שבועות (0.0%)",
         "⚠️ סקטור חלש",
         "📈 צמיחה חזקה (85%)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -1.31,
-        "best_return": -1.31,
-        "worst_return": -1.31,
-        "history": [
-          {
-            "date": "2026-01-30",
-            "score": 60,
-            "ret_20d": -1.31
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "ROKU",
@@ -21694,32 +21466,7 @@
         "מגמה חזקה (ADX 26)",
         "📈 צמיחה חזקה (22%)",
         "RS Rating 83"
-      ],
-      "historical_performance": {
-        "appearances": 8,
-        "appearances_with_returns": 2,
-        "wins_20d": 2,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 2.64,
-        "best_return": 4.41,
-        "worst_return": 0.87,
-        "history": [
-          {
-            "date": "2026-05-04",
-            "score": 60,
-            "ret_20d": 0.87
-          },
-          {
-            "date": "2026-05-01",
-            "score": 75,
-            "ret_20d": 4.41
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "AMAT",
@@ -23861,37 +23608,7 @@
         "⚠️ מתוח (+29% מעל MA50)",
         "📈 צמיחה חזקה (34%)",
         "RS Rating 96 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 23,
-        "appearances_with_returns": 11,
-        "wins_20d": 10,
-        "win_rate_20d": 90.9,
-        "avg_return_20d": 22.46,
-        "best_return": 45.89,
-        "worst_return": -2.34,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 63,
-            "ret_20d": 45.89
-          },
-          {
-            "date": "2026-05-18",
-            "score": 73,
-            "ret_20d": 37.57
-          },
-          {
-            "date": "2026-05-16",
-            "score": 80,
-            "ret_20d": 37.57
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "LRCX",
@@ -26033,37 +25750,7 @@
         "⚠️ מתוח (+23% מעל MA50)",
         "📈 צמיחה חזקה (41%)",
         "RS Rating 94 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 4,
-        "wins_20d": 3,
-        "win_rate_20d": 75.0,
-        "avg_return_20d": 6.86,
-        "best_return": 15.24,
-        "worst_return": -1.05,
-        "history": [
-          {
-            "date": "2026-03-20",
-            "score": 70,
-            "ret_20d": 15.24
-          },
-          {
-            "date": "2026-02-04",
-            "score": 60,
-            "ret_20d": 2.46
-          },
-          {
-            "date": "2026-01-30",
-            "score": 70,
-            "ret_20d": -1.05
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "KDP",
@@ -28206,37 +27893,7 @@
         "Golden cross MA50/MA150 טרי",
         "אישור MA30 שבועי",
         "מגמה חזקה (ADX 32)"
-      ],
-      "historical_performance": {
-        "appearances": 11,
-        "appearances_with_returns": 3,
-        "wins_20d": 2,
-        "win_rate_20d": 66.7,
-        "avg_return_20d": -2.03,
-        "best_return": 3.84,
-        "worst_return": -10.82,
-        "history": [
-          {
-            "date": "2026-04-29",
-            "score": 70,
-            "ret_20d": 3.84
-          },
-          {
-            "date": "2026-04-23",
-            "score": 60,
-            "ret_20d": 0.88
-          },
-          {
-            "date": "2026-02-23",
-            "score": 65,
-            "ret_20d": -10.82
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "ASML",
@@ -30376,37 +30033,7 @@
         "אישור MA30 שבועי",
         "מגמה חזקה (ADX 28)",
         "RS Rating 87"
-      ],
-      "historical_performance": {
-        "appearances": 21,
-        "appearances_with_returns": 11,
-        "wins_20d": 10,
-        "win_rate_20d": 90.9,
-        "avg_return_20d": 6.91,
-        "best_return": 12.56,
-        "worst_return": -0.18,
-        "history": [
-          {
-            "date": "2026-04-22",
-            "score": 70,
-            "ret_20d": 7.61
-          },
-          {
-            "date": "2026-04-16",
-            "score": 70,
-            "ret_20d": 12.56
-          },
-          {
-            "date": "2026-04-15",
-            "score": 70,
-            "ret_20d": 6.97
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "BIIB",
@@ -32547,37 +32174,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 10)",
         "📈 צמיחה חזקה (31%)"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 4,
-        "wins_20d": 3,
-        "win_rate_20d": 75.0,
-        "avg_return_20d": -0.07,
-        "best_return": 4.54,
-        "worst_return": -6.43,
-        "history": [
-          {
-            "date": "2026-05-14",
-            "score": 60,
-            "ret_20d": 4.54
-          },
-          {
-            "date": "2026-05-11",
-            "score": 60,
-            "ret_20d": 0.58
-          },
-          {
-            "date": "2026-04-29",
-            "score": 70,
-            "ret_20d": 1.03
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "DUOL",
@@ -34721,15 +34318,7 @@
         "מגמה חזקה (ADX 29)",
         "⚠️ מתוח (+19% מעל MA50)",
         "📈 צמיחה חזקה (26%)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "MU",
@@ -36870,37 +36459,7 @@
         "⚠️ מתוח (+36% מעל MA50)",
         "📈 צמיחה חזקה (756%)",
         "RS Rating 99 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 22,
-        "appearances_with_returns": 12,
-        "wins_20d": 10,
-        "win_rate_20d": 83.3,
-        "avg_return_20d": 17.48,
-        "best_return": 49.77,
-        "worst_return": -0.93,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 73,
-            "ret_20d": 49.3
-          },
-          {
-            "date": "2026-05-18",
-            "score": 73,
-            "ret_20d": 49.77
-          },
-          {
-            "date": "2026-05-16",
-            "score": 65,
-            "ret_20d": 49.77
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "INCY",
@@ -39044,15 +38603,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 16)",
         "📈 צמיחה חזקה (84%)"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "AEP",
@@ -41191,37 +40742,7 @@
         "אישור MA30 שבועי",
         "🔥 קרוב לשיא 52 שבועות (-0.9%)",
         "⚠️ מגמה חלשה (ADX 13)"
-      ],
-      "historical_performance": {
-        "appearances": 6,
-        "appearances_with_returns": 4,
-        "wins_20d": 4,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 4.01,
-        "best_return": 6.06,
-        "worst_return": 0.48,
-        "history": [
-          {
-            "date": "2026-03-20",
-            "score": 60,
-            "ret_20d": 6.06
-          },
-          {
-            "date": "2026-03-19",
-            "score": 60,
-            "ret_20d": 3.84
-          },
-          {
-            "date": "2026-03-05",
-            "score": 70,
-            "ret_20d": 0.48
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     }
   ],
   "personal": [],
@@ -41312,37 +40833,7 @@
         "⚠️ מתוח (+26% מעל MA50)",
         "📈 צמיחה חזקה (48%)",
         "RS Rating 92 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 4,
-        "wins_20d": 3,
-        "win_rate_20d": 75.0,
-        "avg_return_20d": 8.42,
-        "best_return": 14.28,
-        "worst_return": -4.05,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 87,
-            "ret_20d": 14.28
-          },
-          {
-            "date": "2026-05-23",
-            "score": 87,
-            "ret_20d": 14.28
-          },
-          {
-            "date": "2026-05-21",
-            "score": 63,
-            "ret_20d": 9.17
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "NTRA",
@@ -41428,15 +40919,7 @@
         "⚠️ מגמה חלשה (ADX 17)",
         "⚠️ מתוח (+24% מעל MA50)",
         "📈 צמיחה חזקה (39%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "AFRM",
@@ -41522,37 +41005,7 @@
         "⚠️ מתוח (+16% מעל MA50)",
         "📈 צמיחה חזקה (3529%)",
         "RS Rating 83"
-      ],
-      "historical_performance": {
-        "appearances": 10,
-        "appearances_with_returns": 7,
-        "wins_20d": 5,
-        "win_rate_20d": 71.4,
-        "avg_return_20d": 4.83,
-        "best_return": 12.11,
-        "worst_return": -5.57,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 80,
-            "ret_20d": 12.11
-          },
-          {
-            "date": "2026-05-23",
-            "score": 80,
-            "ret_20d": 12.11
-          },
-          {
-            "date": "2026-05-20",
-            "score": 75,
-            "ret_20d": 10.13
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "ILMN",
@@ -41637,37 +41090,7 @@
         "מגמה חזקה (ADX 29)",
         "⚠️ מתוח (+19% מעל MA50)",
         "RS Rating 85"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 7,
-        "wins_20d": 4,
-        "win_rate_20d": 57.1,
-        "avg_return_20d": 2.74,
-        "best_return": 21.08,
-        "worst_return": -19.79,
-        "history": [
-          {
-            "date": "2026-05-16",
-            "score": 65,
-            "ret_20d": 16.09
-          },
-          {
-            "date": "2026-05-12",
-            "score": 95,
-            "ret_20d": 11.51
-          },
-          {
-            "date": "2026-05-11",
-            "score": 80,
-            "ret_20d": 12.29
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "EA",
@@ -41751,27 +41174,7 @@
         "🔥 קרוב לשיא 52 שבועות (0.0%)",
         "⚠️ סקטור חלש",
         "📈 צמיחה חזקה (85%)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -1.31,
-        "best_return": -1.31,
-        "worst_return": -1.31,
-        "history": [
-          {
-            "date": "2026-01-30",
-            "score": 60,
-            "ret_20d": -1.31
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "VRTX",
@@ -41854,32 +41257,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (61%)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 2,
-        "wins_20d": 2,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 1.75,
-        "best_return": 1.76,
-        "worst_return": 1.75,
-        "history": [
-          {
-            "date": "2026-01-21",
-            "score": 60,
-            "ret_20d": 1.76
-          },
-          {
-            "date": "2026-01-08",
-            "score": 60,
-            "ret_20d": 1.75
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "ROKU",
@@ -41964,32 +41342,7 @@
         "מגמה חזקה (ADX 26)",
         "📈 צמיחה חזקה (22%)",
         "RS Rating 83"
-      ],
-      "historical_performance": {
-        "appearances": 8,
-        "appearances_with_returns": 2,
-        "wins_20d": 2,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 2.64,
-        "best_return": 4.41,
-        "worst_return": 0.87,
-        "history": [
-          {
-            "date": "2026-05-04",
-            "score": 60,
-            "ret_20d": 0.87
-          },
-          {
-            "date": "2026-05-01",
-            "score": 75,
-            "ret_20d": 4.41
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "TTWO",
@@ -42071,32 +41424,7 @@
         "RS=1.05 מעל S&P",
         "אישור MA30 שבועי",
         "⚠️ סקטור חלש"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 2,
-        "wins_20d": 2,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 0.88,
-        "best_return": 1.12,
-        "worst_return": 0.63,
-        "history": [
-          {
-            "date": "2026-05-21",
-            "score": 90,
-            "ret_20d": 0.63
-          },
-          {
-            "date": "2026-05-20",
-            "score": 70,
-            "ret_20d": 1.12
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "AMAT",
@@ -42180,37 +41508,7 @@
         "⚠️ מתוח (+29% מעל MA50)",
         "📈 צמיחה חזקה (34%)",
         "RS Rating 96 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 23,
-        "appearances_with_returns": 11,
-        "wins_20d": 10,
-        "win_rate_20d": 90.9,
-        "avg_return_20d": 22.46,
-        "best_return": 45.89,
-        "worst_return": -2.34,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 63,
-            "ret_20d": 45.89
-          },
-          {
-            "date": "2026-05-18",
-            "score": 73,
-            "ret_20d": 37.57
-          },
-          {
-            "date": "2026-05-16",
-            "score": 80,
-            "ret_20d": 37.57
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "LRCX",
@@ -42294,37 +41592,7 @@
         "⚠️ מתוח (+23% מעל MA50)",
         "📈 צמיחה חזקה (41%)",
         "RS Rating 94 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 4,
-        "wins_20d": 3,
-        "win_rate_20d": 75.0,
-        "avg_return_20d": 6.86,
-        "best_return": 15.24,
-        "worst_return": -1.05,
-        "history": [
-          {
-            "date": "2026-03-20",
-            "score": 70,
-            "ret_20d": 15.24
-          },
-          {
-            "date": "2026-02-04",
-            "score": 60,
-            "ret_20d": 2.46
-          },
-          {
-            "date": "2026-01-30",
-            "score": 70,
-            "ret_20d": -1.05
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "ABNB",
@@ -42407,37 +41675,7 @@
         "🔥 קרוב לשיא 52 שבועות (0.0%)",
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)"
-      ],
-      "historical_performance": {
-        "appearances": 8,
-        "appearances_with_returns": 6,
-        "wins_20d": 2,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": -0.22,
-        "best_return": 11.73,
-        "worst_return": -8.02,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 70,
-            "ret_20d": 5.06
-          },
-          {
-            "date": "2026-05-08",
-            "score": 70,
-            "ret_20d": -4.99
-          },
-          {
-            "date": "2026-05-07",
-            "score": 70,
-            "ret_20d": -4.93
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "KDP",
@@ -42519,37 +41757,7 @@
         "Golden cross MA50/MA150 טרי",
         "אישור MA30 שבועי",
         "מגמה חזקה (ADX 32)"
-      ],
-      "historical_performance": {
-        "appearances": 11,
-        "appearances_with_returns": 3,
-        "wins_20d": 2,
-        "win_rate_20d": 66.7,
-        "avg_return_20d": -2.03,
-        "best_return": 3.84,
-        "worst_return": -10.82,
-        "history": [
-          {
-            "date": "2026-04-29",
-            "score": 70,
-            "ret_20d": 3.84
-          },
-          {
-            "date": "2026-04-23",
-            "score": 60,
-            "ret_20d": 0.88
-          },
-          {
-            "date": "2026-02-23",
-            "score": 65,
-            "ret_20d": -10.82
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "ASML",
@@ -42631,37 +41839,7 @@
         "אישור MA30 שבועי",
         "מגמה חזקה (ADX 28)",
         "RS Rating 87"
-      ],
-      "historical_performance": {
-        "appearances": 21,
-        "appearances_with_returns": 11,
-        "wins_20d": 10,
-        "win_rate_20d": 90.9,
-        "avg_return_20d": 6.91,
-        "best_return": 12.56,
-        "worst_return": -0.18,
-        "history": [
-          {
-            "date": "2026-04-22",
-            "score": 70,
-            "ret_20d": 7.61
-          },
-          {
-            "date": "2026-04-16",
-            "score": 70,
-            "ret_20d": 12.56
-          },
-          {
-            "date": "2026-04-15",
-            "score": 70,
-            "ret_20d": 6.97
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "BIIB",
@@ -42744,37 +41922,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 10)",
         "📈 צמיחה חזקה (31%)"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 4,
-        "wins_20d": 3,
-        "win_rate_20d": 75.0,
-        "avg_return_20d": -0.07,
-        "best_return": 4.54,
-        "worst_return": -6.43,
-        "history": [
-          {
-            "date": "2026-05-14",
-            "score": 60,
-            "ret_20d": 4.54
-          },
-          {
-            "date": "2026-05-11",
-            "score": 60,
-            "ret_20d": 0.58
-          },
-          {
-            "date": "2026-04-29",
-            "score": 70,
-            "ret_20d": 1.03
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "DUOL",
@@ -42857,15 +42005,7 @@
         "מגמה חזקה (ADX 29)",
         "⚠️ מתוח (+19% מעל MA50)",
         "📈 צמיחה חזקה (26%)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "MU",
@@ -42948,37 +42088,7 @@
         "⚠️ מתוח (+36% מעל MA50)",
         "📈 צמיחה חזקה (756%)",
         "RS Rating 99 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 22,
-        "appearances_with_returns": 12,
-        "wins_20d": 10,
-        "win_rate_20d": 83.3,
-        "avg_return_20d": 17.48,
-        "best_return": 49.77,
-        "worst_return": -0.93,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 73,
-            "ret_20d": 49.3
-          },
-          {
-            "date": "2026-05-18",
-            "score": 73,
-            "ret_20d": 49.77
-          },
-          {
-            "date": "2026-05-16",
-            "score": 65,
-            "ret_20d": 49.77
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "PCAR",
@@ -43059,37 +42169,7 @@
         "RSI=51",
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 15)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 3,
-        "wins_20d": 1,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": -3.72,
-        "best_return": 3.39,
-        "worst_return": -10.58,
-        "history": [
-          {
-            "date": "2026-02-27",
-            "score": 70,
-            "ret_20d": -10.58
-          },
-          {
-            "date": "2026-02-04",
-            "score": 70,
-            "ret_20d": -3.97
-          },
-          {
-            "date": "2026-01-27",
-            "score": 70,
-            "ret_20d": 3.39
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "INCY",
@@ -43172,15 +42252,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 16)",
         "📈 צמיחה חזקה (84%)"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "AEP",
@@ -43261,37 +42333,7 @@
         "אישור MA30 שבועי",
         "🔥 קרוב לשיא 52 שבועות (-0.9%)",
         "⚠️ מגמה חלשה (ADX 13)"
-      ],
-      "historical_performance": {
-        "appearances": 6,
-        "appearances_with_returns": 4,
-        "wins_20d": 4,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 4.01,
-        "best_return": 6.06,
-        "worst_return": 0.48,
-        "history": [
-          {
-            "date": "2026-03-20",
-            "score": 60,
-            "ret_20d": 6.06
-          },
-          {
-            "date": "2026-03-19",
-            "score": 60,
-            "ret_20d": 3.84
-          },
-          {
-            "date": "2026-03-05",
-            "score": 70,
-            "ret_20d": 0.48
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "QCOM",
@@ -43372,37 +42414,7 @@
         "אישור MA30 שבועי",
         "📈 צמיחה חזקה (173%)",
         "RS Rating 82"
-      ],
-      "historical_performance": {
-        "appearances": 9,
-        "appearances_with_returns": 4,
-        "wins_20d": 1,
-        "win_rate_20d": 25.0,
-        "avg_return_20d": -5.17,
-        "best_return": 34.02,
-        "worst_return": -20.37,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 80,
-            "ret_20d": -20.37
-          },
-          {
-            "date": "2026-05-23",
-            "score": 80,
-            "ret_20d": -20.37
-          },
-          {
-            "date": "2026-05-22",
-            "score": 80,
-            "ret_20d": -13.97
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "ETSY",
@@ -43487,32 +42499,7 @@
         "מגמה חזקה (ADX 41)",
         "⚠️ מתוח (+20% מעל MA50)",
         "RS Rating 86"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 2,
-        "wins_20d": 1,
-        "win_rate_20d": 50.0,
-        "avg_return_20d": -13.59,
-        "best_return": 0.95,
-        "worst_return": -28.13,
-        "history": [
-          {
-            "date": "2026-04-28",
-            "score": 80,
-            "ret_20d": 0.95
-          },
-          {
-            "date": "2026-01-15",
-            "score": 55,
-            "ret_20d": -28.13
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "ROST",
@@ -43594,37 +42581,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (37%)"
-      ],
-      "historical_performance": {
-        "appearances": 18,
-        "appearances_with_returns": 6,
-        "wins_20d": 4,
-        "win_rate_20d": 66.7,
-        "avg_return_20d": 3.25,
-        "best_return": 9.84,
-        "worst_return": -2.4,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 104,
-            "ret_20d": -2.4
-          },
-          {
-            "date": "2026-05-23",
-            "score": 96,
-            "ret_20d": -2.4
-          },
-          {
-            "date": "2026-03-20",
-            "score": 70,
-            "ret_20d": 8.08
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "AVGO",
@@ -43705,27 +42662,7 @@
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 19)",
         "📈 צמיחה חזקה (85%)"
-      ],
-      "historical_performance": {
-        "appearances": 13,
-        "appearances_with_returns": 1,
-        "wins_20d": 1,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 5.06,
-        "best_return": 5.06,
-        "worst_return": 5.06,
-        "history": [
-          {
-            "date": "2026-04-15",
-            "score": 55,
-            "ret_20d": 5.06
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "FAST",
@@ -43805,37 +42742,7 @@
         "אישור MA30 שבועי",
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 15)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -1.98,
-        "best_return": -0.18,
-        "worst_return": -5.3,
-        "history": [
-          {
-            "date": "2026-03-31",
-            "score": 70,
-            "ret_20d": -5.3
-          },
-          {
-            "date": "2026-02-12",
-            "score": 65,
-            "ret_20d": -0.18
-          },
-          {
-            "date": "2026-02-09",
-            "score": 65,
-            "ret_20d": -0.47
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "MDLZ",
@@ -43915,37 +42822,7 @@
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 16)",
         "📈 צמיחה חזקה (41%)"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 4,
-        "wins_20d": 1,
-        "win_rate_20d": 25.0,
-        "avg_return_20d": -3.72,
-        "best_return": 2.21,
-        "worst_return": -11.27,
-        "history": [
-          {
-            "date": "2026-04-30",
-            "score": 70,
-            "ret_20d": -0.44
-          },
-          {
-            "date": "2026-04-29",
-            "score": 85,
-            "ret_20d": 2.21
-          },
-          {
-            "date": "2026-02-27",
-            "score": 65,
-            "ret_20d": -5.38
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "MTCH",
@@ -44027,27 +42904,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 15)",
         "📈 צמיחה חזקה (52%)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -8.53,
-        "best_return": -8.53,
-        "worst_return": -8.53,
-        "history": [
-          {
-            "date": "2026-05-06",
-            "score": 60,
-            "ret_20d": -8.53
-          }
-        ],
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "GOOG",
@@ -44128,37 +42985,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 19)",
         "📈 צמיחה חזקה (82%)"
-      ],
-      "historical_performance": {
-        "appearances": 9,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -8.52,
-        "best_return": -5.87,
-        "worst_return": -9.97,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 73,
-            "ret_20d": -5.87
-          },
-          {
-            "date": "2026-02-05",
-            "score": 70,
-            "ret_20d": -9.97
-          },
-          {
-            "date": "2026-02-04",
-            "score": 70,
-            "ret_20d": -9.73
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "GOOGL",
@@ -44239,37 +43066,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 19)",
         "📈 צמיחה חזקה (82%)"
-      ],
-      "historical_performance": {
-        "appearances": 11,
-        "appearances_with_returns": 5,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -7.2,
-        "best_return": -5.04,
-        "worst_return": -9.88,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 73,
-            "ret_20d": -5.31
-          },
-          {
-            "date": "2026-05-19",
-            "score": 73,
-            "ret_20d": -6.1
-          },
-          {
-            "date": "2026-02-06",
-            "score": 60,
-            "ret_20d": -5.04
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "AMZN",
@@ -44349,15 +43146,7 @@
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 34)",
         "📈 צמיחה חזקה (75%)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ALGN",
@@ -44436,37 +43225,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 13)",
         "📈 צמיחה חזקה (24%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 4,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -7.57,
-        "best_return": -0.92,
-        "worst_return": -11.98,
-        "history": [
-          {
-            "date": "2026-02-12",
-            "score": 60,
-            "ret_20d": -10.68
-          },
-          {
-            "date": "2026-02-09",
-            "score": 60,
-            "ret_20d": -11.98
-          },
-          {
-            "date": "2026-02-06",
-            "score": 60,
-            "ret_20d": -6.69
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "RPRX",
@@ -44551,37 +43310,7 @@
         "מגמה חזקה (ADX 40)",
         "📈 צמיחה חזקה (23%)",
         "RS Rating 80"
-      ],
-      "historical_performance": {
-        "appearances": 12,
-        "appearances_with_returns": 5,
-        "wins_20d": 5,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 7.29,
-        "best_return": 11.79,
-        "worst_return": 2.46,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 73,
-            "ret_20d": 2.46
-          },
-          {
-            "date": "2026-05-16",
-            "score": 65,
-            "ret_20d": 4.11
-          },
-          {
-            "date": "2026-05-07",
-            "score": 70,
-            "ret_20d": 11.79
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "FTNT",
@@ -44667,27 +43396,7 @@
         "⚠️ מתוח (+23% מעל MA50)",
         "📈 צמיחה חזקה (29%)",
         "RS Rating 92 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -1.25,
-        "best_return": -1.25,
-        "worst_return": -1.25,
-        "history": [
-          {
-            "date": "2026-02-13",
-            "score": 65,
-            "ret_20d": -1.25
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "MNST",
@@ -44771,37 +43480,7 @@
         "מגמה חזקה (ADX 46)",
         "📈 צמיחה חזקה (29%)",
         "RS Rating 81"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 7,
-        "wins_20d": 2,
-        "win_rate_20d": 28.6,
-        "avg_return_20d": -6.03,
-        "best_return": 2.53,
-        "worst_return": -16.94,
-        "history": [
-          {
-            "date": "2026-05-08",
-            "score": 60,
-            "ret_20d": 2.53
-          },
-          {
-            "date": "2026-02-27",
-            "score": 70,
-            "ret_20d": -15.79
-          },
-          {
-            "date": "2026-02-26",
-            "score": 70,
-            "ret_20d": -16.94
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "HOOD",
@@ -44883,15 +43562,7 @@
         "אישור MA30 שבועי",
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 27)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "CINF",
@@ -44974,37 +43645,7 @@
         "🔥 קרוב לשיא 52 שבועות (0.0%)",
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 27)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 5,
-        "wins_20d": 2,
-        "win_rate_20d": 40.0,
-        "avg_return_20d": -1.84,
-        "best_return": 2.47,
-        "worst_return": -7.43,
-        "history": [
-          {
-            "date": "2026-05-16",
-            "score": 80,
-            "ret_20d": 2.47
-          },
-          {
-            "date": "2026-05-15",
-            "score": 70,
-            "ret_20d": 1.75
-          },
-          {
-            "date": "2026-04-17",
-            "score": 60,
-            "ret_20d": -0.24
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "CRSP",
@@ -45087,15 +43728,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 19)",
         "📈 צמיחה חזקה (69%)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "CSX",
@@ -45179,37 +43812,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 20)",
         "📈 צמיחה חזקה (26%)"
-      ],
-      "historical_performance": {
-        "appearances": 10,
-        "appearances_with_returns": 4,
-        "wins_20d": 3,
-        "win_rate_20d": 75.0,
-        "avg_return_20d": 7.74,
-        "best_return": 14.55,
-        "worst_return": -0.61,
-        "history": [
-          {
-            "date": "2026-05-12",
-            "score": 70,
-            "ret_20d": 4.54
-          },
-          {
-            "date": "2026-04-23",
-            "score": 60,
-            "ret_20d": -0.61
-          },
-          {
-            "date": "2026-01-23",
-            "score": 60,
-            "ret_20d": 14.55
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "CSCO",
@@ -45292,37 +43895,7 @@
         "מגמה חזקה (ADX 30)",
         "📈 צמיחה חזקה (37%)",
         "RS Rating 89"
-      ],
-      "historical_performance": {
-        "appearances": 16,
-        "appearances_with_returns": 8,
-        "wins_20d": 4,
-        "win_rate_20d": 50.0,
-        "avg_return_20d": 3.13,
-        "best_return": 21.92,
-        "worst_return": -9.49,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 71,
-            "ret_20d": 4.54
-          },
-          {
-            "date": "2026-05-19",
-            "score": 71,
-            "ret_20d": 1.69
-          },
-          {
-            "date": "2026-05-13",
-            "score": 60,
-            "ret_20d": 19.59
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "HON",
@@ -45404,37 +43977,7 @@
         "אישור MA30 שבועי",
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 16)"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 6,
-        "wins_20d": 6,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 10.51,
-        "best_return": 12.58,
-        "worst_return": 5.64,
-        "history": [
-          {
-            "date": "2026-05-18",
-            "score": 55,
-            "ret_20d": 5.64
-          },
-          {
-            "date": "2026-01-21",
-            "score": 65,
-            "ret_20d": 9.86
-          },
-          {
-            "date": "2026-01-20",
-            "score": 80,
-            "ret_20d": 12.12
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "FROG",
@@ -45519,37 +44062,7 @@
         "⚠️ מתוח (+16% מעל MA50)",
         "📈 צמיחה חזקה (26%)",
         "RS Rating 87"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 3,
-        "wins_20d": 3,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 19.66,
-        "best_return": 22.28,
-        "worst_return": 17.75,
-        "history": [
-          {
-            "date": "2026-05-13",
-            "score": 65,
-            "ret_20d": 22.28
-          },
-          {
-            "date": "2026-05-12",
-            "score": 55,
-            "ret_20d": 18.96
-          },
-          {
-            "date": "2026-05-11",
-            "score": 55,
-            "ret_20d": 17.75
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "AMD",
@@ -45633,37 +44146,7 @@
         "⚠️ מתוח (+21% מעל MA50)",
         "📈 צמיחה חזקה (91%)",
         "RS Rating 97 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 3,
-        "wins_20d": 1,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": 5.86,
-        "best_return": 52.71,
-        "worst_return": -18.59,
-        "history": [
-          {
-            "date": "2026-05-05",
-            "score": 70,
-            "ret_20d": 52.71
-          },
-          {
-            "date": "2026-02-03",
-            "score": 60,
-            "ret_20d": -16.54
-          },
-          {
-            "date": "2026-01-21",
-            "score": 70,
-            "ret_20d": -18.59
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "ARM",
@@ -45747,37 +44230,7 @@
         "⚠️ מתוח (+29% מעל MA50)",
         "📈 צמיחה חזקה (48%)",
         "RS Rating 96 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 24,
-        "appearances_with_returns": 17,
-        "wins_20d": 17,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 50.2,
-        "best_return": 97.24,
-        "worst_return": 11.79,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 94,
-            "ret_20d": 11.79
-          },
-          {
-            "date": "2026-05-23",
-            "score": 94,
-            "ret_20d": 11.79
-          },
-          {
-            "date": "2026-05-22",
-            "score": 94,
-            "ret_20d": 19.54
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "DELL",
@@ -45861,37 +44314,7 @@
         "⚠️ מתוח (+46% מעל MA50)",
         "📈 צמיחה חזקה (282%)",
         "RS Rating 97 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 13,
-        "appearances_with_returns": 8,
-        "wins_20d": 8,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 34.98,
-        "best_return": 54.54,
-        "worst_return": 10.78,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 104,
-            "ret_20d": 42.28
-          },
-          {
-            "date": "2026-05-23",
-            "score": 104,
-            "ret_20d": 42.28
-          },
-          {
-            "date": "2026-05-22",
-            "score": 104,
-            "ret_20d": 44.92
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "HPE",
@@ -45975,37 +44398,7 @@
         "⚠️ מתוח (+31% מעל MA50)",
         "📈 צמיחה חזקה (40%)",
         "RS Rating 93 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 7,
-        "wins_20d": 7,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 31.51,
-        "best_return": 45.93,
-        "worst_return": 21.58,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 96,
-            "ret_20d": 28.46
-          },
-          {
-            "date": "2026-05-23",
-            "score": 101,
-            "ret_20d": 28.46
-          },
-          {
-            "date": "2026-05-22",
-            "score": 86,
-            "ret_20d": 30.56
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "MRVL",
@@ -46089,37 +44482,7 @@
         "⚠️ מתוח (+33% מעל MA50)",
         "📈 צמיחה חזקה (28%)",
         "RS Rating 98 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 26,
-        "appearances_with_returns": 13,
-        "wins_20d": 13,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 41.99,
-        "best_return": 66.26,
-        "worst_return": 18.06,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 81,
-            "ret_20d": 66.26
-          },
-          {
-            "date": "2026-05-14",
-            "score": 60,
-            "ret_20d": 53.19
-          },
-          {
-            "date": "2026-05-13",
-            "score": 60,
-            "ret_20d": 57.75
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "TXN",
@@ -46201,37 +44564,7 @@
         "אישור MA30 שבועי",
         "📈 צמיחה חזקה (31%)",
         "RS Rating 90 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 15,
-        "appearances_with_returns": 6,
-        "wins_20d": 3,
-        "win_rate_20d": 50.0,
-        "avg_return_20d": -0.18,
-        "best_return": 16.03,
-        "worst_return": -11.4,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 81,
-            "ret_20d": 5.9
-          },
-          {
-            "date": "2026-04-30",
-            "score": 60,
-            "ret_20d": 9.3
-          },
-          {
-            "date": "2026-02-09",
-            "score": 60,
-            "ret_20d": -9.74
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "MRNA",
@@ -46315,37 +44648,7 @@
         "⚠️ מתוח (+19% מעל MA50)",
         "📈 צמיחה חזקה (260%)",
         "RS Rating 89"
-      ],
-      "historical_performance": {
-        "appearances": 17,
-        "appearances_with_returns": 15,
-        "wins_20d": 8,
-        "win_rate_20d": 53.3,
-        "avg_return_20d": 1.77,
-        "best_return": 26.24,
-        "worst_return": -13.44,
-        "history": [
-          {
-            "date": "2026-05-11",
-            "score": 70,
-            "ret_20d": -9.74
-          },
-          {
-            "date": "2026-05-08",
-            "score": 70,
-            "ret_20d": -12.42
-          },
-          {
-            "date": "2026-04-17",
-            "score": 70,
-            "ret_20d": -8.71
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "BROS",
@@ -46430,27 +44733,7 @@
         "מגמה חזקה (ADX 33)",
         "⚠️ מתוח (+18% מעל MA50)",
         "📈 צמיחה חזקה (31%)"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -5.32,
-        "best_return": -5.32,
-        "worst_return": -5.32,
-        "history": [
-          {
-            "date": "2026-05-06",
-            "score": 80,
-            "ret_20d": -5.32
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "INTC",
@@ -46533,37 +44816,7 @@
         "מגמה חזקה (ADX 28)",
         "⚠️ מתוח (+25% מעל MA50)",
         "RS Rating 98 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 24,
-        "appearances_with_returns": 17,
-        "wins_20d": 10,
-        "win_rate_20d": 58.8,
-        "avg_return_20d": 14.43,
-        "best_return": 91.7,
-        "worst_return": -18.8,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 73,
-            "ret_20d": 12.63
-          },
-          {
-            "date": "2026-05-19",
-            "score": 73,
-            "ret_20d": 9.3
-          },
-          {
-            "date": "2026-05-18",
-            "score": 73,
-            "ret_20d": 8.21
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "KLAC",
@@ -46646,37 +44899,7 @@
         "מגמה חזקה (ADX 31)",
         "⚠️ מתוח (+21% מעל MA50)",
         "RS Rating 93 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 23,
-        "appearances_with_returns": 11,
-        "wins_20d": 7,
-        "win_rate_20d": 63.6,
-        "avg_return_20d": 6.61,
-        "best_return": 37.16,
-        "worst_return": -6.11,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 63,
-            "ret_20d": 37.16
-          },
-          {
-            "date": "2026-04-30",
-            "score": 70,
-            "ret_20d": 9.93
-          },
-          {
-            "date": "2026-03-20",
-            "score": 70,
-            "ret_20d": 20.46
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "ADI",
@@ -46759,37 +44982,7 @@
         "⚠️ מגמה חלשה (ADX 19)",
         "📈 צמיחה חזקה (110%)",
         "RS Rating 85"
-      ],
-      "historical_performance": {
-        "appearances": 24,
-        "appearances_with_returns": 12,
-        "wins_20d": 5,
-        "win_rate_20d": 41.7,
-        "avg_return_20d": 0.03,
-        "best_return": 16.26,
-        "worst_return": -13.32,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 108,
-            "ret_20d": -1.35
-          },
-          {
-            "date": "2026-05-23",
-            "score": 93,
-            "ret_20d": -1.35
-          },
-          {
-            "date": "2026-05-21",
-            "score": 63,
-            "ret_20d": 16.26
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "KEYS",
@@ -46872,37 +45065,7 @@
         "⚠️ מגמה חלשה (ADX 13)",
         "📈 צמיחה חזקה (36%)",
         "RS Rating 88"
-      ],
-      "historical_performance": {
-        "appearances": 16,
-        "appearances_with_returns": 11,
-        "wins_20d": 10,
-        "win_rate_20d": 90.9,
-        "avg_return_20d": 9.71,
-        "best_return": 28.39,
-        "worst_return": -1.25,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 85,
-            "ret_20d": -1.25
-          },
-          {
-            "date": "2026-05-21",
-            "score": 78,
-            "ret_20d": 10.6
-          },
-          {
-            "date": "2026-05-20",
-            "score": 88,
-            "ret_20d": 6.31
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "CART",
@@ -46985,15 +45148,7 @@
         "אישור MA30 שבועי",
         "⚠️ סקטור חלש",
         "📈 צמיחה חזקה (54%)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "DDOG",
@@ -47077,15 +45232,7 @@
         "⚠️ מתוח (+15% מעל MA50)",
         "📈 צמיחה חזקה (104%)",
         "RS Rating 91 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "PANW",
@@ -47169,37 +45316,7 @@
         "⚠️ מתוח (+23% מעל MA50)",
         "📈 צמיחה חזקה (31%)",
         "RS Rating 91 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 6,
-        "appearances_with_returns": 3,
-        "wins_20d": 3,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 24.05,
-        "best_return": 28.12,
-        "worst_return": 21.93,
-        "history": [
-          {
-            "date": "2026-05-12",
-            "score": 55,
-            "ret_20d": 22.09
-          },
-          {
-            "date": "2026-05-11",
-            "score": 55,
-            "ret_20d": 21.93
-          },
-          {
-            "date": "2026-05-08",
-            "score": 70,
-            "ret_20d": 28.12
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "NXPI",
@@ -47281,37 +45398,7 @@
         "אישור MA30 שבועי",
         "📈 צמיחה חזקה (131%)",
         "RS Rating 84"
-      ],
-      "historical_performance": {
-        "appearances": 23,
-        "appearances_with_returns": 13,
-        "wins_20d": 8,
-        "win_rate_20d": 61.5,
-        "avg_return_20d": 5.3,
-        "best_return": 42.91,
-        "worst_return": -23.44,
-        "history": [
-          {
-            "date": "2026-05-21",
-            "score": 86,
-            "ret_20d": 7.97
-          },
-          {
-            "date": "2026-05-20",
-            "score": 86,
-            "ret_20d": 1.01
-          },
-          {
-            "date": "2026-05-16",
-            "score": 70,
-            "ret_20d": 3.84
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "CRWD",
@@ -47395,27 +45482,7 @@
         "⚠️ מתוח (+16% מעל MA50)",
         "📈 צמיחה חזקה (26%)",
         "RS Rating 88"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 1,
-        "wins_20d": 1,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 24.83,
-        "best_return": 24.83,
-        "worst_return": 24.83,
-        "history": [
-          {
-            "date": "2026-05-08",
-            "score": 65,
-            "ret_20d": 24.83
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "OKTA",
@@ -47499,37 +45566,7 @@
         "⚠️ מתוח (+25% מעל MA50)",
         "📈 צמיחה חזקה (21%)",
         "RS Rating 84"
-      ],
-      "historical_performance": {
-        "appearances": 8,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -6.8,
-        "best_return": -5.09,
-        "worst_return": -9.04,
-        "history": [
-          {
-            "date": "2026-01-15",
-            "score": 55,
-            "ret_20d": -5.09
-          },
-          {
-            "date": "2026-01-14",
-            "score": 55,
-            "ret_20d": -9.04
-          },
-          {
-            "date": "2026-01-13",
-            "score": 70,
-            "ret_20d": -6.26
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "AAPL",
@@ -47610,37 +45647,7 @@
         "Golden cross MA50/MA150 טרי",
         "אישור MA30 שבועי",
         "📈 צמיחה חזקה (22%)"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 4,
-        "wins_20d": 2,
-        "win_rate_20d": 50.0,
-        "avg_return_20d": 3.79,
-        "best_return": 12.43,
-        "worst_return": -5.77,
-        "history": [
-          {
-            "date": "2026-04-22",
-            "score": 65,
-            "ret_20d": 10.75
-          },
-          {
-            "date": "2026-04-21",
-            "score": 65,
-            "ret_20d": 12.43
-          },
-          {
-            "date": "2026-02-04",
-            "score": 70,
-            "ret_20d": -5.77
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "MAR",
@@ -47722,37 +45729,7 @@
         "אישור MA30 שבועי",
         "🔥 קרוב לשיא 52 שבועות (-4.7%)",
         "⚠️ סקטור חלש"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 5,
-        "wins_20d": 1,
-        "win_rate_20d": 20.0,
-        "avg_return_20d": -4.09,
-        "best_return": 7.36,
-        "worst_return": -11.66,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 63,
-            "ret_20d": 7.36
-          },
-          {
-            "date": "2026-02-25",
-            "score": 70,
-            "ret_20d": -5.76
-          },
-          {
-            "date": "2026-02-11",
-            "score": 60,
-            "ret_20d": -11.66
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "GFS",
@@ -47834,37 +45811,7 @@
         "אישור MA30 שבועי",
         "⚠️ מתוח (+15% מעל MA50)",
         "RS Rating 95 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 22,
-        "appearances_with_returns": 14,
-        "wins_20d": 8,
-        "win_rate_20d": 57.1,
-        "avg_return_20d": 2.62,
-        "best_return": 17.96,
-        "worst_return": -14.67,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 106,
-            "ret_20d": -6.96
-          },
-          {
-            "date": "2026-05-23",
-            "score": 106,
-            "ret_20d": -6.96
-          },
-          {
-            "date": "2026-05-22",
-            "score": 106,
-            "ret_20d": -2.63
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "ODFL",
@@ -47945,37 +45892,7 @@
         "אישור MA30 שבועי",
         "סקטור חזק (🔥)",
         "RS Rating 81"
-      ],
-      "historical_performance": {
-        "appearances": 11,
-        "appearances_with_returns": 5,
-        "wins_20d": 2,
-        "win_rate_20d": 40.0,
-        "avg_return_20d": 0.75,
-        "best_return": 11.72,
-        "worst_return": -7.11,
-        "history": [
-          {
-            "date": "2026-04-29",
-            "score": 70,
-            "ret_20d": 5.5
-          },
-          {
-            "date": "2026-02-27",
-            "score": 60,
-            "ret_20d": -7.11
-          },
-          {
-            "date": "2026-02-12",
-            "score": 60,
-            "ret_20d": -2.43
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "SIRI",
@@ -48058,37 +45975,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 12)",
         "📈 צמיחה חזקה (22%)"
-      ],
-      "historical_performance": {
-        "appearances": 12,
-        "appearances_with_returns": 10,
-        "wins_20d": 8,
-        "win_rate_20d": 80.0,
-        "avg_return_20d": 5.48,
-        "best_return": 14.42,
-        "worst_return": -5.84,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 80,
-            "ret_20d": -5.84
-          },
-          {
-            "date": "2026-05-21",
-            "score": 93,
-            "ret_20d": -3.62
-          },
-          {
-            "date": "2026-05-20",
-            "score": 78,
-            "ret_20d": 3.62
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "RKLB",
@@ -48169,37 +46056,7 @@
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 27)",
         "📈 צמיחה חזקה (64%)"
-      ],
-      "historical_performance": {
-        "appearances": 16,
-        "appearances_with_returns": 9,
-        "wins_20d": 3,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": -5.98,
-        "best_return": 59.83,
-        "worst_return": -40.36,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 91,
-            "ret_20d": -40.36
-          },
-          {
-            "date": "2026-05-23",
-            "score": 91,
-            "ret_20d": -40.36
-          },
-          {
-            "date": "2026-05-21",
-            "score": 65,
-            "ret_20d": -20.06
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "NVO",
@@ -48281,37 +46138,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (67%)"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 4,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -17.8,
-        "best_return": -13.22,
-        "worst_return": -20.79,
-        "history": [
-          {
-            "date": "2026-01-21",
-            "score": 80,
-            "ret_20d": -18.32
-          },
-          {
-            "date": "2026-01-20",
-            "score": 65,
-            "ret_20d": -18.87
-          },
-          {
-            "date": "2026-01-16",
-            "score": 80,
-            "ret_20d": -20.79
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "ON",
@@ -48391,37 +46218,7 @@
         "RS=1.72 מעל S&P",
         "אישור MA30 שבועי",
         "RS Rating 94 (טופ 10%)"
-      ],
-      "historical_performance": {
-        "appearances": 30,
-        "appearances_with_returns": 22,
-        "wins_20d": 15,
-        "win_rate_20d": 68.2,
-        "avg_return_20d": 6.55,
-        "best_return": 48.09,
-        "worst_return": -18.95,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 73,
-            "ret_20d": 6.51
-          },
-          {
-            "date": "2026-05-18",
-            "score": 73,
-            "ret_20d": 8.06
-          },
-          {
-            "date": "2026-05-16",
-            "score": 65,
-            "ret_20d": 8.06
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "SBUX",
@@ -48504,37 +46301,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (33%)"
-      ],
-      "historical_performance": {
-        "appearances": 14,
-        "appearances_with_returns": 12,
-        "wins_20d": 9,
-        "win_rate_20d": 75.0,
-        "avg_return_20d": 1.58,
-        "best_return": 5.91,
-        "worst_return": -3.94,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 79,
-            "ret_20d": 2.08
-          },
-          {
-            "date": "2026-05-23",
-            "score": 79,
-            "ret_20d": 2.08
-          },
-          {
-            "date": "2026-05-21",
-            "score": 73,
-            "ret_20d": -3.82
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "FFIV",
@@ -48615,37 +46382,7 @@
         "אישור MA30 שבועי",
         "מגמה חזקה (ADX 26)",
         "RS Rating 80"
-      ],
-      "historical_performance": {
-        "appearances": 8,
-        "appearances_with_returns": 6,
-        "wins_20d": 6,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 12.73,
-        "best_return": 27.77,
-        "worst_return": 0.36,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 61,
-            "ret_20d": 0.36
-          },
-          {
-            "date": "2026-05-18",
-            "score": 61,
-            "ret_20d": 2.4
-          },
-          {
-            "date": "2026-04-29",
-            "score": 60,
-            "ret_20d": 16.85
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "SMCI",
@@ -48726,15 +46463,7 @@
         "אישור MA30 שבועי",
         "מגמה חזקה (ADX 25)",
         "📈 צמיחה חזקה (326%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "SNOW",
@@ -48816,15 +46545,7 @@
         "מגמה חזקה (ADX 33)",
         "⚠️ מתוח (+22% מעל MA50)",
         "📈 צמיחה חזקה (34%)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "XEL",
@@ -48905,37 +46626,7 @@
         "אישור MA30 שבועי",
         "🔥 קרוב לשיא 52 שבועות (-1.5%)",
         "⚠️ מגמה חלשה (ADX 15)"
-      ],
-      "historical_performance": {
-        "appearances": 11,
-        "appearances_with_returns": 10,
-        "wins_20d": 6,
-        "win_rate_20d": 60.0,
-        "avg_return_20d": 2.84,
-        "best_return": 8.41,
-        "worst_return": -4.16,
-        "history": [
-          {
-            "date": "2026-05-21",
-            "score": 63,
-            "ret_20d": -0.99
-          },
-          {
-            "date": "2026-05-11",
-            "score": 60,
-            "ret_20d": -3.39
-          },
-          {
-            "date": "2026-04-30",
-            "score": 70,
-            "ret_20d": -4.16
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "ENPH",
@@ -49014,37 +46705,7 @@
         "Stage 2 alignment",
         "RS=1.05 מעל S&P",
         "אישור MA30 שבועי"
-      ],
-      "historical_performance": {
-        "appearances": 17,
-        "appearances_with_returns": 12,
-        "wins_20d": 7,
-        "win_rate_20d": 58.3,
-        "avg_return_20d": 0.2,
-        "best_return": 30.79,
-        "worst_return": -28.52,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 77,
-            "ret_20d": -28.52
-          },
-          {
-            "date": "2026-05-23",
-            "score": 77,
-            "ret_20d": -28.52
-          },
-          {
-            "date": "2026-05-21",
-            "score": 86,
-            "ret_20d": -15.93
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "DXCM",
@@ -49124,37 +46785,7 @@
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 27)",
         "📈 צמיחה חזקה (92%)"
-      ],
-      "historical_performance": {
-        "appearances": 10,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -7.17,
-        "best_return": -3.14,
-        "worst_return": -15.23,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 64,
-            "ret_20d": -3.14
-          },
-          {
-            "date": "2026-05-23",
-            "score": 64,
-            "ret_20d": -3.14
-          },
-          {
-            "date": "2026-02-27",
-            "score": 65,
-            "ret_20d": -15.23
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "CDNS",
@@ -49234,37 +46865,7 @@
         "Golden cross MA50/MA150 טרי",
         "אישור MA30 שבועי",
         "📈 צמיחה חזקה (23%)"
-      ],
-      "historical_performance": {
-        "appearances": 11,
-        "appearances_with_returns": 4,
-        "wins_20d": 4,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 13.49,
-        "best_return": 14.98,
-        "worst_return": 12.23,
-        "history": [
-          {
-            "date": "2026-04-29",
-            "score": 65,
-            "ret_20d": 13.31
-          },
-          {
-            "date": "2026-04-28",
-            "score": 70,
-            "ret_20d": 14.98
-          },
-          {
-            "date": "2026-04-27",
-            "score": 80,
-            "ret_20d": 13.43
-          }
-        ],
-        "verdict": "strong",
-        "label": "טרק רקורד חזק",
-        "color": "#059669",
-        "emoji": "💎"
-      }
+      ]
     },
     {
       "ticker": "IONQ",
@@ -49344,37 +46945,7 @@
         "Golden cross MA50/MA150 טרי",
         "אישור MA30 שבועי",
         "📈 צמיחה חזקה (755%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 6,
-        "wins_20d": 1,
-        "win_rate_20d": 16.7,
-        "avg_return_20d": -6.76,
-        "best_return": 1.36,
-        "worst_return": -15.75,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 91,
-            "ret_20d": -15.75
-          },
-          {
-            "date": "2026-05-23",
-            "score": 91,
-            "ret_20d": -15.75
-          },
-          {
-            "date": "2026-05-22",
-            "score": 76,
-            "ret_20d": -9.1
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "EXC",
@@ -49454,37 +47025,7 @@
         "RSI=61",
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 16)"
-      ],
-      "historical_performance": {
-        "appearances": 16,
-        "appearances_with_returns": 15,
-        "wins_20d": 6,
-        "win_rate_20d": 40.0,
-        "avg_return_20d": 0.16,
-        "best_return": 7.4,
-        "worst_return": -4.32,
-        "history": [
-          {
-            "date": "2026-03-31",
-            "score": 60,
-            "ret_20d": -4.08
-          },
-          {
-            "date": "2026-03-20",
-            "score": 65,
-            "ret_20d": -0.09
-          },
-          {
-            "date": "2026-03-18",
-            "score": 60,
-            "ret_20d": -3.37
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "CRWV",
@@ -49565,37 +47106,7 @@
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 12)",
         "📈 צמיחה חזקה (112%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -11.15,
-        "best_return": -4.47,
-        "worst_return": -17.35,
-        "history": [
-          {
-            "date": "2026-04-22",
-            "score": 65,
-            "ret_20d": -17.35
-          },
-          {
-            "date": "2026-04-20",
-            "score": 65,
-            "ret_20d": -11.63
-          },
-          {
-            "date": "2026-04-16",
-            "score": 55,
-            "ret_20d": -4.47
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "NVDA",
@@ -49676,37 +47187,7 @@
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 14)",
         "📈 צמיחה חזקה (214%)"
-      ],
-      "historical_performance": {
-        "appearances": 19,
-        "appearances_with_returns": 11,
-        "wins_20d": 3,
-        "win_rate_20d": 27.3,
-        "avg_return_20d": -1.39,
-        "best_return": 13.56,
-        "worst_return": -7.27,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 94,
-            "ret_20d": -7.27
-          },
-          {
-            "date": "2026-05-23",
-            "score": 94,
-            "ret_20d": -7.27
-          },
-          {
-            "date": "2026-05-21",
-            "score": 78,
-            "ret_20d": -4.84
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "AMGN",
@@ -49786,27 +47267,7 @@
         "אישור MA30 שבועי",
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 12)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 1,
-        "wins_20d": 1,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 1.08,
-        "best_return": 1.08,
-        "worst_return": 1.08,
-        "history": [
-          {
-            "date": "2026-02-04",
-            "score": 70,
-            "ret_20d": 1.08
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "S",
@@ -49885,32 +47346,7 @@
         "Golden cross MA50/MA150 טרי",
         "אישור MA30 שבועי",
         "📈 צמיחה חזקה (21%)"
-      ],
-      "historical_performance": {
-        "appearances": 9,
-        "appearances_with_returns": 2,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -5.87,
-        "best_return": -5.06,
-        "worst_return": -6.67,
-        "history": [
-          {
-            "date": "2026-05-11",
-            "score": 65,
-            "ret_20d": -6.67
-          },
-          {
-            "date": "2026-05-08",
-            "score": 65,
-            "ret_20d": -5.06
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "DLTR",
@@ -49990,37 +47426,7 @@
         "אישור MA30 שבועי",
         "מגמה חזקה (ADX 35)",
         "⚠️ מתוח (+17% מעל MA50)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 2,
-        "win_rate_20d": 66.7,
-        "avg_return_20d": -0.81,
-        "best_return": 6.09,
-        "worst_return": -9.0,
-        "history": [
-          {
-            "date": "2026-01-22",
-            "score": 65,
-            "ret_20d": 6.09
-          },
-          {
-            "date": "2026-01-21",
-            "score": 60,
-            "ret_20d": 0.47
-          },
-          {
-            "date": "2026-01-13",
-            "score": 60,
-            "ret_20d": -9.0
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "QBTS",
@@ -50100,37 +47506,7 @@
         "Golden cross MA50/MA150 טרי",
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 18)"
-      ],
-      "historical_performance": {
-        "appearances": 11,
-        "appearances_with_returns": 4,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -13.65,
-        "best_return": -4.93,
-        "worst_return": -17.4,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 79,
-            "ret_20d": -17.4
-          },
-          {
-            "date": "2026-05-23",
-            "score": 79,
-            "ret_20d": -17.4
-          },
-          {
-            "date": "2026-05-22",
-            "score": 79,
-            "ret_20d": -14.86
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "NET",
@@ -50210,37 +47586,7 @@
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 14)",
         "📈 צמיחה חזקה (34%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 3,
-        "wins_20d": 1,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": -2.17,
-        "best_return": 8.55,
-        "worst_return": -12.46,
-        "history": [
-          {
-            "date": "2026-05-07",
-            "score": 60,
-            "ret_20d": -2.6
-          },
-          {
-            "date": "2026-05-05",
-            "score": 60,
-            "ret_20d": 8.55
-          },
-          {
-            "date": "2026-03-18",
-            "score": 65,
-            "ret_20d": -12.46
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "SNPS",
@@ -50320,37 +47666,7 @@
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 18)",
         "📈 צמיחה חזקה (42%)"
-      ],
-      "historical_performance": {
-        "appearances": 12,
-        "appearances_with_returns": 5,
-        "wins_20d": 2,
-        "win_rate_20d": 40.0,
-        "avg_return_20d": -6.48,
-        "best_return": 7.23,
-        "worst_return": -17.99,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 60,
-            "ret_20d": -13.21
-          },
-          {
-            "date": "2026-05-23",
-            "score": 60,
-            "ret_20d": -13.21
-          },
-          {
-            "date": "2026-04-27",
-            "score": 55,
-            "ret_20d": 7.23
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "CDW",
@@ -50429,15 +47745,7 @@
         "RSI=55",
         "אישור MA30 שבועי",
         "⚠️ מגמה חלשה (ADX 19)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "SHOP",
@@ -50516,15 +47824,7 @@
         "RSI=54",
         "⚠️ מגמה חלשה (ADX 12)",
         "📈 צמיחה חזקה (34%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "MSTR",
@@ -50602,32 +47902,7 @@
         "נפח גבוה (×2.0)",
         "Golden cross MA50/MA150 טרי",
         "מגמה חזקה (ADX 29)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 2,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -26.19,
-        "best_return": -26.08,
-        "worst_return": -26.3,
-        "history": [
-          {
-            "date": "2026-05-16",
-            "score": 75,
-            "ret_20d": -26.3
-          },
-          {
-            "date": "2026-05-15",
-            "score": 65,
-            "ret_20d": -26.08
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "BKR",
@@ -50706,37 +47981,7 @@
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 25)",
         "📈 צמיחה חזקה (132%)"
-      ],
-      "historical_performance": {
-        "appearances": 11,
-        "appearances_with_returns": 10,
-        "wins_20d": 7,
-        "win_rate_20d": 70.0,
-        "avg_return_20d": 9.32,
-        "best_return": 20.51,
-        "worst_return": -8.39,
-        "history": [
-          {
-            "date": "2026-04-24",
-            "score": 70,
-            "ret_20d": -3.86
-          },
-          {
-            "date": "2026-03-20",
-            "score": 70,
-            "ret_20d": -1.96
-          },
-          {
-            "date": "2026-02-11",
-            "score": 70,
-            "ret_20d": -8.39
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "CHWY",
@@ -50815,15 +48060,7 @@
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 34)",
         "📈 צמיחה חזקה (53%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "BKNG",
@@ -50903,15 +48140,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 14)",
         "📈 צמיחה חזקה (240%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "FUTU",
@@ -50989,32 +48218,7 @@
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 25)",
         "📈 צמיחה חזקה (29%)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 2,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -16.07,
-        "best_return": -15.27,
-        "worst_return": -16.87,
-        "history": [
-          {
-            "date": "2026-01-15",
-            "score": 70,
-            "ret_20d": -16.87
-          },
-          {
-            "date": "2026-01-14",
-            "score": 70,
-            "ret_20d": -15.27
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "INSM",
@@ -51092,15 +48296,7 @@
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 41)",
         "📈 צמיחה חזקה (230%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ZTO",
@@ -51178,37 +48374,7 @@
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 32)",
         "📈 צמיחה חזקה (22%)"
-      ],
-      "historical_performance": {
-        "appearances": 6,
-        "appearances_with_returns": 6,
-        "wins_20d": 3,
-        "win_rate_20d": 50.0,
-        "avg_return_20d": 1.44,
-        "best_return": 10.91,
-        "worst_return": -9.57,
-        "history": [
-          {
-            "date": "2026-05-04",
-            "score": 70,
-            "ret_20d": -9.57
-          },
-          {
-            "date": "2026-03-18",
-            "score": 70,
-            "ret_20d": 0.76
-          },
-          {
-            "date": "2026-02-26",
-            "score": 70,
-            "ret_20d": -0.5
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "CTSH",
@@ -51285,27 +48451,7 @@
       "reasons": [
         "נפח גבוה (×1.7)",
         "מגמה חזקה (ADX 27)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -23.08,
-        "best_return": -23.08,
-        "worst_return": -23.08,
-        "history": [
-          {
-            "date": "2026-01-16",
-            "score": 60,
-            "ret_20d": -23.08
-          }
-        ],
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "JOBY",
@@ -51382,37 +48528,7 @@
       "reasons": [
         "נפח גבוה (×1.6)",
         "סקטור חזק (🔥)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -31.12,
-        "best_return": -30.54,
-        "worst_return": -31.8,
-        "history": [
-          {
-            "date": "2026-01-13",
-            "score": 55,
-            "ret_20d": -31.8
-          },
-          {
-            "date": "2026-01-09",
-            "score": 70,
-            "ret_20d": -30.54
-          },
-          {
-            "date": "2026-01-08",
-            "score": 70,
-            "ret_20d": -31.02
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "WIT",
@@ -51489,27 +48605,7 @@
       "reasons": [
         "נפח גבוה (×2.3)",
         "מגמה חזקה (ADX 29)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -24.75,
-        "best_return": -24.75,
-        "worst_return": -24.75,
-        "history": [
-          {
-            "date": "2026-01-14",
-            "score": 60,
-            "ret_20d": -24.75
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "WTW",
@@ -51588,37 +48684,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 20)",
         "📈 צמיחה חזקה (33%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -9.37,
-        "best_return": -7.45,
-        "worst_return": -11.54,
-        "history": [
-          {
-            "date": "2026-02-05",
-            "score": 70,
-            "ret_20d": -7.45
-          },
-          {
-            "date": "2026-02-04",
-            "score": 70,
-            "ret_20d": -11.54
-          },
-          {
-            "date": "2026-02-03",
-            "score": 70,
-            "ret_20d": -9.13
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "FANG",
@@ -51697,37 +48763,7 @@
         "אישור MA30 שבועי",
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 14)"
-      ],
-      "historical_performance": {
-        "appearances": 20,
-        "appearances_with_returns": 18,
-        "wins_20d": 16,
-        "win_rate_20d": 88.9,
-        "avg_return_20d": 8.31,
-        "best_return": 17.02,
-        "worst_return": -4.72,
-        "history": [
-          {
-            "date": "2026-04-08",
-            "score": 60,
-            "ret_20d": 4.62
-          },
-          {
-            "date": "2026-03-27",
-            "score": 60,
-            "ret_20d": -2.69
-          },
-          {
-            "date": "2026-03-20",
-            "score": 70,
-            "ret_20d": -4.72
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "SMMT",
@@ -51805,32 +48841,7 @@
         "Golden cross MA50/MA150 טרי",
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 27)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 2,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -13.18,
-        "best_return": -8.08,
-        "worst_return": -18.27,
-        "history": [
-          {
-            "date": "2026-04-30",
-            "score": 60,
-            "ret_20d": -18.27
-          },
-          {
-            "date": "2026-04-10",
-            "score": 65,
-            "ret_20d": -8.08
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "FOXA",
@@ -51908,15 +48919,7 @@
         "נפח גבוה (×2.0)",
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 38)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "WBD",
@@ -51995,15 +48998,7 @@
         "RSI=56",
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ADSK",
@@ -52080,15 +49075,7 @@
       "reasons": [
         "מגמה חזקה (ADX 28)",
         "📈 צמיחה חזקה (231%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ISRG",
@@ -52165,15 +49152,7 @@
       "reasons": [
         "סקטור חזק (🔥)",
         "📈 צמיחה חזקה (23%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "REGN",
@@ -52250,15 +49229,7 @@
       "reasons": [
         "סקטור חזק (🔥)",
         "מגמה חזקה (ADX 37)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "TRMB",
@@ -52335,15 +49306,7 @@
       "reasons": [
         "מגמה חזקה (ADX 37)",
         "📈 צמיחה חזקה (56%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "RGTI",
@@ -52421,37 +49384,7 @@
         "RS=1.10 מעל S&P",
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (199%)"
-      ],
-      "historical_performance": {
-        "appearances": 10,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -21.2,
-        "best_return": -19.45,
-        "worst_return": -22.08,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 79,
-            "ret_20d": -22.08
-          },
-          {
-            "date": "2026-05-23",
-            "score": 79,
-            "ret_20d": -22.08
-          },
-          {
-            "date": "2026-05-22",
-            "score": 79,
-            "ret_20d": -19.45
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "TOST",
@@ -52529,15 +49462,7 @@
         "RSI=56",
         "⚠️ מגמה חלשה (ADX 12)",
         "📈 צמיחה חזקה (123%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "VRSK",
@@ -52615,15 +49540,7 @@
         "RSI=54",
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 16)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "GILD",
@@ -52701,37 +49618,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 16)",
         "📈 צמיחה חזקה (55%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 6,
-        "wins_20d": 2,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": 1.68,
-        "best_return": 24.31,
-        "worst_return": -9.97,
-        "history": [
-          {
-            "date": "2026-05-12",
-            "score": 55,
-            "ret_20d": -9.97
-          },
-          {
-            "date": "2026-05-08",
-            "score": 60,
-            "ret_20d": -2.46
-          },
-          {
-            "date": "2026-05-06",
-            "score": 55,
-            "ret_20d": -5.22
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "KTOS",
@@ -52809,37 +49696,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 16)",
         "📈 צמיחה חזקה (131%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -13.39,
-        "best_return": -12.2,
-        "worst_return": -15.61,
-        "history": [
-          {
-            "date": "2026-02-19",
-            "score": 70,
-            "ret_20d": -12.2
-          },
-          {
-            "date": "2026-01-22",
-            "score": 70,
-            "ret_20d": -15.61
-          },
-          {
-            "date": "2026-01-21",
-            "score": 70,
-            "ret_20d": -12.37
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "WYNN",
@@ -52917,15 +49774,7 @@
         "RSI=50",
         "⚠️ סקטור חלש",
         "📈 צמיחה חזקה (51%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ZM",
@@ -53002,37 +49851,7 @@
       "reasons": [
         "Golden cross MA50/MA150 טרי",
         "📈 צמיחה חזקה (74%)"
-      ],
-      "historical_performance": {
-        "appearances": 22,
-        "appearances_with_returns": 19,
-        "wins_20d": 1,
-        "win_rate_20d": 5.3,
-        "avg_return_20d": -12.21,
-        "best_return": 7.07,
-        "worst_return": -21.49,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 111,
-            "ret_20d": -14.61
-          },
-          {
-            "date": "2026-05-23",
-            "score": 111,
-            "ret_20d": -14.61
-          },
-          {
-            "date": "2026-05-22",
-            "score": 96,
-            "ret_20d": -18.17
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "PATH",
@@ -53109,15 +49928,7 @@
       "reasons": [
         "נפח גבוה (×2.0)",
         "⚠️ מגמה חלשה (ADX 12)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "BABA",
@@ -53195,37 +50006,7 @@
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 30)",
         "📈 צמיחה חזקה (104%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 1,
-        "win_rate_20d": 33.3,
-        "avg_return_20d": -4.77,
-        "best_return": 0.12,
-        "worst_return": -12.83,
-        "history": [
-          {
-            "date": "2026-01-22",
-            "score": 60,
-            "ret_20d": -12.83
-          },
-          {
-            "date": "2026-01-13",
-            "score": 60,
-            "ret_20d": -1.61
-          },
-          {
-            "date": "2026-01-12",
-            "score": 60,
-            "ret_20d": 0.12
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "HAS",
@@ -53303,37 +50084,7 @@
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 32)",
         "📈 צמיחה חזקה (99%)"
-      ],
-      "historical_performance": {
-        "appearances": 10,
-        "appearances_with_returns": 10,
-        "wins_20d": 2,
-        "win_rate_20d": 20.0,
-        "avg_return_20d": -5.1,
-        "best_return": 11.58,
-        "worst_return": -13.4,
-        "history": [
-          {
-            "date": "2026-05-19",
-            "score": 65,
-            "ret_20d": -13.4
-          },
-          {
-            "date": "2026-05-14",
-            "score": 60,
-            "ret_20d": -11.57
-          },
-          {
-            "date": "2026-05-07",
-            "score": 60,
-            "ret_20d": -12.86
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "NFLX",
@@ -53411,27 +50162,7 @@
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 36)",
         "📈 צמיחה חזקה (86%)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -19.34,
-        "best_return": -19.34,
-        "worst_return": -19.34,
-        "history": [
-          {
-            "date": "2026-04-16",
-            "score": 55,
-            "ret_20d": -19.34
-          }
-        ],
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "DASH",
@@ -53510,15 +50241,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (33%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ESTC",
@@ -53594,15 +50317,7 @@
       ],
       "reasons": [
         "RSI=51"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "MELI",
@@ -53681,15 +50396,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 9)",
         "📈 צמיחה חזקה (49%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "RBLX",
@@ -53768,15 +50475,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 18)",
         "📈 צמיחה חזקה (39%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "AVAV",
@@ -53855,37 +50554,7 @@
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 18)",
         "📈 צמיחה חזקה (143%)"
-      ],
-      "historical_performance": {
-        "appearances": 8,
-        "appearances_with_returns": 8,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -27.25,
-        "best_return": -11.88,
-        "worst_return": -38.42,
-        "history": [
-          {
-            "date": "2026-01-21",
-            "score": 60,
-            "ret_20d": -11.88
-          },
-          {
-            "date": "2026-01-20",
-            "score": 60,
-            "ret_20d": -19.77
-          },
-          {
-            "date": "2026-01-15",
-            "score": 60,
-            "ret_20d": -35.58
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "JKHY",
@@ -53961,37 +50630,7 @@
       ],
       "reasons": [
         "מגמה חזקה (ADX 29)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -5.7,
-        "best_return": -1.76,
-        "worst_return": -7.73,
-        "history": [
-          {
-            "date": "2026-03-10",
-            "score": 55,
-            "ret_20d": -7.62
-          },
-          {
-            "date": "2026-03-09",
-            "score": 55,
-            "ret_20d": -7.73
-          },
-          {
-            "date": "2026-02-10",
-            "score": 75,
-            "ret_20d": -1.76
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "MSFT",
@@ -54067,15 +50706,7 @@
       ],
       "reasons": [
         "📈 צמיחה חזקה (23%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "PYPL",
@@ -54151,15 +50782,7 @@
       ],
       "reasons": [
         "סקטור חזק (🔥)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ASTS",
@@ -54236,37 +50859,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 18)",
         "📈 צמיחה חזקה (1952%)"
-      ],
-      "historical_performance": {
-        "appearances": 18,
-        "appearances_with_returns": 10,
-        "wins_20d": 1,
-        "win_rate_20d": 10.0,
-        "avg_return_20d": -20.0,
-        "best_return": 4.56,
-        "worst_return": -43.18,
-        "history": [
-          {
-            "date": "2026-05-26",
-            "score": 120,
-            "ret_20d": -43.18
-          },
-          {
-            "date": "2026-05-23",
-            "score": 120,
-            "ret_20d": -43.18
-          },
-          {
-            "date": "2026-05-22",
-            "score": 101,
-            "ret_20d": -31.16
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "BNTX",
@@ -54343,37 +50936,7 @@
       "reasons": [
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 10)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -10.08,
-        "best_return": -6.42,
-        "worst_return": -16.8,
-        "history": [
-          {
-            "date": "2026-04-22",
-            "score": 55,
-            "ret_20d": -16.8
-          },
-          {
-            "date": "2026-01-22",
-            "score": 65,
-            "ret_20d": -7.03
-          },
-          {
-            "date": "2026-01-21",
-            "score": 80,
-            "ret_20d": -6.42
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "CEG",
@@ -54450,15 +51013,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (1091%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "COIN",
@@ -54535,15 +51090,7 @@
       "reasons": [
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 16)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "COST",
@@ -54620,37 +51167,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 15)",
         "📈 צמיחה חזקה (46%)"
-      ],
-      "historical_performance": {
-        "appearances": 7,
-        "appearances_with_returns": 7,
-        "wins_20d": 3,
-        "win_rate_20d": 42.9,
-        "avg_return_20d": -3.56,
-        "best_return": 5.17,
-        "worst_return": -11.76,
-        "history": [
-          {
-            "date": "2026-05-20",
-            "score": 66,
-            "ret_20d": -11.41
-          },
-          {
-            "date": "2026-05-19",
-            "score": 71,
-            "ret_20d": -11.76
-          },
-          {
-            "date": "2026-05-18",
-            "score": 71,
-            "ret_20d": -8.34
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "CPRT",
@@ -54727,15 +51244,7 @@
       "reasons": [
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 20)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "CSGP",
@@ -54812,15 +51321,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 19)",
         "📈 צמיחה חזקה (22%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "CTAS",
@@ -54897,37 +51398,7 @@
       "reasons": [
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 12)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -14.19,
-        "best_return": -10.13,
-        "worst_return": -17.61,
-        "history": [
-          {
-            "date": "2026-02-27",
-            "score": 65,
-            "ret_20d": -17.61
-          },
-          {
-            "date": "2026-02-26",
-            "score": 65,
-            "ret_20d": -14.84
-          },
-          {
-            "date": "2026-02-25",
-            "score": 65,
-            "ret_20d": -10.13
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "IDXX",
@@ -55004,15 +51475,7 @@
       "reasons": [
         "סקטור חזק (🔥)",
         "⚠️ מגמה חלשה (ADX 12)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "MDB",
@@ -55089,15 +51552,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 18)",
         "📈 צמיחה חזקה (25%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "NIO",
@@ -55176,32 +51631,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 16)",
         "📈 צמיחה חזקה (112%)"
-      ],
-      "historical_performance": {
-        "appearances": 4,
-        "appearances_with_returns": 2,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -6.64,
-        "best_return": -3.29,
-        "worst_return": -10.0,
-        "history": [
-          {
-            "date": "2026-04-10",
-            "score": 65,
-            "ret_20d": -10.0
-          },
-          {
-            "date": "2026-04-09",
-            "score": 65,
-            "ret_20d": -3.29
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "PEP",
@@ -55278,37 +51708,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 19)",
         "📈 צמיחה חזקה (28%)"
-      ],
-      "historical_performance": {
-        "appearances": 3,
-        "appearances_with_returns": 3,
-        "wins_20d": 3,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 8.82,
-        "best_return": 11.33,
-        "worst_return": 6.26,
-        "history": [
-          {
-            "date": "2026-02-02",
-            "score": 70,
-            "ret_20d": 6.26
-          },
-          {
-            "date": "2026-01-30",
-            "score": 70,
-            "ret_20d": 8.88
-          },
-          {
-            "date": "2026-01-20",
-            "score": 70,
-            "ret_20d": 11.33
-          }
-        ],
-        "verdict": "good",
-        "label": "ביצועים טובים",
-        "color": "#10b981",
-        "emoji": "✅"
-      }
+      ]
     },
     {
       "ticker": "PLTR",
@@ -55385,15 +51785,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 19)",
         "📈 צמיחה חזקה (325%)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ROP",
@@ -55470,15 +51862,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 13)",
         "📈 צמיחה חזקה (59%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "TEAM",
@@ -55555,15 +51939,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (32%)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "WDAY",
@@ -55640,15 +52016,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 18)",
         "📈 צמיחה חזקה (248%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ZS",
@@ -55725,15 +52093,7 @@
       "reasons": [
         "⚠️ מגמה חלשה (ADX 16)",
         "📈 צמיחה חזקה (25%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "CHTR",
@@ -55810,27 +52170,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 28)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -38.42,
-        "best_return": -38.42,
-        "worst_return": -38.42,
-        "history": [
-          {
-            "date": "2026-04-23",
-            "score": 85,
-            "ret_20d": -38.42
-          }
-        ],
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "CMCSA",
@@ -55907,37 +52247,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 34)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 5,
-        "wins_20d": 2,
-        "win_rate_20d": 40.0,
-        "avg_return_20d": -8.18,
-        "best_return": 7.28,
-        "worst_return": -20.73,
-        "history": [
-          {
-            "date": "2026-04-23",
-            "score": 65,
-            "ret_20d": -20.73
-          },
-          {
-            "date": "2026-04-21",
-            "score": 65,
-            "ret_20d": -14.63
-          },
-          {
-            "date": "2026-04-17",
-            "score": 70,
-            "ret_20d": -16.44
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "FOX",
@@ -56014,15 +52324,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 35)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "LI",
@@ -56099,32 +52401,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 35)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 2,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -19.09,
-        "best_return": -15.88,
-        "worst_return": -22.31,
-        "history": [
-          {
-            "date": "2026-05-16",
-            "score": 80,
-            "ret_20d": -15.88
-          },
-          {
-            "date": "2026-05-15",
-            "score": 70,
-            "ret_20d": -22.31
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "LULU",
@@ -56201,15 +52478,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 27)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "PDD",
@@ -56286,15 +52555,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 26)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "TCOM",
@@ -56371,15 +52632,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "📈 צמיחה חזקה (98%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ULTA",
@@ -56456,15 +52709,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "מגמה חזקה (ADX 30)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "Z",
@@ -56541,15 +52786,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "📈 צמיחה חזקה (533%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ZG",
@@ -56626,15 +52863,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "📈 צמיחה חזקה (533%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ADBE",
@@ -56708,15 +52937,7 @@
           "time": "2026-06-24T19:28:03Z"
         }
       ],
-      "reasons": [],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      "reasons": []
     },
     {
       "ticker": "ADP",
@@ -56790,15 +53011,7 @@
           "time": "2026-06-19T14:52:58Z"
         }
       ],
-      "reasons": [],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      "reasons": []
     },
     {
       "ticker": "INTU",
@@ -56872,15 +53085,7 @@
           "time": "2026-06-23T02:11:19Z"
         }
       ],
-      "reasons": [],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      "reasons": []
     },
     {
       "ticker": "JD",
@@ -56957,15 +53162,7 @@
       "reasons": [
         "Golden cross MA50/MA150 טרי",
         "⚠️ סקטור חלש"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "META",
@@ -57043,15 +53240,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)",
         "📈 צמיחה חזקה (62%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "SPOT",
@@ -57129,15 +53318,7 @@
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 16)",
         "📈 צמיחה חזקה (222%)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "DOCU",
@@ -57213,15 +53394,7 @@
       ],
       "reasons": [
         "⚠️ מגמה חלשה (ADX 17)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "INFY",
@@ -57297,27 +53470,7 @@
       ],
       "reasons": [
         "⚠️ מגמה חלשה (ADX 20)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -26.56,
-        "best_return": -26.56,
-        "worst_return": -26.56,
-        "history": [
-          {
-            "date": "2026-01-14",
-            "score": 60,
-            "ret_20d": -26.56
-          }
-        ],
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "KHC",
@@ -57393,15 +53546,7 @@
       ],
       "reasons": [
         "⚠️ מגמה חלשה (ADX 18)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "NWS",
@@ -57479,27 +53624,7 @@
         "Golden cross MA50/MA150 טרי",
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 18)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -1.05,
-        "best_return": -1.05,
-        "worst_return": -1.05,
-        "history": [
-          {
-            "date": "2026-04-23",
-            "score": 55,
-            "ret_20d": -1.05
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "NWSA",
@@ -57577,32 +53702,7 @@
         "Golden cross MA50/MA150 טרי",
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 18)"
-      ],
-      "historical_performance": {
-        "appearances": 2,
-        "appearances_with_returns": 2,
-        "wins_20d": 2,
-        "win_rate_20d": 100.0,
-        "avg_return_20d": 1.67,
-        "best_return": 1.72,
-        "worst_return": 1.62,
-        "history": [
-          {
-            "date": "2026-05-12",
-            "score": 65,
-            "ret_20d": 1.62
-          },
-          {
-            "date": "2026-04-28",
-            "score": 55,
-            "ret_20d": 1.72
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "BIDU",
@@ -57678,37 +53778,7 @@
       ],
       "reasons": [
         "⚠️ סקטור חלש"
-      ],
-      "historical_performance": {
-        "appearances": 10,
-        "appearances_with_returns": 8,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -16.46,
-        "best_return": -8.05,
-        "worst_return": -22.85,
-        "history": [
-          {
-            "date": "2026-05-18",
-            "score": 80,
-            "ret_20d": -18.15
-          },
-          {
-            "date": "2026-05-16",
-            "score": 75,
-            "ret_20d": -18.15
-          },
-          {
-            "date": "2026-05-15",
-            "score": 70,
-            "ret_20d": -13.73
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "BILI",
@@ -57784,37 +53854,7 @@
       ],
       "reasons": [
         "⚠️ סקטור חלש"
-      ],
-      "historical_performance": {
-        "appearances": 8,
-        "appearances_with_returns": 8,
-        "wins_20d": 4,
-        "win_rate_20d": 50.0,
-        "avg_return_20d": 0.21,
-        "best_return": 10.09,
-        "worst_return": -7.61,
-        "history": [
-          {
-            "date": "2026-01-21",
-            "score": 70,
-            "ret_20d": -3.19
-          },
-          {
-            "date": "2026-01-20",
-            "score": 70,
-            "ret_20d": 2.91
-          },
-          {
-            "date": "2026-01-16",
-            "score": 70,
-            "ret_20d": -4.86
-          }
-        ],
-        "verdict": "moderate",
-        "label": "מעורב",
-        "color": "#f59e0b",
-        "emoji": "⚠️"
-      }
+      ]
     },
     {
       "ticker": "DKNG",
@@ -57890,15 +53930,7 @@
       ],
       "reasons": [
         "⚠️ סקטור חלש"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "XPEV",
@@ -57974,15 +54006,7 @@
       ],
       "reasons": [
         "⚠️ סקטור חלש"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "FLUT",
@@ -58059,15 +54083,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 19)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "NTES",
@@ -58144,15 +54160,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 11)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "ORLY",
@@ -58229,27 +54237,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 15)"
-      ],
-      "historical_performance": {
-        "appearances": 1,
-        "appearances_with_returns": 1,
-        "wins_20d": 0,
-        "win_rate_20d": 0.0,
-        "avg_return_20d": -9.9,
-        "best_return": -9.9,
-        "worst_return": -9.9,
-        "history": [
-          {
-            "date": "2026-01-28",
-            "score": 65,
-            "ret_20d": -9.9
-          }
-        ],
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "PINS",
@@ -58326,15 +54314,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 19)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "RIVN",
@@ -58411,37 +54391,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 15)"
-      ],
-      "historical_performance": {
-        "appearances": 5,
-        "appearances_with_returns": 4,
-        "wins_20d": 1,
-        "win_rate_20d": 25.0,
-        "avg_return_20d": -8.77,
-        "best_return": 6.89,
-        "worst_return": -19.97,
-        "history": [
-          {
-            "date": "2026-04-17",
-            "score": 55,
-            "ret_20d": -19.97
-          },
-          {
-            "date": "2026-03-19",
-            "score": 60,
-            "ret_20d": 6.89
-          },
-          {
-            "date": "2026-03-10",
-            "score": 60,
-            "ret_20d": -8.46
-          }
-        ],
-        "verdict": "weak",
-        "label": "ביצועים חלשים",
-        "color": "#dc2626",
-        "emoji": "❌"
-      }
+      ]
     },
     {
       "ticker": "TME",
@@ -58518,15 +54468,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "TMUS",
@@ -58603,15 +54545,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "TSLA",
@@ -58688,15 +54622,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 17)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     },
     {
       "ticker": "TTD",
@@ -58773,15 +54699,7 @@
       "reasons": [
         "⚠️ סקטור חלש",
         "⚠️ מגמה חלשה (ADX 10)"
-      ],
-      "historical_performance": {
-        "appearances": 0,
-        "appearances_with_returns": 0,
-        "verdict": "unknown",
-        "label": "ראשונה",
-        "color": "#9ca3af",
-        "emoji": "🆕"
-      }
+      ]
     }
   ],
   "error_tickers": []
