@@ -475,6 +475,7 @@
   </div>
 
 <script>
+const COMPANY_MAP = {"AAPL":"Apple","MSFT":"Microsoft","NVDA":"Nvidia","AMZN":"Amazon","GOOGL":"Alphabet","GOOG":"Alphabet","META":"Meta","TSLA":"Tesla","AVGO":"Broadcom","COST":"Costco","NFLX":"Netflix","AMD":"AMD","PLTR":"Palantir","INTC":"Intel","CSCO":"Cisco","ADBE":"Adobe","TXN":"Texas Instruments","QCOM":"Qualcomm","AMAT":"Applied Materials","INTU":"Intuit","ISRG":"Intuitive Surgical","PANW":"Palo Alto Networks","KLAC":"KLA Corp","LRCX":"Lam Research","SNPS":"Synopsys","CDNS":"Cadence","MRVL":"Marvell","ADI":"Analog Devices","CRWD":"CrowdStrike","MU":"Micron","ASML":"ASML","NXPI":"NXP Semi","ON":"ON Semi","FTNT":"Fortinet","DDOG":"Datadog","MELI":"MercadoLibre","ARM":"Arm Holdings","SHOP":"Shopify","TEAM":"Atlassian","SNOW":"Snowflake","NET":"Cloudflare","ZS":"Zscaler","OKTA":"Okta","MDB":"MongoDB","COIN":"Coinbase","HOOD":"Robinhood","RBLX":"Roblox","ABNB":"Airbnb","DASH":"DoorDash","PYPL":"PayPal","AFRM":"Affirm","TOST":"Toast","DUOL":"Duolingo","ASTS":"AST SpaceMobile","RKLB":"Rocket Lab","IONQ":"IonQ","RGTI":"Rigetti","QBTS":"D-Wave","CRWV":"CoreWeave","JOBY":"Joby Aviation","RIVN":"Rivian","NIO":"NIO","LI":"Li Auto","XPEV":"XPeng","BABA":"Alibaba","JD":"JD.com","PDD":"PDD Holdings","BIDU":"Baidu","TCOM":"Trip.com","BILI":"Bilibili","TME":"Tencent Music","FUTU":"Futu","WBD":"Warner Bros","CMCSA":"Comcast","SIRI":"SiriusXM","CHTR":"Charter","MTCH":"Match Group","PINS":"Pinterest","ETSY":"Etsy","Z":"Zillow","ZG":"Zillow A","DKNG":"DraftKings","CART":"Instacart","TTD":"Trade Desk","ROKU":"Roku","SPOT":"Spotify","AMGN":"Amgen","GILD":"Gilead","REGN":"Regeneron","VRTX":"Vertex","BIIB":"Biogen","MRNA":"Moderna","BNTX":"BioNTech","ILMN":"Illumina","IDXX":"IDEXX","DXCM":"Dexcom","ALGN":"Align Tech","NTRA":"Natera","CRSP":"CRISPR","INSM":"Insmed","SMMT":"Summit Therapeutics","INCY":"Incyte","RPRX":"Royalty Pharma","ADP":"ADP","PCAR":"PACCAR","FAST":"Fastenal","CPRT":"Copart","ODFL":"Old Dominion","CTAS":"Cintas","ROST":"Ross Stores","ORLY":"O'Reilly","ULTA":"Ulta Beauty","KDP":"Keurig Dr Pepper","KHC":"Kraft Heinz","MDLZ":"Mondelez","PEP":"PepsiCo","SBUX":"Starbucks","MNST":"Monster Bev","MAR":"Marriott","WYNN":"Wynn Resorts","BKNG":"Booking","EA":"EA","TTWO":"Take-Two","ADSK":"Autodesk","ROP":"Roper Tech","VRSK":"Verisk","HON":"Honeywell","DLTR":"Dollar Tree","CHWY":"Chewy","CTSH":"Cognizant","CDW":"CDW","FFIV":"F5","KEYS":"Keysight","GFS":"GlobalFoundries","GH":"Guardant Health","FROG":"JFrog","GTLB":"GitLab","ESTC":"Elastic","ZM":"Zoom","DOCU":"DocuSign","PATH":"UiPath","WDAY":"Workday","S":"SentinelOne","LULU":"Lululemon","MSTR":"MicroStrategy","SMCI":"Super Micro","BKR":"Baker Hughes","ZTO":"ZTO Express","NTES":"NetEase","AVAV":"AeroVironment","FANG":"Diamondback","CSX":"CSX","BROS":"Dutch Bros","KTOS":"Kratos","FLUT":"Flutter","DELL":"Dell","HPE":"HPE","NVO":"Novo Nordisk"};
 const RESULTS_PATH = "/sessions/vigilant-zen-mendel/mnt/outputs/scan_results.json";
 
 // ---- Position size calculator (state in localStorage, falls back gracefully) ----
@@ -663,7 +664,7 @@ function renderCard(r) {
       <div class="row">
         <div>
           <div class="ticker">${personalStar}${r.ticker}${sector}${sectorStrength}${high52}</div>
-          ${r.company_name ? `<div class="company-name">${r.company_name}</div>` : ""}
+          ${(r.company_name || COMPANY_MAP[r.ticker]) ? `<div class="company-name">${r.company_name || COMPANY_MAP[r.ticker]}</div>` : ""}
         </div>
         <div class="score-pill">${r.score}</div>
       </div>
@@ -760,7 +761,7 @@ function renderRow(r) {
   const cls = (n) => n > 0 ? "pos" : n < 0 ? "neg" : "";
   return `
     <tr>
-      <td><strong>${r.ticker}</strong>${r.company_name ? `<br><span style="font-size:11px;opacity:.6;font-weight:400">${r.company_name}</span>` : ""}</td>
+      <td><strong>${r.ticker}</strong>${(r.company_name || COMPANY_MAP[r.ticker]) ? `<br><span style="font-size:11px;opacity:.6;font-weight:400">${r.company_name || COMPANY_MAP[r.ticker]}</span>` : ""}</td>
       <td class="num">$${r.price}</td>
       <td class="num ${cls(r.pct_above_ma150)}">${r.pct_above_ma150}%</td>
       <td class="num ${cls(r.pct_above_ma50)}">${r.pct_above_ma50}%</td>
