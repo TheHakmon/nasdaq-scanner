@@ -436,11 +436,13 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
             full_info = t.info
             sector = full_info.get("sector")
             industry = full_info.get("industry")
+            company_name = full_info.get("shortName") or full_info.get("longName")
             # YoY growth as fractions (e.g. 0.25 = +25%)
             earnings_growth = full_info.get("earningsGrowth") or full_info.get("earningsQuarterlyGrowth")
             revenue_growth = full_info.get("revenueGrowth")
         except Exception:
             full_info = {}
+            company_name = None
         try:
             cal = t.calendar
             if cal is not None and hasattr(cal, 'get'):
@@ -775,6 +777,7 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
 
         return {
             "ticker": ticker,
+            "company_name": company_name,
             "passed": passed,
             "score": score,
             "summary": summary,
