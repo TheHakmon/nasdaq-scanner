@@ -271,6 +271,7 @@
   }
   .card .row { display: flex; justify-content: space-between; align-items: baseline; }
   .card .ticker { font-size: 18px; font-weight: 700; color: var(--text); }
+  .card .company-name { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
   .card .price { font-size: 16px; color: var(--text); }
   .card .reasons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
   .chip {
@@ -660,7 +661,10 @@ function renderCard(r) {
   return `
     <div class="card">
       <div class="row">
-        <div class="ticker">${personalStar}${r.ticker}${sector}${sectorStrength}${high52}</div>
+        <div>
+          <div class="ticker">${personalStar}${r.ticker}${sector}${sectorStrength}${high52}</div>
+          ${r.company_name ? `<div class="company-name">${r.company_name}</div>` : ""}
+        </div>
         <div class="score-pill">${r.score}</div>
       </div>
       <div class="row" style="margin-top:4px">
@@ -756,7 +760,7 @@ function renderRow(r) {
   const cls = (n) => n > 0 ? "pos" : n < 0 ? "neg" : "";
   return `
     <tr>
-      <td><strong>${r.ticker}</strong></td>
+      <td><strong>${r.ticker}</strong>${r.company_name ? `<br><span style="font-size:11px;opacity:.6;font-weight:400">${r.company_name}</span>` : ""}</td>
       <td class="num">$${r.price}</td>
       <td class="num ${cls(r.pct_above_ma150)}">${r.pct_above_ma150}%</td>
       <td class="num ${cls(r.pct_above_ma50)}">${r.pct_above_ma50}%</td>
