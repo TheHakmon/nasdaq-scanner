@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-04T22:34:34",
+  "generated_at": "2026-09-07T23:01:19",
   "signals": [
     {
       "date": "2026-01-08",
@@ -31709,7 +31709,7 @@
       "rs_vs_spy": 1.11,
       "is_recent_breakout": false,
       "kind": "watchlist",
-      "ret_1d": -2.24
+      "ret_1d": -0.68
     },
     {
       "date": "2026-09-03",
@@ -31881,10 +31881,154 @@
       "rs_vs_spy": 1.36,
       "is_recent_breakout": false,
       "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "RPRX",
+      "score": 93,
+      "price_at_entry": 63.96,
+      "pct_above_ma150": 22.59,
+      "rsi": 70.0,
+      "vol_ratio": 1.2,
+      "rs_vs_spy": 1.14,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "SNOW",
+      "score": 89,
+      "price_at_entry": 337.18,
+      "pct_above_ma150": 55.44,
+      "rsi": 57.3,
+      "vol_ratio": 1.5,
+      "rs_vs_spy": 1.35,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "DOCU",
+      "score": 84,
+      "price_at_entry": 68.41,
+      "pct_above_ma150": 37.54,
+      "rsi": 68.3,
+      "vol_ratio": 2.4,
+      "rs_vs_spy": 1.32,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "GTLB",
+      "score": 81,
+      "price_at_entry": 49.83,
+      "pct_above_ma150": 69.45,
+      "rsi": 73.8,
+      "vol_ratio": 1.13,
+      "rs_vs_spy": 1.58,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "NWS",
+      "score": 81,
+      "price_at_entry": 33.9,
+      "pct_above_ma150": 13.56,
+      "rsi": 52.8,
+      "vol_ratio": 1.22,
+      "rs_vs_spy": 1.08,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "DELL",
+      "score": 80,
+      "price_at_entry": 524.14,
+      "pct_above_ma150": 77.31,
+      "rsi": 63.7,
+      "vol_ratio": 1.5,
+      "rs_vs_spy": 1.22,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "NVDA",
+      "score": 78,
+      "price_at_entry": 230.36,
+      "pct_above_ma150": 14.7,
+      "rsi": 60.4,
+      "vol_ratio": 1.03,
+      "rs_vs_spy": 1.03,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "HPE",
+      "score": 73,
+      "price_at_entry": 52.0,
+      "pct_above_ma150": 41.7,
+      "rsi": 48.8,
+      "vol_ratio": 1.54,
+      "rs_vs_spy": 0.95,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "ZS",
+      "score": 68,
+      "price_at_entry": 169.8,
+      "pct_above_ma150": 11.65,
+      "rsi": 48.3,
+      "vol_ratio": 2.93,
+      "rs_vs_spy": 1.23,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "ZM",
+      "score": 63,
+      "price_at_entry": 101.33,
+      "pct_above_ma150": 10.36,
+      "rsi": 52.9,
+      "vol_ratio": 1.08,
+      "rs_vs_spy": 0.94,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "HOOD",
+      "score": 61,
+      "price_at_entry": 122.11,
+      "pct_above_ma150": 39.38,
+      "rsi": 65.9,
+      "vol_ratio": 1.1,
+      "rs_vs_spy": 1.36,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
+    },
+    {
+      "date": "2026-09-07",
+      "ticker": "PATH",
+      "score": 61,
+      "price_at_entry": 15.19,
+      "pct_above_ma150": 26.89,
+      "rsi": 45.3,
+      "vol_ratio": 1.41,
+      "rs_vs_spy": 1.28,
+      "is_recent_breakout": false,
+      "kind": "watchlist"
     }
   ],
   "summary": {
-    "total_signals": 1877,
+    "total_signals": 1889,
     "by_horizon": {
       "1d": {
         "n": 1845,
