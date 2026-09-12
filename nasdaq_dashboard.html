@@ -204,6 +204,19 @@
     font-weight: 600;
   }
   .star { color: var(--warning); }
+  .rec-banner {
+    padding: 12px 14px; border-radius: 10px; margin-top: 12px;
+    font-size: 15px; font-weight: 600; line-height: 1.5;
+    border: 1px solid; border-inline-start-width: 5px;
+  }
+  .rec-banner strong { font-weight: 800; }
+  .rec-buy-strong, .rec-buy_now_strong { background: var(--success-bg); border-color: var(--success); color: var(--success-text); }
+  .rec-buy_now { background: var(--success-bg); border-color: var(--success); color: var(--success-text); }
+  .rec-buy_cautious { background: rgba(16,185,129,0.08); border-color: var(--success); color: var(--text); }
+  .rec-watch { background: var(--warning-bg); border-color: var(--warning); color: var(--warning-text); }
+  .rec-wait_pullback { background: var(--warning-bg); border-color: var(--warning); color: var(--warning-text); }
+  .rec-wait_event { background: var(--danger-bg); border-color: var(--danger); color: var(--danger-text); }
+  .rec-no { background: var(--danger-bg); border-color: var(--danger); color: var(--danger-text); }
   .track-record {
     padding: 10px 12px; border-radius: 8px; margin-top: 10px;
     font-size: 12px; border-inline-start: 4px solid;
@@ -595,7 +608,21 @@ function renderCard(r) {
     }).join("");
     newsHtml = `<div class="news-list"><div class="nh">📰 חדשות אחרונות</div>${items}</div>`;
   }
-  const summary = r.summary ? `<div class="summary">${r.summary}</div>` : "";
+  // Prominent recommendation banner (headline + reasoning)
+  let recBanner = "";
+  if (r.recommendation && r.recommendation.headline) {
+    const cls = "rec-" + (r.recommendation.action || "no");
+    // Convert **bold** markdown to <strong> for display
+    const html = r.recommendation.headline.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    recBanner = `<div class="rec-banner ${cls}">${html}</div>`;
+  }
+  // Full technical breakdown — the summary already includes the headline first;
+  // strip it from the details block so it's not shown twice.
+  let detailsText = r.summary || "";
+  if (r.recommendation && r.recommendation.headline && detailsText.startsWith(r.recommendation.headline)) {
+    detailsText = detailsText.slice(r.recommendation.headline.length).trim();
+  }
+  const summary = detailsText ? `<div class="summary">${detailsText}</div>` : "";
 
   // Prefer interactive Lightweight Chart when data + library available;
   // fall back to the static PNG.
@@ -681,6 +708,7 @@ function renderCard(r) {
         ${r.strong_growth ? `<span style="color:var(--success)">📈 צמיחה</span>` : ""}
         ${r.is_extended ? `<span style="color:var(--warning)">⚠️ מתוח</span>` : ""}
       </div>
+      ${recBanner}
       ${trackRecord}
       ${earningsWarn}
       ${chartHtml}

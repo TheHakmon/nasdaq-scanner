@@ -396,6 +396,84 @@ def make_chart_b64(ticker: str, hist: pd.DataFrame,
         return None
 
 
+def _build_headline_recommendation(*, score, is_recent_breakout, is_extended,
+                                    pct_above_ma50, last_rsi, days_to_earnings,
+                                    strong_trend, last_adx, stage2, near_52w_high,
+                                    vol_ratio, price, stop_loss, target1) -> dict:
+    """Return {action, headline} — a plain-Hebrew one-liner answering
+    'should I buy this stock, when, and why?' for a non-professional trader.
+    Priority order handles the highest-risk cases first."""
+    stop_txt = f" עצירה מומלצת ${stop_loss}" if stop_loss else ""
+    entry_txt = f"כניסה סביב ${price:.2f}"
+
+    # 1) Hard risk: earnings imminent
+    if days_to_earnings is not None and 0 <= days_to_earnings <= 3:
+        return {
+            "action": "wait_event",
+            "headline": (f"⚠️ **המלצה: לחכות** — יש דוח כספי בעוד {days_to_earnings} ימים. "
+                          "סיכון גבוה מדי לכניסה עכשיו, עדיף לראות איך המניה מגיבה לדוח.")
+        }
+
+    # 2) Extended + overheated → wait for pullback
+    if is_extended and last_rsi is not None and last_rsi > 72:
+        pullback_target = price * 0.94
+        return {
+            "action": "wait_pullback",
+            "headline": (f"⏸️ **המלצה: לחכות למשיכה, לא לרדוף** — המחיר כבר +{pct_above_ma50:.0f}% מעל MA50 "
+                          f"ו-RSI={last_rsi:.0f} (קניית יתר). מומלץ לחכות שהמניה תרד בחזרה לאזור "
+                          f"${pullback_target:.2f} לפני כניסה.")
+        }
+
+    # 3) Very strong setup: clear buy
+    if score >= 80 and is_recent_breakout and stage2 and (strong_trend or (last_adx is not None and last_adx >= 22)):
+        return {
+            "action": "buy_now_strong",
+            "headline": (f"✅ **המלצה: כן לקנות עכשיו** — הגדרה טכנית איכותית עם כל האישורים "
+                          f"(פריצה טרייה, מגמה חזקה, מבנה עולה). {entry_txt},{stop_txt}.")
+        }
+
+    # 4) Solid buy
+    if score >= 70 and stage2 and not is_extended:
+        vol_note = " עם נפח גבוה שמאשר את הכניסה של גופים" if vol_ratio and vol_ratio >= VOLUME_MULTIPLIER else ""
+        return {
+            "action": "buy_now",
+            "headline": (f"✅ **המלצה: קנייה מומלצת** — הרבה סימנים חיוביים{vol_note}. "
+                          f"{entry_txt},{stop_txt}.")
+        }
+
+    # 5) Borderline positive
+    if score >= 60:
+        note = "בפוזיציה מוקטנת (חצי מהרגיל)" if is_extended or (last_rsi and last_rsi > 70) else ""
+        return {
+            "action": "buy_cautious",
+            "headline": (f"🟢 **המלצה: קנייה זהירה** — הסיגנל חיובי אבל לא מושלם. "
+                          f"אם נכנסים - {note or 'בגודל רגיל'}, {entry_txt},{stop_txt}.")
+        }
+
+    # 6) Weak momentum
+    if last_adx is not None and last_adx < 20 and not is_recent_breakout:
+        return {
+            "action": "no",
+            "headline": ("🚫 **המלצה: לא לקנות** — המגמה חלשה מדי (המניה מדשדשת, לא באמת עולה). "
+                          "אין כאן הזדמנות ברורה כרגע.")
+        }
+
+    # 7) Early breakout, needs confirmation
+    if is_recent_breakout:
+        return {
+            "action": "watch",
+            "headline": ("🟡 **המלצה: להשגיח, לא לקנות עדיין** — הפריצה נראית אבל חסרים אישורים "
+                          "(נפח/חוזק). חכה יום-יומיים לראות אם המניה מחזיקה מעל הרמה.")
+        }
+
+    # 8) Default: not now
+    return {
+        "action": "no",
+        "headline": ("📊 **המלצה: לא כרגע** — יש מגמה חיובית אבל בלי נקודת כניסה טובה. "
+                      "המשך לעקוב.")
+    }
+
+
 # ----------------------------------------------------------------------------
 # Per-ticker analysis
 # ----------------------------------------------------------------------------
@@ -753,7 +831,7 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
                 f"יעד 2 ${target2}."
             )
 
-        # 7. Bottom-line entry rationale
+        # 7. Bottom-line entry rationale (technical, appended at end)
         if score >= 70 and is_recent_breakout and stage2:
             verdict = "💎 הגדרה טכנית קלאסית: פריצה + Stage 2 + נפח. מועמדת חזקה לכניסה."
         elif score >= 70:
@@ -766,7 +844,19 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
             verdict = "📊 במגמה חיובית אך ללא אות כניסה ספציפי כעת."
 
         summary_parts.append(verdict)
-        summary = " ".join(summary_parts)
+
+        # ---- HEADLINE recommendation — plain-Hebrew, one clear sentence ----
+        # This is prepended so a non-professional trader gets a straight answer
+        # before the technical breakdown.
+        recommendation = _build_headline_recommendation(
+            score=score, is_recent_breakout=is_recent_breakout,
+            is_extended=is_extended, pct_above_ma50=pct_above_ma50,
+            last_rsi=last_rsi, days_to_earnings=days_to_earnings,
+            strong_trend=strong_trend, last_adx=last_adx,
+            stage2=stage2, near_52w_high=near_52w_high, vol_ratio=vol_ratio,
+            price=float(last), stop_loss=stop_loss, target1=target1,
+        )
+        summary = recommendation["headline"] + " " + " ".join(summary_parts)
 
         # Generate chart only for candidates that pass — keeps scan fast.
         chart_b64 = None
@@ -781,6 +871,7 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
             "passed": passed,
             "score": score,
             "summary": summary,
+            "recommendation": recommendation,
             "chart_b64": chart_b64,
             "chart_data": chart_data,
             "price": round(float(last), 2),
