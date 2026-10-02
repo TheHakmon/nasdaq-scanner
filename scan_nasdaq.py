@@ -482,6 +482,8 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
     try:
         t = yf.Ticker(ticker)
         hist = t.history(period=HISTORY_PERIOD, auto_adjust=True)
+        if hist is not None:
+            hist = hist.dropna(subset=["Close"])  # drop empty/partial last bar (caused NaN prices)
         if hist is None or len(hist) < 160:
             return None
 
@@ -1046,7 +1048,7 @@ def main() -> int:
     # Benchmark
     print(f"Fetching benchmark {BENCHMARK}...")
     bench_hist = yf.Ticker(BENCHMARK).history(period=HISTORY_PERIOD, auto_adjust=True)
-    bench_close = bench_hist["Close"]
+    bench_close = bench_hist["Close"].dropna()
 
     # Sector ETFs — for sector-strength check
     print(f"Fetching sector ETFs...")
