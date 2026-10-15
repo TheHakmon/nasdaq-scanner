@@ -1500,4 +1500,12 @@ def send_email_notification(payload: dict) -> bool:
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    rc = main()
+    # Tiny public summary (~1 KB) for the card on yossihakmon.com — never fails the scan.
+    try:
+        import make_site_summary
+        out = Path(__file__).resolve().parent / "site_summary.json"
+        out.write_text(json.dumps(make_site_summary.build(), ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    except Exception as exc:  # pragma: no cover
+        print(f"site_summary skipped: {exc}")
+    sys.exit(rc)
