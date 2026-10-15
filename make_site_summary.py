@@ -12,6 +12,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 
 
+def _clean_name(name):
+    """The scanner cuts names at ~31 chars; drop a half-cut last word."""
+    if not name or len(name) < 30 or " " not in name:
+        return name
+    return name.rsplit(" ", 1)[0].rstrip(",")
+
+
 def build() -> dict:
     d = json.loads((ROOT / "scan_results.json").read_text(encoding="utf-8"))
     breakouts = d.get("breakouts") or []
@@ -26,7 +33,7 @@ def build() -> dict:
         "top": [
             {
                 "ticker": r.get("ticker"),
-                "name": r.get("company_name"),
+                "name": _clean_name(r.get("company_name")),
                 "score": r.get("score"),
                 "pct_above_ma150": r.get("pct_above_ma150"),
             }
