@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>בדיקת הסיגנלים</title>
+
+<script>
+  (function() {
+    const saved = (function(){ try { return localStorage.getItem("nasdaq_theme"); } catch(e) { return null; } })();
+    const theme = saved || "dark";
+    if (theme === "light") document.documentElement.setAttribute("data-theme", "light");
+  })();
+</script>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0b1220; --bg-card: #131c2f; --bg-elevated: #1a2236;
+    --text: #e2e8f0; --text-muted: #94a3b8; --text-subtle: #64748b;
+    --border: #2a3450; --border-strong: #3a4664; --hover: #1e293b;
+    --accent: #818cf8; --accent-text: #c7d2fe; --accent-bg: rgba(129,140,248,0.15);
+    --success: #10b981; --success-text: #6ee7b7;
+    --danger: #ef4444; --danger-text: #fca5a5;
+    --warning: #f59e0b; --warning-text: #fcd34d;
+    --table-head-bg: #1a2236;
+  }
+  [data-theme="light"] {
+    color-scheme: light;
+    --bg: #fafafa; --bg-card: #ffffff; --bg-elevated: #ffffff;
+    --text: #111; --text-muted: #6b7280; --text-subtle: #9ca3af;
+    --border: #e5e7eb; --border-strong: #d1d5db; --hover: #f9fafb;
+    --accent: #4f46e5; --accent-text: #3730a3; --accent-bg: #eef2ff;
+    --success: #059669; --success-text: #065f46;
+    --danger: #dc2626; --danger-text: #991b1b;
+    --warning: #d97706; --warning-text: #92400e;
+    --table-head-bg: #f9fafb;
+  }
+  body { background: var(--bg); color: var(--text); }
+  .nav-btn, .theme-toggle {
+    background: var(--bg-card); color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .nav-btn:hover, .theme-toggle:hover { background: var(--hover); }
+  .theme-toggle {
+    border-radius: 8px; padding: 8px 12px; font-size: 14px; cursor: pointer;
+  }
+  table { background: var(--bg-card); }
+  th { background: var(--table-head-bg); color: var(--text-muted); }
+  th, td { border-bottom: 1px solid var(--border); }
+  tr:hover { background: var(--hover); }
+  .stat, .empty, .help, .note {
+    background: var(--bg-card); border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .help, .note {
+    background: var(--accent-bg); border-color: var(--accent);
+    color: var(--accent-text);
+  }
+  a { color: var(--accent); }
+  code { background: var(--bg-elevated); color: var(--text); }
+</style>
+
+<style>
+  body { font-family:-apple-system,'Segoe UI','Heebo',sans-serif; margin:0; padding:24px 16px; }
+  .wrap { max-width:1000px; margin:0 auto; }
+  .top-nav { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; }
+  .nav-links { display:flex; gap:8px; align-items:center; }
+  .nav-btn { padding:8px 14px; border-radius:8px; font-size:13px; text-decoration:none; }
+  .sub { color:var(--text-muted); font-size:14px; margin-bottom:16px; }
+  h2 { margin-top:28px; font-size:17px; }
+  .tbl { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; border-radius:8px; overflow:hidden; margin-top:10px; }
+  th, td { padding:8px 10px; text-align:start; font-size:13px; white-space:nowrap; }
+  .note { padding:10px 12px; border-radius:8px; font-size:13px; margin-top:10px; line-height:1.6; }
+</style></head>
+<body><div class="wrap">
+<div class="top-nav"><h1>🧪 בדיקת הסיגנלים לפי כללים</h1>
+  <div class="nav-links"><a class="nav-btn" href="dashboard_standalone.html">← חזרה לדשבורד</a><button class="theme-toggle" id="theme-toggle" title="החלף בין כהה לבהיר">🌙</button></div></div>
+<div class="sub">כל פריצה בארכיון (432 סיגנלים, 2026-01-07 עד 2026-11-05) כאילו נקנתה בפתיחה למחרת
+ונוהלה לפי כלל יציאה קבוע. R = רווח או הפסד ביחס לסיכון המקורי (1R = הפסד מלא עד הסטופ).</div>
+<div class="tbl"><table><thead><tr><th>קבוצה</th><th>עסקאות</th><th>% מנצחות</th><th>R ממוצע</th><th>תשואה ממוצעת</th><th>SPY באותו זמן</th><th>Profit Factor</th><th>ימים בממוצע</th></tr></thead><tbody><tr><td>A · רמות הסקנר (סטופ 2ATR, יעד 4ATR)</td><td>194</td><td>41.8%</td><td style='color:var(--success);font-weight:700'>0.15</td><td>0.92%</td><td>0.48%</td><td>1.19</td><td>12.4</td></tr><tr><td>B · ממוצע 150 של מיכה</td><td>197</td><td>27.4%</td><td style='color:var(--success);font-weight:700'>0.09</td><td>1.08%</td><td>0.59%</td><td>1.19</td><td>33.7</td></tr><tr><td>C · סטופ 2ATR + יציאה מתחת ל-MA150</td><td>197</td><td>24.9%</td><td style='color:var(--success);font-weight:700'>0.24</td><td>1.14%</td><td>0.58%</td><td>1.23</td><td>30.2</td></tr></tbody></table></div>
+<div class="note">⚠️ תקופה קצרה (פחות משנה) ושוק אחד. עסקאות שעדיין פתוחות מחושבות לפי מחיר הסגירה האחרון.
+עלות של 0.1% לכל צד. זו בדיקה של נתוני עבר, לא המלצה.</div>
+<div class="tbl"><h2>A · רמות הסקנר (סטופ 2ATR, יעד 4ATR)</h2><table><thead><tr><th>קבוצה</th><th>עסקאות</th><th>% מנצחות</th><th>R ממוצע</th><th>תשואה ממוצעת</th><th>SPY באותו זמן</th><th>Profit Factor</th><th>ימים בממוצע</th></tr></thead><tbody><tr><td>ציון 80+</td><td>64</td><td>46.9%</td><td style='color:var(--success);font-weight:700'>0.27</td><td>1.97%</td><td>-0.03%</td><td>1.41</td><td>12.2</td></tr><tr><td>ציון 70-79</td><td>54</td><td>40.7%</td><td style='color:var(--success);font-weight:700'>0.13</td><td>0.08%</td><td>0.56%</td><td>1.01</td><td>12.4</td></tr><tr><td>ציון 50-69</td><td>76</td><td>38.2%</td><td style='color:var(--success);font-weight:700'>0.07</td><td>0.63%</td><td>0.86%</td><td>1.14</td><td>12.5</td></tr><tr><td>🚫 דוח בתוך 7 ימים</td><td>14</td><td>50.0%</td><td style='color:var(--success);font-weight:700'>0.54</td><td>1.17%</td><td>-0.24%</td><td>1.29</td><td>3.9</td></tr><tr><td>בלי דוח קרוב</td><td>95</td><td>41.1%</td><td style='color:var(--success);font-weight:700'>0.15</td><td>0.77%</td><td>0.2%</td><td>1.15</td><td>15.8</td></tr><tr><td>תאריך דוח לא ידוע</td><td>85</td><td>41.2%</td><td style='color:var(--success);font-weight:700'>0.09</td><td>1.04%</td><td>0.92%</td><td>1.23</td><td>10.0</td></tr><tr><td>🟢 שוק בריא</td><td>184</td><td>41.8%</td><td style='color:var(--success);font-weight:700'>0.17</td><td>0.9%</td><td>0.37%</td><td>1.19</td><td>12.7</td></tr><tr><td>🟡 שוק מעורב</td><td>10</td><td>40.0%</td><td style='color:var(--danger);font-weight:700'>-0.1</td><td>1.17%</td><td>2.55%</td><td>1.22</td><td>7.0</td></tr><tr><td>🔴 שוק חלש</td><td colspan='7'>אין עסקאות</td></tr></tbody></table>
+<div class="note">הכי טובות: OKTA (+4.3R, 2026-05-26), PATH (+4.0R, 2026-08-05), QCOM (+3.3R, 2026-09-09), ABNB (+3.1R, 2026-06-18), IDXX (+3.1R, 2026-10-27)<br>הכי גרועות: LI (-2.9R, 2026-05-14), FOXA (-2.8R, 2026-06-11), NFLX (-2.1R, 2026-04-15), BROS (-1.5R, 2026-06-12), CMCSA (-1.4R, 2026-01-26)</div><h2>B · ממוצע 150 של מיכה</h2><table><thead><tr><th>קבוצה</th><th>עסקאות</th><th>% מנצחות</th><th>R ממוצע</th><th>תשואה ממוצעת</th><th>SPY באותו זמן</th><th>Profit Factor</th><th>ימים בממוצע</th></tr></thead><tbody><tr><td>ציון 80+</td><td>64</td><td>28.1%</td><td style='color:var(--danger);font-weight:700'>-0.16</td><td>-1.05%</td><td>-0.05%</td><td>0.84</td><td>36.1</td></tr><tr><td>ציון 70-79</td><td>55</td><td>36.4%</td><td style='color:var(--success);font-weight:700'>0.23</td><td>1.98%</td><td>0.42%</td><td>1.38</td><td>30.5</td></tr><tr><td>ציון 50-69</td><td>78</td><td>20.5%</td><td style='color:var(--success);font-weight:700'>0.19</td><td>2.19%</td><td>1.24%</td><td>1.43</td><td>34.1</td></tr><tr><td>🚫 דוח בתוך 7 ימים</td><td>14</td><td>57.1%</td><td style='color:var(--success);font-weight:700'>0.91</td><td>8.36%</td><td>-1.79%</td><td>2.99</td><td>14.3</td></tr><tr><td>בלי דוח קרוב</td><td>98</td><td>26.5%</td><td style='color:var(--danger);font-weight:700'>-0.13</td><td>-1.46%</td><td>-0.59%</td><td>0.76</td><td>29.2</td></tr><tr><td>תאריך דוח לא ידוע</td><td>85</td><td>23.5%</td><td style='color:var(--success);font-weight:700'>0.21</td><td>2.81%</td><td>2.34%</td><td>1.54</td><td>42.1</td></tr><tr><td>🟢 שוק בריא</td><td>188</td><td>26.6%</td><td style='color:var(--success);font-weight:700'>0.04</td><td>0.33%</td><td>0.29%</td><td>1.06</td><td>32.5</td></tr><tr><td>🟡 שוק מעורב</td><td>9</td><td>44.4%</td><td style='color:var(--success);font-weight:700'>1.04</td><td>16.56%</td><td>6.8%</td><td>6.49</td><td>58.4</td></tr><tr><td>🔴 שוק חלש</td><td colspan='7'>אין עסקאות</td></tr></tbody></table>
+<div class="note">הכי טובות: MRVL (+11.0R, 2026-03-11), OKTA (+8.1R, 2026-05-26), TXN (+7.4R, 2026-01-13), CRWD (+7.1R, 2026-05-07), PANW (+6.8R, 2026-05-07)<br>הכי גרועות: LI (-2.1R, 2026-05-14), FOXA (-2.0R, 2026-06-11), SMMT (-1.7R, 2026-04-09), CDW (-1.4R, 2026-07-09), SPOT (-1.4R, 2026-07-31)</div><h2>C · סטופ 2ATR + יציאה מתחת ל-MA150</h2><table><thead><tr><th>קבוצה</th><th>עסקאות</th><th>% מנצחות</th><th>R ממוצע</th><th>תשואה ממוצעת</th><th>SPY באותו זמן</th><th>Profit Factor</th><th>ימים בממוצע</th></tr></thead><tbody><tr><td>ציון 80+</td><td>63</td><td>27.0%</td><td style='color:var(--danger);font-weight:700'>-0.02</td><td>-0.5%</td><td>0.11%</td><td>0.91</td><td>33.7</td></tr><tr><td>ציון 70-79</td><td>56</td><td>33.9%</td><td style='color:var(--success);font-weight:700'>0.56</td><td>1.94%</td><td>0.19%</td><td>1.42</td><td>26.5</td></tr><tr><td>ציון 50-69</td><td>78</td><td>16.7%</td><td style='color:var(--success);font-weight:700'>0.22</td><td>1.88%</td><td>1.24%</td><td>1.39</td><td>30.0</td></tr><tr><td>🚫 דוח בתוך 7 ימים</td><td>14</td><td>50.0%</td><td style='color:var(--success);font-weight:700'>2.01</td><td>8.52%</td><td>-1.68%</td><td>3.17</td><td>13.5</td></tr><tr><td>בלי דוח קרוב</td><td>97</td><td>24.7%</td><td style='color:var(--danger);font-weight:700'>-0.06</td><td>-0.96%</td><td>-0.39%</td><td>0.81</td><td>26.8</td></tr><tr><td>תאריך דוח לא ידוע</td><td>86</td><td>20.9%</td><td style='color:var(--success);font-weight:700'>0.29</td><td>2.3%</td><td>2.04%</td><td>1.46</td><td>36.7</td></tr><tr><td>🟢 שוק בריא</td><td>187</td><td>24.6%</td><td style='color:var(--success);font-weight:700'>0.22</td><td>0.64%</td><td>0.38%</td><td>1.13</td><td>29.7</td></tr><tr><td>🟡 שוק מעורב</td><td>10</td><td>30.0%</td><td style='color:var(--success);font-weight:700'>0.64</td><td>10.31%</td><td>4.28%</td><td>3.41</td><td>38.7</td></tr><tr><td>🔴 שוק חלש</td><td colspan='7'>אין עסקאות</td></tr></tbody></table>
+<div class="note">הכי טובות: OKTA (+17.9R, 2026-05-26), MRVL (+11.3R, 2026-03-11), CRWD (+11.1R, 2026-05-07), PANW (+9.0R, 2026-05-07), TXN (+8.3R, 2026-01-13)<br>הכי גרועות: LI (-2.9R, 2026-05-14), FOXA (-2.8R, 2026-06-11), NFLX (-2.1R, 2026-04-15), SMMT (-1.6R, 2026-04-09), BROS (-1.5R, 2026-06-12)</div></div>
+<div class="sub" style="margin-top:24px">עודכן: 2026-11-06T13:26:31+00:00</div>
+</div>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("theme-toggle");
+    if (!btn) return;
+    const updateIcon = () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      btn.textContent = isLight ? "☀️" : "🌙";
+    };
+    updateIcon();
+    btn.addEventListener("click", () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      if (isLight) {
+        document.documentElement.removeAttribute("data-theme");
+        try { localStorage.setItem("nasdaq_theme", "dark"); } catch(e){}
+      } else {
+        document.documentElement.setAttribute("data-theme", "light");
+        try { localStorage.setItem("nasdaq_theme", "light"); } catch(e){}
+      }
+      updateIcon();
+    });
+  });
+</script>
+</body></html>

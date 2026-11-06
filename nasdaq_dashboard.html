@@ -204,6 +204,19 @@
     font-weight: 600;
   }
   .star { color: var(--warning); }
+  .market-banner {
+    padding: 10px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    margin: 10px 0; border: 1px solid var(--border);
+  }
+  .market-banner small { display: block; font-weight: 400; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .market-banner.positive { background: var(--success-bg); border-color: var(--success-border); }
+  .market-banner.mixed    { background: var(--warning-bg); border-color: var(--warning-border); }
+  .market-banner.negative { background: var(--danger-bg);  border-color: var(--danger-border); }
+  .exit-ma150 {
+    margin-top: 6px; padding: 6px 8px; border-radius: 6px; font-size: 12px; text-align: center;
+    border: 1px dashed var(--danger-border); color: var(--text-muted);
+  }
+  .exit-ma150 b { color: var(--danger); }
   .rec-banner {
     padding: 12px 14px; border-radius: 10px; margin-top: 12px;
     font-size: 15px; font-weight: 600; line-height: 1.5;
@@ -420,12 +433,14 @@
       <div class="nav-links">
         <a class="nav-btn" href="archive/index.html" title="ארכיון יומי של כל הסריקות">📚 ארכיון</a>
         <a class="nav-btn" href="performance_summary.html" title="סטטיסטיקת ביצועי הסקנר">📊 ביצועים</a>
+        <a class="nav-btn" href="backtest_signals.html" title="מה היה קורה אילו סחרתי בכל פריצה לפי כללים">🧪 בדיקה</a>
         <a class="nav-btn" href="journal_app.html" title="יומן מסחר אינטרקטיבי">📓 יומן</a>
         <button class="theme-toggle" id="theme-toggle" title="החלף בין כהה לבהיר">🌙</button>
       </div>
     </div>
     <div class="sub" id="sub">סורק מניות מעל $5B לפריצות מעל ממוצע 150 בנפח מוגבר</div>
 
+    <div id="market-area"></div>
     <div id="error-area"></div>
 
     <div class="position-calc">
@@ -676,7 +691,7 @@ function renderCard(r) {
   }
 
   const earningsWarn = (r.days_to_earnings !== null && r.days_to_earnings !== undefined && r.days_to_earnings >= 0 && r.days_to_earnings <= 7)
-    ? `<div class="earnings-warn">⚠️ דוח כספי בעוד ${r.days_to_earnings} ימים — סיכון מוגבר</div>`
+    ? `<div class="earnings-warn">⚠️ דוח כספי בעוד ${r.days_to_earnings} ימים — סיכון מוגבר, גאפ יכול לדלג מעל הסטופ</div>`
     : "";
 
   const tradeLevels = (r.stop_loss && r.target1 && r.target2) ? `
@@ -684,7 +699,8 @@ function renderCard(r) {
       <div class="lvl stop"><div class="lvl-label">Stop-Loss</div><div class="lvl-val">$${r.stop_loss}</div></div>
       <div class="lvl tgt1"><div class="lvl-label">יעד 1 (1:${r.risk_reward ?? '?'})</div><div class="lvl-val">$${r.target1}</div></div>
       <div class="lvl tgt2"><div class="lvl-label">יעד 2</div><div class="lvl-val">$${r.target2}</div></div>
-    </div>` : "";
+    </div>
+    ${r.ma150_exit ? `<div class="exit-ma150">🚪 יציאה לפי ממוצע 150: סגירה מתחת ל-<b>$${r.ma150_exit}</b></div>` : ""}` : "";
 
   return `
     <div class="card">
@@ -824,6 +840,13 @@ async function load() {
     document.getElementById("status-badge").textContent = "מעודכן";
     document.getElementById("sub").textContent =
       `סורק מניות מעל $5B לפריצות מעל ממוצע 150 בנפח מוגבר · עדכון אחרון: ${fmtDate(data.generated_at)}`;
+
+    const ms = data.market_status;
+    const mArea = document.getElementById("market-area");
+    if (mArea) {
+      mArea.innerHTML = ms ? `<div class="market-banner ${ms.state}">${{positive: "🟢", mixed: "🟡", negative: "🔴"}[ms.state] || ""} ${ms.text}
+        <small>SPY $${ms.spy} · ${ms.pct_above_ma150 >= 0 ? "+" : ""}${ms.pct_above_ma150}% מול ממוצע 150 ($${ms.ma150}) · שיפוע הממוצע ב-20 יום: ${ms.ma150_slope_20d_pct}% · לידיעה בלבד, לא מסנן</small></div>` : "";
+    }
 
     if (data._status) {
       errArea.innerHTML = `<div class="error">${data._status}</div>`;

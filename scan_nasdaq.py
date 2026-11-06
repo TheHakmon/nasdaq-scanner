@@ -88,6 +88,9 @@ EARNINGS_WARN_DAYS = 7                # warn if earnings within N days
 ATR_STOP_MULT = 2.0                   # stop = entry - 2 * ATR
 ATR_TARGET1_MULT = 4.0                # target1 = entry + 4 * ATR (1:2 R/R)
 ATR_TARGET2_MULT = 6.0                # target2 = entry + 6 * ATR (1:3 R/R)
+MARKET_MA = 150                       # market status banner: SPY vs its MA150 (info only, not a filter)
+MARKET_SLOPE_DAYS = 20                # MA150 "rising" = change over 20 days >= -0.5%
+MARKET_SLOPE_TOL = -0.5
 NEAR_52W_HIGH_PCT = 5.0               # "near 52-week high" if within 5% of it
 NEWS_PER_TICKER = 3                   # how many news headlines to include
 ADX_TREND_MIN = 25                   # ADX above this = strong trend
@@ -793,7 +796,7 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
         if days_to_earnings is not None and 0 <= days_to_earnings <= EARNINGS_WARN_DAYS:
             summary_parts.append(
                 f"⚠️ **דוח כספי בעוד {days_to_earnings} ימים** — הימור על כיוון הדוח. "
-                "אם נכנסים, להקטין גודל פוזיציה או לחכות לדוח."
+                "גאפ בדוח יכול לדלג מעל הסטופ. אם נכנסים, להקטין גודל פוזיציה או לחכות לדוח."
             )
 
         # 6e. ADX trend strength
@@ -831,6 +834,11 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
                 f"Stop-Loss ${stop_loss} · "
                 f"יעד 1 ${target1} (1:{risk_reward}) · "
                 f"יעד 2 ${target2}."
+            )
+        if not pd.isna(last_ma150):
+            summary_parts.append(
+                f"🚪 יציאה לפי ממוצע 150: אם המניה נסגרת מתחת ל-${last_ma150:.2f}, יוצאים במסחר הבא. "
+                "יעד קבוע עלול לחתוך את העסקאות הגדולות, שבבדיקה ההיסטורית נשאו את רוב הרווח."
             )
 
         # 7. Bottom-line entry rationale (technical, appended at end)
@@ -898,6 +906,8 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
             "days_to_earnings": days_to_earnings,
             "atr": round(last_atr, 2) if last_atr else None,
             "stop_loss": stop_loss,
+            "ma150_exit": round(float(last_ma150), 2) if not pd.isna(last_ma150) else None,
+            "earnings_soon": bool(days_to_earnings is not None and 0 <= days_to_earnings <= EARNINGS_WARN_DAYS),
             "target1": target1,
             "target2": target2,
             "risk_reward": risk_reward,
@@ -919,6 +929,26 @@ def analyze(ticker: str, bench_close: pd.Series, is_personal: bool = False,
         }
     except Exception as e:
         return {"ticker": ticker, "error": str(e)}
+
+
+def compute_market_status(bench_close: pd.Series) -> dict | None:
+    """SPY vs its MA150 — an information banner, not a filter.
+    (A filter version was tested on 2016-2026 and the result flipped with small definition changes.)"""
+    if bench_close is None or len(bench_close) < MARKET_MA + MARKET_SLOPE_DAYS:
+        return None
+    ma = sma(bench_close, MARKET_MA)
+    last, last_ma = float(bench_close.iloc[-1]), float(ma.iloc[-1])
+    slope = (last_ma / float(ma.iloc[-1 - MARKET_SLOPE_DAYS]) - 1) * 100
+    above, rising = last > last_ma, slope >= MARKET_SLOPE_TOL
+    if above and rising:
+        state, text = "positive", "השוק בריא: SPY מעל ממוצע 150 והממוצע עולה."
+    elif above or rising:
+        state, text = "mixed", ("שוק מעורב: SPY מעל ממוצע 150 אבל הממוצע יורד." if above
+                                else "שוק מעורב: SPY מתחת לממוצע 150, הממוצע עדיין עולה.")
+    else:
+        state, text = "negative", "שוק חלש: SPY מתחת לממוצע 150 והממוצע יורד. פריצות בשוק כזה נכשלות יותר."
+    return {"state": state, "text": text, "spy": round(last, 2), "ma150": round(last_ma, 2),
+            "pct_above_ma150": round((last / last_ma - 1) * 100, 2), "ma150_slope_20d_pct": round(slope, 2)}
 
 
 def build_journal_prices(payload: dict) -> None:
@@ -1049,6 +1079,9 @@ def main() -> int:
     print(f"Fetching benchmark {BENCHMARK}...")
     bench_hist = yf.Ticker(BENCHMARK).history(period=HISTORY_PERIOD, auto_adjust=True)
     bench_close = bench_hist["Close"].dropna()
+    market_status = compute_market_status(bench_close)
+    if market_status:
+        print(f"  market: {market_status['state']} (SPY {market_status['pct_above_ma150']:+.1f}% vs MA150)")
 
     # Sector ETFs — for sector-strength check
     print(f"Fetching sector ETFs...")
@@ -1126,6 +1159,7 @@ def main() -> int:
             "min_volume_multiplier": VOLUME_MULTIPLIER,
             "rsi_band": [RSI_LOW, RSI_HIGH],
         },
+        "market_status": market_status,
         "breakouts": breakouts,
         "watchlist": watchlist,
         "personal": personal_results,
@@ -1296,6 +1330,10 @@ def send_telegram_notification(payload: dict) -> bool:
 
     lines = [f"📈 *NASDAQ Scan — {today}*"]
     lines.append(f"_{len(breakouts)} פריצות · {len(watchlist)} מעקב_")
+    ms = payload.get("market_status")
+    if ms:
+        icon = {"positive": "🟢", "mixed": "🟡", "negative": "🔴"}.get(ms["state"], "")
+        lines.append(f"{icon} {ms['text']}")
     lines.append("")
     if breakouts:
         lines.append("🚀 *פריצות:*")
@@ -1312,10 +1350,12 @@ def send_telegram_notification(payload: dict) -> bool:
                 verdict_emoji = "❌ "
             stop = f" · stop ${r['stop_loss']}" if r.get("stop_loss") else ""
             t1 = f" · 🎯 ${r['target1']}" if r.get("target1") else ""
+            exit150 = f" · יציאה <${r['ma150_exit']}" if r.get("ma150_exit") else ""
+            earn = f" · ⚠️ דוח בעוד {r['days_to_earnings']} ימים" if r.get("earnings_soon") else ""
             lines.append(
                 f"{verdict_emoji}[{r['ticker']}]({tv}) "
                 f"score *{r['score']}* · ${r['price']} "
-                f"(+{r['pct_above_ma150']}%){stop}{t1}"
+                f"(+{r['pct_above_ma150']}%){stop}{t1}{exit150}{earn}"
             )
     if watchlist:
         lines.append("")
@@ -1386,6 +1426,7 @@ def send_email_notification(payload: dict) -> bool:
         f"סריקת NASDAQ — {today}",
         f"נסרקו {payload['scanned']} מניות מתוך {payload['universe_size']}.",
         f"נמצאו {len(breakouts)} פריצות ו-{len(watchlist)} במעקב.",
+        (payload.get("market_status") or {}).get("text", ""),
         "",
     ]
     if breakouts:
@@ -1474,6 +1515,7 @@ def send_email_notification(payload: dict) -> bool:
       <div style="max-width:680px;margin:0 auto;">
         <h1 style="margin:0 0 4px;">📈 NASDAQ Scan — {today}</h1>
         <p style="color:#666;font-size:14px;">נסרקו {payload['scanned']} מניות מתוך {payload['universe_size']} · {len(breakouts)} פריצות · {len(watchlist)} במעקב</p>
+        <p style="font-size:14px;padding:8px 12px;border-radius:6px;background:#f3f4f6;">{(payload.get("market_status") or {}).get("text", "")}</p>
         <h2>🚀 פריצות מעניינות</h2>
         {breakouts_html}
         {watchlist_html}

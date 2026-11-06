@@ -65,6 +65,9 @@ jobs:
       - name: Update performance stats
         run: python3 track_performance.py || true
 
+      - name: Rule-based backtest of archived signals
+        run: python3 backtest_signals.py || true
+
       - name: Refresh archive index (keeps existing dated entries)
         run: |
           python3 - <<'PY'
@@ -88,6 +91,7 @@ jobs:
           cp dashboard_standalone.html _site/index.html
           cp journal_app.html _site/journal_app.html 2>/dev/null || true
           cp performance_summary.html _site/performance_summary.html 2>/dev/null || true
+          cp backtest_signals.html _site/backtest_signals.html 2>/dev/null || true
           cp trade_journal.html _site/trade_journal.html 2>/dev/null || true
           cp -r archive/* _site/archive/ 2>/dev/null || true
           # The dashboard links to dashboard_standalone.html; add an alias.
