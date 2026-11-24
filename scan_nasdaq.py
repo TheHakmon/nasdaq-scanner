@@ -20,7 +20,7 @@ import io
 import json
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import numpy as np
@@ -981,6 +981,32 @@ def build_journal_prices(payload: dict) -> None:
     print(f"Injected {len(price_map)} prices into journal_app.html")
 
 
+ARCHIVE_RETENTION_DAYS = 30
+
+
+def _prune_archive(archive_dir: Path, keep_days: int = ARCHIVE_RETENTION_DAYS) -> int:
+    """Delete archive/scan_*.json and archive/dashboard_*.html older than
+    `keep_days` days (by the date in the file name). Returns files removed.
+
+    Keeps the published site and the repo from growing without bound
+    (the archive had reached ~850MB, near the GitHub Pages 1GB limit)."""
+    import re
+    cutoff = (datetime.now() - timedelta(days=keep_days)).date()
+    removed = 0
+    for f in archive_dir.iterdir():
+        m = re.fullmatch(r"(?:scan|dashboard)_(\d{4}-\d{2}-\d{2})\.(?:json|html)", f.name)
+        if not m:
+            continue
+        try:
+            file_date = datetime.strptime(m.group(1), "%Y-%m-%d").date()
+        except ValueError:
+            continue
+        if file_date < cutoff:
+            f.unlink()
+            removed += 1
+    return removed
+
+
 def _rebuild_archive_index(archive_dir: Path) -> None:
     """Rebuild archive/index.html by listing all scan_*.json files."""
     entries = []
@@ -1269,9 +1295,12 @@ def main() -> int:
         standalone = (HERE / "dashboard_standalone.html")
         if standalone.exists():
             (archive_dir / f"dashboard_{today}.html").write_text(standalone.read_text())
+        # Keep only the last ARCHIVE_RETENTION_DAYS days of history.
+        removed = _prune_archive(archive_dir)
         # Rebuild archive index.html from existing files
         _rebuild_archive_index(archive_dir)
-        print(f"Archived to archive/scan_{today}.json")
+        print(f"Archived to archive/scan_{today}.json "
+              f"(pruned {removed} files older than {ARCHIVE_RETENTION_DAYS} days)")
     except Exception as e:
         print(f"(archive save failed: {e})", file=sys.stderr)
 
