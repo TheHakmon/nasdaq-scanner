@@ -19,7 +19,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  scan-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -107,6 +107,16 @@ jobs:
         with:
           path: _site
 
+  # Deploy runs as its own job. Running deploy-pages in the same job right after
+  # the upload sometimes failed with 'No artifacts named "github-pages"' because
+  # the artifact was not yet visible to the Actions API.
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
