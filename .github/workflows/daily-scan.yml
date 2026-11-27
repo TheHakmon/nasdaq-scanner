@@ -106,6 +106,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+          retention-days: 3
 
   # Deploy runs as its own job. Running deploy-pages in the same job right after
   # the upload sometimes failed with 'No artifacts named "github-pages"' because
@@ -113,10 +114,39 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+      actions: write   # list (and de-duplicate) this run's artifacts
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Wait for exactly one github-pages artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Past failures: 'Found 0 artifact(s)' right after a successful upload
+          # (API lag) and 'Found 2 artifact(s)' after a very large upload.
+          # Wait until the artifact is visible, and drop duplicates if any.
+          url="repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts"
+          for i in $(seq 1 18); do
+            ids=$(gh api "$url" --jq '[.artifacts[] | select(.name=="github-pages")] | sort_by(.created_at) | reverse | .[].id')
+            count=$(echo "$ids" | grep -c . || true)
+            echo "attempt $i: found $count github-pages artifact(s)"
+            if [ "$count" -ge 1 ]; then
+              # keep the newest, delete older duplicates
+              for dup in $(echo "$ids" | tail -n +2); do
+                echo "deleting duplicate artifact $dup"
+                gh api -X DELETE "repos/${GITHUB_REPOSITORY}/actions/artifacts/$dup"
+              done
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::github-pages artifact never became visible"
+          exit 1
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
